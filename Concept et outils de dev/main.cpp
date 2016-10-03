@@ -1,19 +1,23 @@
-#include "Polynome.cpp"
+using namespace std;
+#include "Polynome.hpp"
+#include <iostream>
+#
+
 
 int main() { 
-	std::Vector<int> nos_coeffs;
+	vector<int> nos_coeffs;
 	int degre;
 	Poly notre_polynome;
 	cout<<"entrez le degre du polynome :";
 	cin>>degre;
-	cout<<std::endl;
+	cout<<endl;
 
 	int coeffCourant;
 	for(int i =0; i<= degre;++i){
 		cout<<"entrez le coefficient à la puissance "<<i<<" : ";
-		cin<<coeffCourant;
-		nos_coeffs.pusk_back(coeffCourant);
-		cout<std::endl;
+		cin>>coeffCourant;
+		nos_coeffs.push_back(coeffCourant);
+		cout<<endl;
 		
 	}
 
@@ -24,7 +28,7 @@ int main() {
 	while(continuer){
 		cout<<"choisissez la valeur de X : ";
 		cin>>x;
-		cout<<std::endl<<"le resultat dun calcul est = "<<notre_polynome.calculer(x)<<std::endl;
+		cout<<endl<<"le resultat dun calcul est = "<<notre_polynome.calculer(x)<<endl;
 		
 		cout<<"continuer ?";
 

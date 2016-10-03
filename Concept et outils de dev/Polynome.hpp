@@ -1,7 +1,5 @@
-#if TAB == 0
-using Poly = Polynome<std::List<int>>,
-#else 
-using Poly = Polynome<Vector<int>>;
+#include <vector>
+#include <list>
 
 template <typename K>
 class Polynome{
@@ -11,6 +9,13 @@ class Polynome{
 		
 		
 	public :
+	Polynome(int, vector<int>);
 	int calculer(int);
 
 };
+
+#if TAB == 0
+#define Poly Polynome< list< int > >
+#else 
+#define Poly Polynome< vector< int > >
+#endif

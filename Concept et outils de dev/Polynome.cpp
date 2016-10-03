@@ -1,9 +1,7 @@
-#include "Polynome.hpp"
-
 template<typename K>
-Polynome<K>::Polynome(int degre, std::Vector<int> valeurs){
+Polynome<K>::Polynome(int degre, vector<int> valeurs){
 	coeffs = degre;
-	std::Vector<int>::Iterator i;
+	vector<int>::Iterator i;
 	for(i=valeurs.begin(); i != valeurs.end(); ++i)
 		lesValeurs.push_back(*i);
 }
