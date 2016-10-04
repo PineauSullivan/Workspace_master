@@ -1,8 +1,16 @@
+import org.apache.jena.rdf.model.Bag;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.ResIterator;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.SimpleSelector;
+import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.StmtIterator;
+import org.apache.jena.rdf.model.impl.IteratorFactory;
 import org.apache.jena.vocabulary.VCARD;
-
+import org.apache.jena.util.iterator.ExtendedIterator;
 
 	/** Tutorial 1 creating a simple model
 	 */
@@ -65,7 +73,38 @@ import org.apache.jena.vocabulary.VCARD;
 	      // add the property
 
 	      model.write(System.out);
-
+	      
+	      ResIterator iter1 = model.listSubjectsWithProperty(VCARD.FN);
+	      
+	      if (iter1.hasNext()) {
+	          System.out.println("La base de données contient les vcard de :");
+	          while (iter1.hasNext()) {
+	              System.out.println("  " + iter1.next()
+	                                            .getProperty(VCARD.FN)
+	                                            .getString());
+	          }
+	      } else {
+	          System.out.println("Aucune vcard n'a été trouvée dans la base de données");
 	      }
+	      StmtIterator iter = model.listStatements(
+	              new 
+	                  SimpleSelector(null, VCARD.FN, (RDFNode) null) {
+	                      public boolean selects(Statement s) {
+	                              return s.getString().matches(".*t.*");
+	                      }
+	                  });
+	          if (iter.hasNext()) {
+	              System.out.println("The database contains vcards for:");
+	              while (iter.hasNext()) {
+	                  System.out.println("  " + iter.nextStatement()
+	                                                .getString());
+	              }
+	          } else {
+	              System.out.println("No .*t.* were found in the database");
+	          }            
+	      }
+	      
+	        
+	     
 	}
 
