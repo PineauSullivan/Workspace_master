@@ -1,0 +1,40 @@
+<rdf:RDF
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+      xmlns:foaf="http://xmlns.com/foaf/0.1/"
+      xmlns:admin="http://webns.net/mvcb/">
+<foaf:PersonalProfileDocument rdf:about="">
+  <foaf:maker rdf:resource="#me"/>
+  <foaf:primaryTopic rdf:resource="#me"/>
+  <admin:generatorAgent rdf:resource="http://www.ldodds.com/foaf/foaf-a-matic"/>
+  <admin:errorReportsTo rdf:resource="mailto:leigh@ldodds.com"/>
+</foaf:PersonalProfileDocument>
+<foaf:Person rdf:ID="me">
+<foaf:name>Sullivan PINEAU</foaf:name>
+<foaf:title>M.</foaf:title>
+<foaf:givenname>Sullivan</foaf:givenname>
+<foaf:family_name>PINEAU</foaf:family_name>
+<foaf:nick>susu</foaf:nick>
+<foaf:mbox_sha1sum>689d18b6c2ad678aa0cac9abe5dd97a1687af013</foaf:mbox_sha1sum>
+<foaf:homepage rdf:resource="www.jenesaispas-perso.fr"/>
+<foaf:depiction rdf:resource="okok.jpg"/>
+<foaf:phone rdf:resource="tel:0662142874"/>
+<foaf:workplaceHomepage rdf:resource="www.jenesaispas-workspace.fr"/>
+<foaf:workInfoHomepage rdf:resource="www.jenesaispas-workspace.fr/home"/>
+<foaf:schoolHomepage rdf:resource="http://www.univ-nantes.fr/"/>
+<foaf:knows>
+<foaf:Person>
+<foaf:name>Jones</foaf:name>
+<foaf:mbox_sha1sum>0a07af04139c93b142b19dd8e9e8dfcd7c321137</foaf:mbox_sha1sum>
+<rdfs:seeAlso rdf:resource="aussi"/></foaf:Person></foaf:knows>
+<foaf:knows>
+<foaf:Person>
+<foaf:name>Smith</foaf:name>
+<foaf:mbox_sha1sum>5b5480bdee3e0eabc4f687b3c723c02c7a6d6798</foaf:mbox_sha1sum>
+<rdfs:seeAlso rdf:resource="aussii"/></foaf:Person></foaf:knows>
+<foaf:knows>
+<foaf:Person>
+<foaf:name>Jones</foaf:name>
+<foaf:mbox_sha1sum>883e3f3246fb3c21cb6d09fb982839483a242d70</foaf:mbox_sha1sum>
+<rdfs:seeAlso rdf:resource="aussiii"/></foaf:Person></foaf:knows></foaf:Person>
+</rdf:RDF>

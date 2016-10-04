@@ -1,6 +1,7 @@
 import org.apache.jena.rdf.model.Bag;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.NodeIterator;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.ResIterator;
@@ -86,6 +87,8 @@ import org.apache.jena.util.iterator.ExtendedIterator;
 	      } else {
 	          System.out.println("Aucune vcard n'a été trouvée dans la base de données");
 	      }
+	      
+          //pour les Fullnames
 	      StmtIterator iter = model.listStatements(
 	              new 
 	                  SimpleSelector(null, VCARD.FN, (RDFNode) null) {
@@ -93,18 +96,67 @@ import org.apache.jena.util.iterator.ExtendedIterator;
 	                              return s.getString().matches(".*t.*");
 	                      }
 	                  });
-	          if (iter.hasNext()) {
-	              System.out.println("The database contains vcards for:");
-	              while (iter.hasNext()) {
-	                  System.out.println("  " + iter.nextStatement()
-	                                                .getString());
-	              }
-	          } else {
-	              System.out.println("No .*t.* were found in the database");
-	          }            
-	      }
+          if (iter.hasNext()) {
+              System.out.println("La base de données contient fullname de:");
+              while (iter.hasNext()) {
+                  System.out.println("  " + iter.nextStatement()
+                                                .getString());
+              }
+          } else {
+              System.out.println("No .*t.* were found in the database (Fullname)");
+          }          
+          
+          
+          //pour les Given
+	      StmtIterator iterbis = model.listStatements(
+	              new 
+	                  SimpleSelector(null, VCARD.Given, (RDFNode) null) {
+	                      public boolean selects(Statement s) {
+	                              return s.getString().matches(".*t.*");
+	                      }
+	                  });
+          if (iterbis.hasNext()) {
+              System.out.println("La base de données contient Given de:");
+              while (iterbis.hasNext()) {
+                  System.out.println("  " + iterbis.nextStatement()
+                                                .getString());
+              }
+          } else {
+              System.out.println("No .*t.* were found in the database(Given)");
+          } 
+          
+       // créer un sac
+          Bag smiths = model.createBag();
+
+          // sélectionner toutes les ressources avec une propriété VCARD.FN
+          // dont la valeur se termine avec "Smith"
+          StmtIterator iterbiss = model.listStatements(
+              new SimpleSelector(null, VCARD.FN, (RDFNode) null) {
+                  public boolean selects(Statement s) {
+                          return s.getString().endsWith("Smith");
+                  }
+              });
+          // ajouter les Smith au sac
+          while (iterbiss.hasNext()) {
+              smiths.add(iterbiss.nextStatement().getSubject());
+          }
+          
+       // affiche les membres du sac
+          NodeIterator iter2 = smiths.iterator();
+          if (iter2.hasNext()) {
+              System.out.println("Le sac contient :");
+              while (iter2.hasNext()) {
+                  System.out.println("  " +
+                      ((Resource) iter2.next())
+                                      .getProperty(VCARD.FN)
+                                      .getString());
+              }
+          } else {
+              System.out.println("Le sac est vide");
+          }
+      }
 	      
 	        
 	     
-	}
+}
 
