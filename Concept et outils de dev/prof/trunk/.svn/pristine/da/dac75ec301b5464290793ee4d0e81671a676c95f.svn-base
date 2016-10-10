@@ -1,0 +1,63 @@
+// $Id$
+#include <stdio.h>
+#include "traduction.h"
+
+static const char *CVSid="@(#) $Id$";
+
+const char* traduire_bonjour(langue lng)
+{
+  switch (lng) {
+  case anglais:
+    return "Hello";
+  case francais:
+    return "Bonjour";
+  case neerlandais:
+    return "Hallo";
+  case allemand:
+    return "Guten Tag";
+  case toto:
+  	return "floders";
+  case espagnol:
+	return "hola";
+  case suedois:
+	return "halla";
+  case russe:
+	return "привет";
+  default:
+    return "?????";
+  }
+}
+
+langue string_vers_langue(const char *const str)
+{
+  if (!strcmp(str,"anglais")) {
+    return anglais;
+  }
+  if (!strcmp(str,"francais")) {
+    return francais;
+  }
+  if (!strcmp(str,"neerlandais")) {
+    return neerlandais;
+  }
+  if (!strcmp(str,"allemand")) {
+    return allemand;
+  }
+
+  if (!strcmp(str,"toto")) {
+    return toto;
+
+  if (!strcmp(str,"maori")) {
+    return maori;
+  }
+  if (!strcmp(str,"suedois")) {
+    return suedois;
+  }
+  if (!strcmp(str,"russe")) {
+    return russe;
+  }
+  if (!strcmp(str,"espagnol")) {
+    return espagnol;
+  }
+
+  return inconnu;
+}

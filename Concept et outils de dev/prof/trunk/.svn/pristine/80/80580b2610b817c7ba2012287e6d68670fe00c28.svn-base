@@ -1,0 +1,95 @@
+// $Id$
+#include <stdio.h>
+#include "traduction.h"
+
+static const char *CVSid="@(#) $Id$";
+
+const char* traduire_bonjour(langue lng)
+{
+  switch (lng) {
+  case anglais:
+    return "Hello";
+  case francais:
+    return "Bonjour";
+  case neerlandais:
+    return "Hallo";
+  case allemand:
+    return "Guten Tag";
+  case zoulou:
+  	return "Sawubona";
+  case thai:
+  	return "Sawatdi";
+  case toto:
+  	return "floders";
+  case suedois:
+    return "Hallå";
+  case russe:
+	  return "привет";
+  case maori:
+    return "Tena koe";
+	case espagnol:
+		return "hola";
+	case suedois:
+		return "hallå";
+  case russe:
+	  return "привет";
+  case yoruba:
+	return "e ku aaro";
+case italien:
+	return "ciao";
+
+	  return " E ku aaro";
+  case thai :
+	  return "Sawatdi";
+  default:
+    return "?????";
+  }
+}
+
+langue string_vers_langue(const char *const str)
+{
+  if (!strcmp(str,"anglais")) {
+    return anglais;
+  }
+  if (!strcmp(str,"francais")) {
+    return francais;
+  }
+  if (!strcmp(str,"neerlandais")) {
+    return neerlandais;
+  }
+  if (!strcmp(str,"allemand")) {
+    return allemand;
+  }
+  if (!strcmp(str,"zoulou")) {
+    return zoulou;
+  }
+  if (!strcmp(str,"thai")) {
+    return thai;
+  }
+    if (!strcmp(str,"toto")) {
+    return toto;
+  if (!strcmp(str,"russe")) {
+    return russe;
+  if (!strcmp(str,"espagnol")) {
+    return espagnol;
+  }
+  if (!strcmp(str,"maori")) {
+    return maori;
+  }
+  if (!strcmp(str,"suedois")) {
+    return suedois;
+  }
+  if (!strcmp(str,"russe")) {
+    return russe;
+  }
+  if (!strcmp(str,"yoruba")) {
+    return yoruba;
+  }
+  if (!strcmp(str,"italien")) {
+    return italien;
+  }
+  if (!strcmp(str,"thai")) {
+	  return thai;
+  }
+  return inconnu;
+}

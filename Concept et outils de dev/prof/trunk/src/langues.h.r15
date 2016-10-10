@@ -1,0 +1,17 @@
+#ifndef _LANGUES_H_
+#define _LANGUES_H_
+
+typedef enum {
+  maori,
+  anglais,
+  francais,
+  neerlandais,
+  allemand,
+  russe,
+  espagnol,
+  suedois,
+  inconnu,
+  yoruba,
+} langue;
+
+#endif // _LANGUES_H_
