@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularJS Plunker</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <link href="style.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://code.angularjs.org/1.5.8/angular.js" data-require="angular.js@1.5.x" data-semver="1.5.8"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+
+  <body>
+    <p>Hello {{name}}!</p>
+   <!-- <div ng-controller="madonnee as mydonnee">
+      <p>{{mydonnee.madonnee.question}}</p>
+      <form name="reviewForm" ng-submit="mydonnee.donne_reponse()">
+        <label><input type="radio" name="cbox1" ng-model="mydonnee.myreponse" value="1">{{mydonnee.madonnee.reponse1}}</label><br>
+        <label><input type="radio" name="cbox1" ng-model="mydonnee.myreponse" value="2">{{mydonnee.madonnee.reponse2}}</label><br>
+        <label><input type="radio" name="cbox1" ng-model="mydonnee.myreponse" value="3">{{mydonnee.madonnee.reponse3}}</label><br>
+        <input type="submit" value="Valider"/>
+      </form>
+      
+      <h1>la réponse est : {{mydonnee.rep}}</h1>
+    
+    </div>
+    -->
+    <div ng-controller="madonnee_dynamique as mydonnee_dynamique">
+      <p>HightScore : {{mydonnee_dynamique.hightscore}}</p>
+      <p>Votre Score : {{mydonnee_dynamique.score}}</p>
+      <h1>Question {{mydonnee_dynamique.i+1}}/{{mydonnee_dynamique.nb_question}}</h1>
+      <div class="question" ng-show="mydonnee_dynamique.affiche_form">
+        <p>{{mydonnee_dynamique.madonnee.question}}</p>
+        <form name="reviewForm_dynamique" ng-submit="mydonnee_dynamique.donne_reponse()">
+          <label><input type="radio" name="cbox2" ng-model="mydonnee_dynamique.myreponse" value="1">{{mydonnee_dynamique.madonnee.reponse1}}</label><br>
+          <label><input type="radio" name="cbox2" ng-model="mydonnee_dynamique.myreponse" value="2">{{mydonnee_dynamique.madonnee.reponse2}}</label><br>
+          <label><input type="radio" name="cbox2" ng-model="mydonnee_dynamique.myreponse" value="3">{{mydonnee_dynamique.madonnee.reponse3}}</label><br>
+          <input type="submit" value="Valider"/>
+        </form>
+      </div>
+      <div class="reponse" ng-show="mydonnee_dynamique.affiche_res">
+        <h1 >la réponse était : {{mydonnee_dynamique.rep}}</h1>
+        <form name="reviewForm_dynamique" ng-submit="mydonnee_dynamique.suivant_inter()">
+          <input type="submit" value="Suivant" />
+        </form>
+      </div>
+    </div>
+  </body>
+
+</html>
