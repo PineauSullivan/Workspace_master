@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:ns0="http://example.org/"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+  <rdf:Description rdf:about="http://example.org/Stand">
+    <rdf:type rdf:resource="http://example.org/Book"/>
+    <ns0:title>The Stand</ns0:title>
+    <ns0:year> 1978 </ns0:year>
+  </rdf:Description>
+
+  <ns0:Book rdf:about="http://example.org/TourDuMonde">
+    <ns0:title>Le Tour Du Monde</ns0:title>
+  </ns0:Book>
+
+  <ns0:Person rdf:about="http://example.org/King">
+    <ns0:name> Stephen King </ns0:name>
+    <ns0:wrote rdf:resource="http://example.org/Stand"/>
+  </ns0:Person>
+
+  <ns0:Person rdf:about="http://example.org/Verne">
+    <ns0:name> Jules Verne</ns0:name>
+    <ns0:wrote rdf:resource="http://example.org/Stand"/>
+  </ns0:Person>
+
+  <rdfs:Class rdf:about="http://example.org/Book">
+    <rdfs:subClassOf>
+      <rdfs:Class rdf:about="http://example.org/Document">
+      </rdfs:Class>
+    </rdfs:subClassOf>
+
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://example.org/Person">
+  </rdfs:Class>
+
+</rdf:RDF>

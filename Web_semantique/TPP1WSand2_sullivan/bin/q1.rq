@@ -1,0 +1,25 @@
+select * where{
+	?s ?p ?o.
+}
+
+//	        String requete1 = "PREFIX ex: <http://example.org/>" +
+//	        		" " +
+//	        		"select ?name_author where{ " +
+//	    	        "?author a ex:Person ." +
+//	    	        "?author ex:name ?name_author ." +
+//	    	        "?book a ex:Book ." +
+//	    	        "?book ex:title ?title ." +
+//	    	        "?author  ex:wrote ?book ."+
+//	    	        "Filter(?title = 'The Stand')"+
+//	        		"}";
+
+	        String requete_insert ="PREFIX ex: <http://example.org/> " +
+	        		"INSERT DATA { " +
+	        		" ex:book42 ex:title 'book42' . " +
+	        		" ex:book42 a ex:Book ." +
+	        		" ex:auteur42 ex:wrote ex:book42 ." +
+	        		" ex:auteur42 ex:name 'auteur42' ." +
+	        		" ex:auteur42 a ex:Person ." +
+	        		"ex:book22 ex:title 'book22' . " +
+	        		" ex:book22 a ex:Book ." +
+	        		"}";
