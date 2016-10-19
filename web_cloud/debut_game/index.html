@@ -11,21 +11,19 @@
   </head>
 
   <body>
-    <p>Hello {{name}}!</p>
-   <!-- <div ng-controller="madonnee as mydonnee">
-      <p>{{mydonnee.madonnee.question}}</p>
-      <form name="reviewForm" ng-submit="mydonnee.donne_reponse()">
-        <label><input type="radio" name="cbox1" ng-model="mydonnee.myreponse" value="1">{{mydonnee.madonnee.reponse1}}</label><br>
-        <label><input type="radio" name="cbox1" ng-model="mydonnee.myreponse" value="2">{{mydonnee.madonnee.reponse2}}</label><br>
-        <label><input type="radio" name="cbox1" ng-model="mydonnee.myreponse" value="3">{{mydonnee.madonnee.reponse3}}</label><br>
+    <p>Hello !</p>
+    <div ng-controller="madonnee_dynamique as mydonnee_dynamique">
+    <div ng-show="mydonnee_dynamique.affiche_connection">
+      <p>Veuillez entrer votre nom : </p>
+      <form name="reviewForm_dynamique" ng-submit="mydonnee_dynamique.donne_nom()">
+        <label><input type="text" name="cbox2" ng-model="mydonnee_dynamique.monnom"></label><br>
+        <label><input type="number" name="cbox2" ng-model="mydonnee_dynamique.monid"></label><br>
+        {{mydonnee_dynamique.monnom}}
+        {{mydonnee_dynamique.monid}}
         <input type="submit" value="Valider"/>
       </form>
-      
-      <h1>la réponse est : {{mydonnee.rep}}</h1>
-    
     </div>
-    -->
-    <div ng-controller="madonnee_dynamique as mydonnee_dynamique">
+    
       <p>HightScore : {{mydonnee_dynamique.hightscore}}</p>
       <p>Votre Score : {{mydonnee_dynamique.score}}</p>
       <h1>Question {{mydonnee_dynamique.i+1}}/{{mydonnee_dynamique.nb_question}}</h1>
@@ -48,3 +46,12 @@
   </body>
 
 </html>
+
+<script>
+  var init = function() {
+    console.log("init called");
+    window.init();
+  };
+</script>
+
+<script src="https://apis.google.com/js/client.js?onload=init"></script>
