@@ -1,0 +1,120 @@
+package main;
+
+import java.io.*;
+import java.util.Scanner;
+
+import org.apache.jena.query.Query;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.QueryFactory;
+import org.apache.jena.query.ResultSet;
+import org.apache.jena.query.ResultSetFormatter;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.util.FileManager;
+
+
+
+public class mon_application {
+
+	private static Model model = ModelFactory.createDefaultModel();
+	private static Scanner input;
+
+		public static void main(String[] args) {
+			input = new Scanner(System.in);
+			System.out.println("Quelle Exercice de TP2?");
+			int nbQ = input.nextInt();
+
+		switch (nbQ) {
+			case 1: 
+			 doEx1();
+			 break;
+			case 2: doEx2();
+			 break;
+			case 3: doEx3();
+			 break;
+			}
+
+		}
+
+public static void doEx1(){
+	;
+}
+
+public static void doEx2(){
+	;
+}
+
+		
+public static void doEx3() {
+
+			input = new Scanner(System.in);
+			System.out.println("Working Directory = " + System.getProperty("user.dir"));
+			readingRDF("res/RDFData.ttl");
+			/*System.out.println("Query number for Ex3");
+			int nbQ = input.nextInt();*/
+			
+			/*switch (nbQ) {
+			case 1: 
+			 doRequest("question31.rq");
+			 break;
+			case 2: doRequest("question32.rq");
+			 break;
+			case 3 : doRequest("question33.rq");
+			break;
+			}	*/
+		}
+
+public static void readingRDF(String filename){
+
+			// Open RDF file
+			InputStream in = FileManager.get().open(filename);
+			if (in == null) {
+			    throw new IllegalArgumentException("File not found");
+			}
+			// Load file content
+			model.read(in, "N3");
+			model.write(System.out, "Turtle");
+		}
+
+		public static String readQuery(String filename){
+			try {
+	            File file = new File(filename);
+	            FileInputStream inputStream = new FileInputStream(file);
+	            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+	            StringBuilder data = new StringBuilder();
+	            String line;
+
+	            while ((line = reader.readLine()) != null) {
+	                data.append(line + "\n");
+	            }
+
+	            inputStream.close();
+				return data.toString();
+	        }
+	        catch(Exception ex){
+	            return null;
+	        }
+		}
+
+		public static void doRequest(String filename){
+
+			String request = readQuery(filename);
+
+			System.out.println("\n-> Request on file: \"" + filename + "\"");
+			System.out.println(request);
+			System.out.println("-> Perform request...\n");
+
+			Query query = QueryFactory.create(request);
+			QueryExecution qexec = QueryExecutionFactory.create(query, model);
+			ResultSet results =  qexec.execSelect();
+
+			// Output query results	
+			ResultSetFormatter.out(System.out, results, query);
+
+			// Important - free up resources used running the query
+			qexec.close();
+		}
+}
+
+

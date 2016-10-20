@@ -1,0 +1,15 @@
+<http://example.org/Stand> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/Book> .
+<http://example.org/Stand> <http://example.org/title> "The Stand" .
+<http://example.org/Stand> <http://example.org/year> " 1978 " .
+<http://example.org/TourDuMonde> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/Book> .
+<http://example.org/TourDuMonde> <http://example.org/title> "Le Tour Du Monde" .
+<http://example.org/King> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/Person> .
+<http://example.org/King> <http://example.org/name> " Stephen King " .
+<http://example.org/King> <http://example.org/wrote> <http://example.org/Stand> .
+<http://example.org/Verne> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://example.org/Person> .
+<http://example.org/Verne> <http://example.org/name> " Jules Verne" .
+<http://example.org/Verne> <http://example.org/wrote> <http://example.org/Stand> .
+<http://example.org/Book> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://example.org/Book> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://example.org/Document> .
+<http://example.org/Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://example.org/Document> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
