@@ -1,6 +1,57 @@
 #include <iostream>
-
+#include <fstream>
 #include "pdflib.hpp"
+#include <vector>
+#include <sstream>
+
+using namespace std;
+
+void lectureMetaDonnee(ifstream fichier){
+
+
+}
+
+
+
+vector<string> lectureTableauString(ifstream fichier){
+	string ligne;
+
+	vector<string> mesStrings;
+
+	string mot;
+
+	getline(fichier, ligne);
+
+	std::stringstream ss(ligne);
+
+    while(ss.good()){
+    	ss >> mot;
+        mesStrings.push_back(mot);
+    }
+
+
+}
+
+vector<int> lectureTableauInt(ifstream fichier){
+	string ligne;
+
+	vector<int> mesInts;
+
+    double nb;
+
+	getline(fichier, ligne);
+
+	std::stringstream ss(ligne);
+
+
+    while(ss.good()){
+    	ss >> nb;
+        mesInts.push_back(nb);
+    }
+
+
+}
+
 
 int main(void)
 {
@@ -12,6 +63,7 @@ int main(void)
 			Création du conteneur PDF
 		 */
 		p = new PDFlib();
+
 		if (p->begin_document("exemple.pdf","") == -1) {
 			std::cerr << p->get_errmsg() << std::endl;
 			return 2;
@@ -24,6 +76,87 @@ int main(void)
 
 		// Définition de la couleur courante en RVBA: bleu
 		p->setcolor("fillstroke","rgb",0,0,1,0);
+
+		
+		ifstream fichier("meta-donnees.txt", ios::in);  // on ouvre le fichier en lecture
+		vector<string> mesStrings;
+    	vector<int> mesInts;
+ 
+
+        if(fichier)  // si l'ouverture a réussi
+
+        {       
+ 
+    		char * buffer = new char [1];
+			// read data as a block:
+    		fichier.read (buffer,1);
+
+
+    		if(buffer[0] != '>'){
+    			mesStrings = lectureTableauString(fichier);
+    			mesInts = lectureTableauInt(fichier);
+    		}
+    		else
+    			;
+
+    		
+
+            
+
+
+
+
+
+
+
+            fichier.close();  // on ferme le fichier
+
+        }
+
+        else  // sinon
+
+                cerr << "Impossible d'ouvrir le fichier !" << endl;
+
+
+
+        for(int i = 0; i<mesStrings.size(); ++i)
+        	cout<<mesStrings[i]<<"__";
+        cout<<endl;
+        for(int i = 0; i<mesInts.size(); ++i)
+        	cout<<mesStrings[i]<<"__";
+        cout<<endl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		p->setlinewidth(2);
 		// Dessin d'un cercle dans la couleur et la taille de trait
