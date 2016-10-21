@@ -35,6 +35,11 @@ public class Timer {
 	 */
 	protected boolean ringing;
 
+	protected Calendar calendar = new Calendarstub();
+
+	protected Calendar calendarbis = new Calendar();
+
+
 	/**
 	 * Le constructeur initialise le timer avec les valeurs passées en
 	 * paramètres. Le timer n'est pas actif et il ne sonne pas.
@@ -61,8 +66,8 @@ public class Timer {
 			throw new TimerException("bad ring: out of limits");
 		} else {
 			this.ring = ring;
-			this.hour = hour;
-			this.min = min;
+			this.hour = 12;
+			this.min = 12;
 		}
 		active = false;
 		ringing = false;
@@ -132,9 +137,17 @@ public class Timer {
 	protected void setActive(boolean active) {
 		this.active = active;
 		if (this.active) {
-			Calendar calendar = new Calendar();
 			if (this.hour == calendar.get(Calendar.HOUR))
 				if (this.min == calendar.get(Calendar.MINUTE))
+					ringing = true;
+		}
+	}
+
+	protected void setActivebis(boolean active) {
+		this.active = active;
+		if (this.active) {
+			if (this.hour == calendarbis.get(1))
+				if (this.min == calendarbis.get(2))
 					ringing = true;
 		}
 	}
@@ -177,6 +190,12 @@ public class Timer {
 			System.out.println(timer);
 			timer.addMin(55);
 			System.out.println(timer);
+
+			Timer timer2 = new Timer(3, 1, 2);
+			timer2.setActivebis(true);
+			System.out.println(timer2);
+			timer2.addMin(55);
+			System.out.println(timer2);
 		} catch (TimerException e) {
 			System.out.println(e);
 		}

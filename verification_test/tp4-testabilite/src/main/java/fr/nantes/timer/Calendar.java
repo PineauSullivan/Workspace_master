@@ -1,7 +1,5 @@
 package fr.nantes.timer;
 
-import java.util.GregorianCalendar;
-
 public class Calendar {
 
 	public final static int HOUR = 1;
