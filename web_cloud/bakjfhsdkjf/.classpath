@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/sullivan/Téléchargements/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="/home/sullivan/Téléchargements/google-http-client-jackson2-1.14.0-beta-sources.jar"/>
+	<classpathentry kind="lib" path="/home/sullivan/Téléchargements/google-http-client-1.12.0-beta-sources.jar"/>
+	<classpathentry kind="lib" path="/home/sullivan/Téléchargements/google-api-client-1.4.1-beta.jar"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/sullivan/Documents/Workspace_master/web_cloud/bakjfhsdkjf/war/WEB-INF/lib/appengine-api-1.0-sdk-1.9.34.jar"/>
+	<classpathentry kind="lib" path="/home/sullivan/Documents/Workspace_master/web_cloud/bakjfhsdkjf/war/WEB-INF/lib/jena-2.6.4.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>
