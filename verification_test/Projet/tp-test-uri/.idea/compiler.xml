@@ -25,6 +25,9 @@
         <module name="URI" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="URI" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 
