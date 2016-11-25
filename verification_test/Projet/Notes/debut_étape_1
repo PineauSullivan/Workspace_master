@@ -1,3 +1,15 @@
-::mvn validate -> BUILD SUCCESS
-:: mvn compile -> echec
-:: mvn pmd:pmd -DtargetJdk=1.7 ->
+:: mvn validate -> BUILD SUCCESS
+:: mvn compile -> BUILD SUCCESS
+:: mvn pmd:pmd -DtargetJdk=1.7 -> BUILD SUCCESS -> création dossier TARGET
+
+corrections : 
+Useless parentheses. 	2243
+Useless parentheses. 	2264
+Useless parentheses. 	2277
+Avoid empty catch blocks 	2876–2879
+Avoid unused constructor parameters such as 'hierarchical'. 	3110
+Avoid empty if statements 	3681–3683 (remplacement du commentaires par system.out.println("...")
+Avoid empty if statements 	3692–3694 (pareil )
+Useless parentheses. 	3736 (parenthèse && inutiles)
+Useless parentheses. 	3738 (parenthèse && inutiles)
+

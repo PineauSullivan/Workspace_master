@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="1" name="fr.nantes.timer.TimerStructuralTest" time="0.003" errors="5" skipped="0">
+<testsuite tests="6" failures="1" name="fr.nantes.timer.TimerStructuralTest" time="0.024" errors="5" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
@@ -58,7 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="fr.nantes.timer.TimerStructuralTest" name="testMain" time="0">
+  <testcase classname="fr.nantes.timer.TimerStructuralTest" name="testMain" time="0.014">
     <failure message="The test case is a prototype." type="java.lang.AssertionError">java.lang.AssertionError: The test case is a prototype.
 	at org.junit.Assert.fail(Assert.java:88)
 	at fr.nantes.timer.TimerStructuralTest.testMain(TimerStructuralTest.java:115)
@@ -103,7 +103,7 @@ Calendar used
 13:25  (active)
 </system-out>
   </testcase>
-  <testcase classname="fr.nantes.timer.TimerStructuralTest" name="testToString" time="0.001">
+  <testcase classname="fr.nantes.timer.TimerStructuralTest" name="testToString" time="0.003">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at fr.nantes.timer.TimerStructuralTest.testToString(TimerStructuralTest.java:100)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -143,7 +143,7 @@ Calendar used
     <system-out>toString
 </system-out>
   </testcase>
-  <testcase classname="fr.nantes.timer.TimerStructuralTest" name="testSetActive" time="0">
+  <testcase classname="fr.nantes.timer.TimerStructuralTest" name="testSetActive" time="0.001">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at fr.nantes.timer.TimerStructuralTest.testSetActive(TimerStructuralTest.java:72)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -263,7 +263,7 @@ Calendar used
     <system-out>equals
 </system-out>
   </testcase>
-  <testcase classname="fr.nantes.timer.TimerStructuralTest" name="testSelectRing" time="0">
+  <testcase classname="fr.nantes.timer.TimerStructuralTest" name="testSelectRing" time="0.004">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at fr.nantes.timer.TimerStructuralTest.testSelectRing(TimerStructuralTest.java:46)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
