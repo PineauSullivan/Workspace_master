@@ -1,0 +1,3 @@
+::mvn validate -> BUILD SUCCESS
+:: mvn compile -> echec
+:: mvn pmd:pmd -DtargetJdk=1.7 ->
