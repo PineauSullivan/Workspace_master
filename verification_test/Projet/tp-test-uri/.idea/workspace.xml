@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bd1af00-fc60-453f-8d2b-79a8f8b689b8" name="Default" comment="" />
+    <list default="true" id="5bd1af00-fc60-453f-8d2b-79a8f8b689b8" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/URI.java" afterPath="$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/URI.java" />
+    </list>
     <ignored path="URI.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,68 +25,247 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CommonUtil.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/CommonUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-38.185184" vertical-offset="13513" max-vertical-offset="26154">
-              <caret line="888" column="38" selection-start-line="888" selection-start-column="38" selection-end-line="888" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InterningSet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/InterningSet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="576">
-              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pool.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/Pool.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0" vertical-offset="297" max-vertical-offset="20448">
-              <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SegmentSequence.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/SegmentSequence.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0" vertical-offset="297" max-vertical-offset="50508">
-              <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="URI.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/URI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7924812" vertical-offset="64129" max-vertical-offset="102726">
-              <caret line="3737" column="111" selection-start-line="3737" selection-start-column="111" selection-end-line="3737" selection-end-column="111" />
+            <state vertical-scroll-proportion="-23.15407" vertical-offset="18846" max-vertical-offset="83736">
+              <caret line="333" column="63" selection-start-line="333" selection-start-column="63" selection-end-line="333" selection-end-column="63" />
               <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#URI#0" expanded="false" />
+                <element signature="docComment;field#hashCode#0;class#URI#0" expanded="false" />
+                <element signature="docComment;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#cachedToStrings#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#charactersAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#stringAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#stringPoolEntry#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#substringAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#stringArraySegmentsAndSegmentCountAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#stringAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#pool#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#value#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#findHashCode#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#findTerminatingCharacter#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#stringArraySubstringAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#stringArraySegmentsAndSubsegmentAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#StringAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#setValue#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#setValue#1;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#parseIntoURI#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#findMajorSeparator#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#findSegmentEnd#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#platformAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#PLATFORM_RESOURCE_BASE_FULL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#PLATFORM_PLUGIN_BASE_FULL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#PLATFORM_RESOURCE_BASE_INITIAL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#PLATFORM_PLUGIN_BASE_INITIAL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#base#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#path#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#encode#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#characters#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#segments#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#segmentCount#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#usedSegmentCount#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#segmentBoundaries#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#segmentHashCodes#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#encodedPath#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#PlatformAccessUnit#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#setValue#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#fileAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#FILE_BASE#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#FILE_BASE_LENGTH#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#FILE_BASE_HASH_CODE#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#path#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#absoluteCharacters#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#relativeCharacters#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#segments#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#segmentCount#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#usedSegmentCount#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#segmentBoundaries#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#segmentHashCodes#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#encodedPath#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#isAbsoluteFile#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#isAbsolutePath#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#FileAccessUnit#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#setValue#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#uriComponentsAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#VALIDATE_NONE#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#VALIDATE_ALL#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#VALIDATE_QUERY#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#validate#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#hierarchical#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#scheme#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#authority#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#device#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#absolutePath#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#segments#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#query#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#stringArraySegmentsAccessUnit#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#URIComponentsAccessUnit#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#setValue#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#setValue#1;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#intern#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#intern#1;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#internFile#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#intern#2;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#intern#3;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#doCleanup#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;class#CachedToString#0;class#URIPool#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#POOL#0;class#URI#0" expanded="false" />
                 <element signature="e#77173#77181#0" expanded="true" />
+                <element signature="e#77853#77854#0" expanded="true" />
+                <element signature="e#77891#77892#0" expanded="true" />
+                <element signature="e#78007#78008#0" expanded="true" />
+                <element signature="e#78064#78065#0" expanded="true" />
+                <element signature="docComment;method#createGenericURI#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#createHierarchicalURI#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#createHierarchicalURI#1;class#URI#0" expanded="false" />
+                <element signature="docComment;method#createHierarchicalURI#2;class#URI#0" expanded="false" />
+                <element signature="docComment;method#createURI#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#createURI#1;class#URI#0" expanded="false" />
+                <element signature="docComment;field#FRAGMENT_NONE#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#FRAGMENT_FIRST_SEPARATOR#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#FRAGMENT_LAST_SEPARATOR#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#createURI#2;class#URI#0" expanded="false" />
+                <element signature="docComment;method#createDeviceURI#0;class#URI#0" expanded="false" />
+                <element signature="e#91947#91948#0" expanded="true" />
+                <element signature="e#91987#91988#0" expanded="true" />
+                <element signature="docComment;method#createURIWithCache#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#createFileURI#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#createPlatformResourceURI#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#createPlatformResourceURI#1;class#URI#0" expanded="false" />
+                <element signature="docComment;method#createPlatformPluginURI#0;class#URI#0" expanded="false" />
+                <element signature="e#99704#99705#0" expanded="true" />
+                <element signature="e#99738#99739#0" expanded="true" />
+                <element signature="docComment;method#validScheme#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#validOpaquePart#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#validAuthority#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#validArchiveAuthority#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#validJarAuthority#0;class#URI#0" expanded="false" />
                 <element signature="e#105105#105106#0" expanded="true" />
                 <element signature="e#105150#105151#0" expanded="true" />
-                <element signature="e#118845#118846#0" expanded="true" />
-                <element signature="e#118882#118883#0" expanded="true" />
+                <element signature="docComment;method#validDevice#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#validSegment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#validSegments#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#validQuery#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#validFragment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#HAS_ABSOLUTE_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#HAS_RELATIVE_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#HAS_EMPTY_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#IS_CURRENT_DOCUMENT_REFERENCE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#IS_FILE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#IS_PLATFORM#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#IS_PLATFORM_RESOURCE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#IS_PLATFORM_PLUGIN#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#IS_ARCHIVE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#HAS_TRAILING_PATH_SEPARATOR#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#IS_PREFIX#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#HAS_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#flags#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#scheme#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#authority#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#device#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#segments#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#query#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#toString#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#Hierarchical#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;class#Opaque#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#scheme#0;class#Opaque#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#opaquePart#0;class#Opaque#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#toString#0;class#Opaque#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#Opaque#0;class#Opaque#0;class#URI#0" expanded="false" />
+                <element signature="docComment;class#Fragment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#uri#0;class#Fragment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;field#fragment#0;class#Fragment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#Fragment#0;class#Fragment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hashCode#0;class#Fragment#0;class#URI#0" expanded="false" />
+                <element signature="e#162481#162482#0" expanded="true" />
+                <element signature="e#162502#162503#0" expanded="true" />
+                <element signature="docComment;method#isRelative#0;class#URI#0" expanded="false" />
+                <element signature="e#162660#162661#0" expanded="true" />
+                <element signature="e#162682#162683#0" expanded="true" />
+                <element signature="e#162795#162796#0" expanded="true" />
+                <element signature="e#162817#162818#0" expanded="true" />
+                <element signature="docComment;method#isHierarchical#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hasAuthority#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hasOpaquePart#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hasDevice#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hasPath#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hasAbsolutePath#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hasRelativePath#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hasEmptyPath#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hasQuery#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hasFragment#0;class#URI#0" expanded="false" />
+                <element signature="e#165658#165659#0" expanded="true" />
+                <element signature="e#165680#165681#0" expanded="true" />
+                <element signature="docComment;method#isCurrentDocumentReference#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#isEmpty#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#isFile#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#isPlatform#0;class#URI#0" expanded="false" />
+                <element signature="e#167193#167194#0" expanded="true" />
+                <element signature="e#167215#167216#0" expanded="true" />
+                <element signature="docComment;method#isPlatformResource#0;class#URI#0" expanded="false" />
+                <element signature="e#167529#167530#0" expanded="true" />
+                <element signature="e#167551#167552#0" expanded="true" />
+                <element signature="docComment;method#isPlatformPlugin#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#isArchive#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#isArchiveScheme#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hashCode#0;class#URI#0" expanded="false" />
+                <element signature="e#168836#168837#0" expanded="true" />
+                <element signature="e#168861#168862#0" expanded="true" />
+                <element signature="e#169205#169206#0" expanded="true" />
+                <element signature="e#169261#169262#0" expanded="true" />
+                <element signature="docComment;method#scheme#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#opaquePart#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#authority#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#userInfo#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#host#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#port#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#device#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#segments#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#segmentsList#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#segmentCount#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#segment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#lastSegment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#path#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#devicePath#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#query#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#appendQuery#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#trimQuery#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#fragment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;class#LazyFragmentInitializer#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#appendFragment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#trimFragment#0;class#URI#0" expanded="false" />
+                <element signature="e#176170#176171#0" expanded="true" />
+                <element signature="e#176191#176192#0" expanded="true" />
+                <element signature="docComment;method#resolve#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#resolve#1;class#URI#0" expanded="false" />
+                <element signature="docComment;method#deresolve#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#deresolve#1;class#URI#0" expanded="false" />
+                <element signature="docComment;method#toFileString#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#toPlatformString#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#appendSegment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#appendSegments#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#trimSegments#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#hasTrailingPathSeparator#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#fileExtension#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#appendFileExtension#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#trimFileExtension#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#isPrefix#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#replacePrefix#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#encodeOpaquePart#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#encodeAuthority#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#encodeSegment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#encodeQuery#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#encodeFragment#0;class#URI#0" expanded="false" />
+                <element signature="docComment;method#decode#0;class#URI#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WeakInterningHashSet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/WeakInterningHashSet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0" vertical-offset="261" max-vertical-offset="19962">
-              <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -106,11 +287,18 @@
       </list>
     </option>
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="584" />
-    <option name="y" value="28" />
-    <option name="width" value="856" />
-    <option name="height" value="850" />
+    <option name="x" value="-1" />
+    <option name="y" value="25" />
+    <option name="width" value="1602" />
+    <option name="height" value="851" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -138,7 +326,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -199,7 +387,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,7 +548,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="584" y="28" width="856" height="850" extended-state="0" />
+    <frame x="-1" y="25" width="1602" height="851" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -375,8 +563,8 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.071428575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.168125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -404,9 +592,303 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/URI.java</url>
+          <line>5515</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/CommonUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="15984" max-vertical-offset="28026">
+          <caret line="888" column="38" selection-start-line="888" selection-start-column="38" selection-end-line="888" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/InterningSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="684">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/Pool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="504" max-vertical-offset="21816">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/SegmentSequence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="54162">
+          <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/URI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="64129" max-vertical-offset="102726">
+          <caret line="3737" column="111" selection-start-line="3737" selection-start-column="111" selection-end-line="3737" selection-end-column="111" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#URI#0" expanded="false" />
+            <element signature="docComment;field#hashCode#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#cachedToStrings#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#charactersAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringPoolEntry#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#substringAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySegmentsAndSegmentCountAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#pool#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#value#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#findHashCode#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#findTerminatingCharacter#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySubstringAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySegmentsAndSubsegmentAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#StringAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#1;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#parseIntoURI#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#findMajorSeparator#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#findSegmentEnd#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#platformAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_RESOURCE_BASE_FULL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_PLUGIN_BASE_FULL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_RESOURCE_BASE_INITIAL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_PLUGIN_BASE_INITIAL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#base#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#path#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#encode#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#characters#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentCount#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#usedSegmentCount#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentBoundaries#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentHashCodes#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#encodedPath#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#PlatformAccessUnit#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#fileAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FILE_BASE#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FILE_BASE_LENGTH#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FILE_BASE_HASH_CODE#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#path#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#absoluteCharacters#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#relativeCharacters#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentCount#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#usedSegmentCount#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentBoundaries#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentHashCodes#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#encodedPath#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#isAbsoluteFile#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#isAbsolutePath#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#FileAccessUnit#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#uriComponentsAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#VALIDATE_NONE#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#VALIDATE_ALL#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#VALIDATE_QUERY#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#validate#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#hierarchical#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#scheme#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#authority#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#device#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#absolutePath#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#query#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySegmentsAccessUnit#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#URIComponentsAccessUnit#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#1;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#1;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#internFile#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#2;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#3;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#doCleanup#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#CachedToString#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#POOL#0;class#URI#0" expanded="false" />
+            <element signature="e#77173#77181#0" expanded="true" />
+            <element signature="e#77853#77854#0" expanded="true" />
+            <element signature="e#77891#77892#0" expanded="true" />
+            <element signature="e#78007#78008#0" expanded="true" />
+            <element signature="e#78064#78065#0" expanded="true" />
+            <element signature="docComment;method#createGenericURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createHierarchicalURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createHierarchicalURI#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createHierarchicalURI#2;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createURI#1;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FRAGMENT_NONE#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FRAGMENT_FIRST_SEPARATOR#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FRAGMENT_LAST_SEPARATOR#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createURI#2;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createDeviceURI#0;class#URI#0" expanded="false" />
+            <element signature="e#91947#91948#0" expanded="true" />
+            <element signature="e#91987#91988#0" expanded="true" />
+            <element signature="docComment;method#createURIWithCache#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createFileURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createPlatformResourceURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createPlatformResourceURI#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createPlatformPluginURI#0;class#URI#0" expanded="false" />
+            <element signature="e#99704#99705#0" expanded="true" />
+            <element signature="e#99738#99739#0" expanded="true" />
+            <element signature="docComment;method#validScheme#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validOpaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validArchiveAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validJarAuthority#0;class#URI#0" expanded="false" />
+            <element signature="e#105105#105106#0" expanded="true" />
+            <element signature="e#105150#105151#0" expanded="true" />
+            <element signature="docComment;method#validDevice#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validSegments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validFragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_ABSOLUTE_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_RELATIVE_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_EMPTY_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_CURRENT_DOCUMENT_REFERENCE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_FILE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PLATFORM#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PLATFORM_RESOURCE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PLATFORM_PLUGIN#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_ARCHIVE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_TRAILING_PATH_SEPARATOR#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PREFIX#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#flags#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#scheme#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#authority#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#device#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#query#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#toString#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#Hierarchical#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#scheme#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#opaquePart#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#toString#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#Opaque#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#uri#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#fragment#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#Fragment#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hashCode#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="e#162481#162482#0" expanded="true" />
+            <element signature="e#162502#162503#0" expanded="true" />
+            <element signature="docComment;method#isRelative#0;class#URI#0" expanded="false" />
+            <element signature="e#162660#162661#0" expanded="true" />
+            <element signature="e#162682#162683#0" expanded="true" />
+            <element signature="e#162795#162796#0" expanded="true" />
+            <element signature="e#162817#162818#0" expanded="true" />
+            <element signature="docComment;method#isHierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasOpaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasDevice#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasPath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasAbsolutePath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasRelativePath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasEmptyPath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasFragment#0;class#URI#0" expanded="false" />
+            <element signature="e#165658#165659#0" expanded="true" />
+            <element signature="e#165680#165681#0" expanded="true" />
+            <element signature="docComment;method#isCurrentDocumentReference#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isEmpty#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isFile#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isPlatform#0;class#URI#0" expanded="false" />
+            <element signature="e#167193#167194#0" expanded="true" />
+            <element signature="e#167215#167216#0" expanded="true" />
+            <element signature="docComment;method#isPlatformResource#0;class#URI#0" expanded="false" />
+            <element signature="e#167529#167530#0" expanded="true" />
+            <element signature="e#167551#167552#0" expanded="true" />
+            <element signature="docComment;method#isPlatformPlugin#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isArchive#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isArchiveScheme#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hashCode#0;class#URI#0" expanded="false" />
+            <element signature="e#168836#168837#0" expanded="true" />
+            <element signature="e#168861#168862#0" expanded="true" />
+            <element signature="e#169205#169206#0" expanded="true" />
+            <element signature="e#169261#169262#0" expanded="true" />
+            <element signature="docComment;method#scheme#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#opaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#authority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#userInfo#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#host#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#port#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#device#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segmentsList#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segmentCount#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#lastSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#path#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#devicePath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#query#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#LazyFragmentInitializer#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendFragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimFragment#0;class#URI#0" expanded="false" />
+            <element signature="e#176170#176171#0" expanded="true" />
+            <element signature="e#176191#176192#0" expanded="true" />
+            <element signature="docComment;method#resolve#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#resolve#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#deresolve#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#deresolve#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#toFileString#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#toPlatformString#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendSegments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimSegments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasTrailingPathSeparator#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#fileExtension#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendFileExtension#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimFileExtension#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isPrefix#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#replacePrefix#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeOpaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeFragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#decode#0;class#URI#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/WeakInterningHashSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="576" max-vertical-offset="20844">
+          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/CommonUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="28026">
@@ -419,7 +901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="684">
           <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -444,11 +925,240 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="102744">
           <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#URI#0" expanded="false" />
+            <element signature="docComment;field#hashCode#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#cachedToStrings#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#charactersAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringPoolEntry#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#substringAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySegmentsAndSegmentCountAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#pool#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#value#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#findHashCode#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#findTerminatingCharacter#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySubstringAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySegmentsAndSubsegmentAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#StringAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#1;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#parseIntoURI#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#findMajorSeparator#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#findSegmentEnd#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#platformAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_RESOURCE_BASE_FULL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_PLUGIN_BASE_FULL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_RESOURCE_BASE_INITIAL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_PLUGIN_BASE_INITIAL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#base#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#path#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#encode#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#characters#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentCount#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#usedSegmentCount#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentBoundaries#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentHashCodes#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#encodedPath#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#PlatformAccessUnit#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#fileAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FILE_BASE#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FILE_BASE_LENGTH#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FILE_BASE_HASH_CODE#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#path#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#absoluteCharacters#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#relativeCharacters#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentCount#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#usedSegmentCount#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentBoundaries#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentHashCodes#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#encodedPath#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#isAbsoluteFile#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#isAbsolutePath#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#FileAccessUnit#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#uriComponentsAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#VALIDATE_NONE#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#VALIDATE_ALL#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#VALIDATE_QUERY#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#validate#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#hierarchical#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#scheme#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#authority#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#device#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#absolutePath#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#query#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySegmentsAccessUnit#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#URIComponentsAccessUnit#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#1;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#1;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#internFile#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#2;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#3;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#doCleanup#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#CachedToString#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#POOL#0;class#URI#0" expanded="false" />
             <element signature="e#77173#77181#0" expanded="true" />
+            <element signature="e#77853#77854#0" expanded="true" />
+            <element signature="e#77891#77892#0" expanded="true" />
+            <element signature="e#78007#78008#0" expanded="true" />
+            <element signature="e#78064#78065#0" expanded="true" />
+            <element signature="docComment;method#createGenericURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createHierarchicalURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createHierarchicalURI#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createHierarchicalURI#2;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createURI#1;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FRAGMENT_NONE#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FRAGMENT_FIRST_SEPARATOR#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FRAGMENT_LAST_SEPARATOR#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createURI#2;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createDeviceURI#0;class#URI#0" expanded="false" />
+            <element signature="e#91947#91948#0" expanded="true" />
+            <element signature="e#91987#91988#0" expanded="true" />
+            <element signature="docComment;method#createURIWithCache#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createFileURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createPlatformResourceURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createPlatformResourceURI#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createPlatformPluginURI#0;class#URI#0" expanded="false" />
+            <element signature="e#99704#99705#0" expanded="true" />
+            <element signature="e#99738#99739#0" expanded="true" />
+            <element signature="docComment;method#validScheme#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validOpaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validArchiveAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validJarAuthority#0;class#URI#0" expanded="false" />
             <element signature="e#105105#105106#0" expanded="true" />
             <element signature="e#105150#105151#0" expanded="true" />
-            <element signature="e#118845#118846#0" expanded="true" />
-            <element signature="e#118882#118883#0" expanded="true" />
+            <element signature="docComment;method#validDevice#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validSegments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validFragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_ABSOLUTE_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_RELATIVE_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_EMPTY_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_CURRENT_DOCUMENT_REFERENCE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_FILE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PLATFORM#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PLATFORM_RESOURCE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PLATFORM_PLUGIN#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_ARCHIVE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_TRAILING_PATH_SEPARATOR#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PREFIX#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#flags#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#scheme#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#authority#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#device#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#query#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#toString#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#Hierarchical#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#scheme#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#opaquePart#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#toString#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#Opaque#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#uri#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#fragment#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#Fragment#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hashCode#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="e#162481#162482#0" expanded="true" />
+            <element signature="e#162502#162503#0" expanded="true" />
+            <element signature="docComment;method#isRelative#0;class#URI#0" expanded="false" />
+            <element signature="e#162660#162661#0" expanded="true" />
+            <element signature="e#162682#162683#0" expanded="true" />
+            <element signature="e#162795#162796#0" expanded="true" />
+            <element signature="e#162817#162818#0" expanded="true" />
+            <element signature="docComment;method#isHierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasOpaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasDevice#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasPath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasAbsolutePath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasRelativePath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasEmptyPath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasFragment#0;class#URI#0" expanded="false" />
+            <element signature="e#165658#165659#0" expanded="true" />
+            <element signature="e#165680#165681#0" expanded="true" />
+            <element signature="docComment;method#isCurrentDocumentReference#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isEmpty#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isFile#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isPlatform#0;class#URI#0" expanded="false" />
+            <element signature="e#167193#167194#0" expanded="true" />
+            <element signature="e#167215#167216#0" expanded="true" />
+            <element signature="docComment;method#isPlatformResource#0;class#URI#0" expanded="false" />
+            <element signature="e#167529#167530#0" expanded="true" />
+            <element signature="e#167551#167552#0" expanded="true" />
+            <element signature="docComment;method#isPlatformPlugin#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isArchive#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isArchiveScheme#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hashCode#0;class#URI#0" expanded="false" />
+            <element signature="e#168836#168837#0" expanded="true" />
+            <element signature="e#168861#168862#0" expanded="true" />
+            <element signature="e#169205#169206#0" expanded="true" />
+            <element signature="e#169261#169262#0" expanded="true" />
+            <element signature="docComment;method#scheme#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#opaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#authority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#userInfo#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#host#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#port#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#device#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segmentsList#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segmentCount#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#lastSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#path#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#devicePath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#query#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#LazyFragmentInitializer#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendFragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimFragment#0;class#URI#0" expanded="false" />
+            <element signature="e#176170#176171#0" expanded="true" />
+            <element signature="e#176191#176192#0" expanded="true" />
+            <element signature="docComment;method#resolve#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#resolve#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#deresolve#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#deresolve#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#toFileString#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#toPlatformString#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendSegments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimSegments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasTrailingPathSeparator#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#fileExtension#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendFileExtension#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimFileExtension#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isPrefix#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#replacePrefix#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeOpaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeFragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#decode#0;class#URI#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -457,13 +1167,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="576" max-vertical-offset="20844">
           <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/SegmentSequence.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0" vertical-offset="297" max-vertical-offset="50508">
+        <state vertical-scroll-proportion="0.0" vertical-offset="522" max-vertical-offset="54162">
           <caret line="29" column="19" selection-start-line="29" selection-start-column="19" selection-end-line="29" selection-end-column="19" />
           <folding />
         </state>
@@ -471,7 +1180,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/Pool.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0" vertical-offset="297" max-vertical-offset="20448">
+        <state vertical-scroll-proportion="0.0" vertical-offset="504" max-vertical-offset="21816">
           <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
           <folding />
         </state>
@@ -479,15 +1188,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/InterningSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="576">
+        <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="684">
           <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/CommonUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-38.185184" vertical-offset="13513" max-vertical-offset="26154">
+        <state vertical-scroll-proportion="0.0" vertical-offset="15984" max-vertical-offset="28026">
           <caret line="888" column="38" selection-start-line="888" selection-start-column="38" selection-end-line="888" selection-end-column="38" />
           <folding />
         </state>
@@ -495,22 +1203,250 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/WeakInterningHashSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0" vertical-offset="261" max-vertical-offset="19962">
+        <state vertical-scroll-proportion="0.0" vertical-offset="576" max-vertical-offset="20844">
           <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/eclipse/emf/common/util/URI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7924812" vertical-offset="64129" max-vertical-offset="102726">
-          <caret line="3737" column="111" selection-start-line="3737" selection-start-column="111" selection-end-line="3737" selection-end-column="111" />
+        <state vertical-scroll-proportion="-23.15407" vertical-offset="18846" max-vertical-offset="83736">
+          <caret line="333" column="63" selection-start-line="333" selection-start-column="63" selection-end-line="333" selection-end-column="63" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#URI#0" expanded="false" />
+            <element signature="docComment;field#hashCode#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#cachedToStrings#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#charactersAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringPoolEntry#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#substringAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySegmentsAndSegmentCountAccessUnit#0;class#URIPoolAccessUnitBase#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#pool#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#value#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#findHashCode#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#findTerminatingCharacter#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySubstringAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySegmentsAndSubsegmentAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#StringAccessUnit#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#1;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#parseIntoURI#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#findMajorSeparator#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#findSegmentEnd#0;class#StringAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#platformAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_RESOURCE_BASE_FULL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_PLUGIN_BASE_FULL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_RESOURCE_BASE_INITIAL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#PLATFORM_PLUGIN_BASE_INITIAL_HASH_CODE#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#base#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#path#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#encode#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#characters#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentCount#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#usedSegmentCount#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentBoundaries#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentHashCodes#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#encodedPath#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#PlatformAccessUnit#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#PlatformAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#fileAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FILE_BASE#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FILE_BASE_LENGTH#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FILE_BASE_HASH_CODE#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#path#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#absoluteCharacters#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#relativeCharacters#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentCount#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#usedSegmentCount#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentBoundaries#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segmentHashCodes#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#encodedPath#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#isAbsoluteFile#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#isAbsolutePath#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#FileAccessUnit#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#FileAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#uriComponentsAccessUnits#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#VALIDATE_NONE#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#VALIDATE_ALL#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#VALIDATE_QUERY#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#validate#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#hierarchical#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#scheme#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#authority#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#device#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#absolutePath#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#query#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#stringArraySegmentsAccessUnit#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#URIComponentsAccessUnit#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#0;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#setValue#1;class#URIComponentsAccessUnit#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#1;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#internFile#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#2;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#intern#3;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#doCleanup#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#CachedToString#0;class#URIPool#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#POOL#0;class#URI#0" expanded="false" />
             <element signature="e#77173#77181#0" expanded="true" />
+            <element signature="e#77853#77854#0" expanded="true" />
+            <element signature="e#77891#77892#0" expanded="true" />
+            <element signature="e#78007#78008#0" expanded="true" />
+            <element signature="e#78064#78065#0" expanded="true" />
+            <element signature="docComment;method#createGenericURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createHierarchicalURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createHierarchicalURI#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createHierarchicalURI#2;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createURI#1;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FRAGMENT_NONE#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FRAGMENT_FIRST_SEPARATOR#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#FRAGMENT_LAST_SEPARATOR#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createURI#2;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createDeviceURI#0;class#URI#0" expanded="false" />
+            <element signature="e#91947#91948#0" expanded="true" />
+            <element signature="e#91987#91988#0" expanded="true" />
+            <element signature="docComment;method#createURIWithCache#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createFileURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createPlatformResourceURI#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createPlatformResourceURI#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#createPlatformPluginURI#0;class#URI#0" expanded="false" />
+            <element signature="e#99704#99705#0" expanded="true" />
+            <element signature="e#99738#99739#0" expanded="true" />
+            <element signature="docComment;method#validScheme#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validOpaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validArchiveAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validJarAuthority#0;class#URI#0" expanded="false" />
             <element signature="e#105105#105106#0" expanded="true" />
             <element signature="e#105150#105151#0" expanded="true" />
-            <element signature="e#118845#118846#0" expanded="true" />
-            <element signature="e#118882#118883#0" expanded="true" />
+            <element signature="docComment;method#validDevice#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validSegments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#validFragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_ABSOLUTE_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_RELATIVE_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_EMPTY_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_CURRENT_DOCUMENT_REFERENCE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_FILE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PLATFORM#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PLATFORM_RESOURCE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PLATFORM_PLUGIN#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_ARCHIVE#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_TRAILING_PATH_SEPARATOR#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#IS_PREFIX#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#HAS_PATH#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#flags#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#scheme#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#authority#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#device#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#segments#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#query#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#toString#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#Hierarchical#0;class#Hierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#scheme#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#opaquePart#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#toString#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#Opaque#0;class#Opaque#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#uri#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;field#fragment#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#Fragment#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hashCode#0;class#Fragment#0;class#URI#0" expanded="false" />
+            <element signature="e#162481#162482#0" expanded="true" />
+            <element signature="e#162502#162503#0" expanded="true" />
+            <element signature="docComment;method#isRelative#0;class#URI#0" expanded="false" />
+            <element signature="e#162660#162661#0" expanded="true" />
+            <element signature="e#162682#162683#0" expanded="true" />
+            <element signature="e#162795#162796#0" expanded="true" />
+            <element signature="e#162817#162818#0" expanded="true" />
+            <element signature="docComment;method#isHierarchical#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasOpaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasDevice#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasPath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasAbsolutePath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasRelativePath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasEmptyPath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasFragment#0;class#URI#0" expanded="false" />
+            <element signature="e#165658#165659#0" expanded="true" />
+            <element signature="e#165680#165681#0" expanded="true" />
+            <element signature="docComment;method#isCurrentDocumentReference#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isEmpty#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isFile#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isPlatform#0;class#URI#0" expanded="false" />
+            <element signature="e#167193#167194#0" expanded="true" />
+            <element signature="e#167215#167216#0" expanded="true" />
+            <element signature="docComment;method#isPlatformResource#0;class#URI#0" expanded="false" />
+            <element signature="e#167529#167530#0" expanded="true" />
+            <element signature="e#167551#167552#0" expanded="true" />
+            <element signature="docComment;method#isPlatformPlugin#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isArchive#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isArchiveScheme#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hashCode#0;class#URI#0" expanded="false" />
+            <element signature="e#168836#168837#0" expanded="true" />
+            <element signature="e#168861#168862#0" expanded="true" />
+            <element signature="e#169205#169206#0" expanded="true" />
+            <element signature="e#169261#169262#0" expanded="true" />
+            <element signature="docComment;method#scheme#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#opaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#authority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#userInfo#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#host#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#port#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#device#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segmentsList#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segmentCount#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#segment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#lastSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#path#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#devicePath#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#query#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#fragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;class#LazyFragmentInitializer#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendFragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimFragment#0;class#URI#0" expanded="false" />
+            <element signature="e#176170#176171#0" expanded="true" />
+            <element signature="e#176191#176192#0" expanded="true" />
+            <element signature="docComment;method#resolve#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#resolve#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#deresolve#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#deresolve#1;class#URI#0" expanded="false" />
+            <element signature="docComment;method#toFileString#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#toPlatformString#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendSegments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimSegments#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#hasTrailingPathSeparator#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#fileExtension#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#appendFileExtension#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#trimFileExtension#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#isPrefix#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#replacePrefix#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeOpaquePart#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeAuthority#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeSegment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeQuery#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#encodeFragment#0;class#URI#0" expanded="false" />
+            <element signature="docComment;method#decode#0;class#URI#0" expanded="false" />
           </folding>
         </state>
       </provider>

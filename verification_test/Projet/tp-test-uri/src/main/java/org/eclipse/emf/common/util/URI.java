@@ -4029,9 +4029,9 @@ public abstract class URI
       return
         hierarchical &&
           hasAbsolutePath() == absolutePath &&
-          (validate >= URIPool.URIComponentsAccessUnit.VALIDATE_NONE ?
+          validate >= URIPool.URIComponentsAccessUnit.VALIDATE_NONE ?
              this.segments == segments && this.scheme == scheme && this.authority == authority && this.device == device && this.query == query :
-             Arrays.equals(this.segments, segments) && equals(this.scheme, scheme) && equals(this.authority, authority) && equals(this.device, device) && equals(this.query, query));
+             Arrays.equals(this.segments, segments) && equals(this.scheme, scheme) && equals(this.authority, authority) && equals(this.device, device) && equals(this.query, query);
     }
 
     @Override
@@ -4524,9 +4524,9 @@ public abstract class URI
           !absolutePath &&
           segments == null &&
           query == null &&
-          (validate >= URIPool.URIComponentsAccessUnit.VALIDATE_NONE ?
+          validate >= URIPool.URIComponentsAccessUnit.VALIDATE_NONE ?
              this.scheme == scheme && this.opaquePart == authority :
-             equals(this.scheme, scheme) && equals(this.opaquePart, authority));
+             equals(this.scheme, scheme) && equals(this.opaquePart, authority);
     }
   }
 
@@ -4874,7 +4874,7 @@ public abstract class URI
       //
       if (hashCode == 0)
       {
-        hashCode = ((uri.hashCode * 31) + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
+        hashCode = (uri.hashCode * 31 + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
 
         // In that case, also split intern the fragment, but check if it's really a string, because otherwise it really must be split interned already.
         //
@@ -5219,7 +5219,7 @@ public abstract class URI
   }
 
   /**
-   * Returns the hash code.
+    Returns the hash code.
    */
   @Override
   public int hashCode()
@@ -5459,7 +5459,7 @@ public abstract class URI
       if (uri != null)
       {
         uri.fragment = splitInternFragment(fragment);
-        uri.hashCode = ((uri.uri.hashCode * 31) + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + uri.fragment.hashCode();
+        uri.hashCode = (uri.uri.hashCode * 31 + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + uri.fragment.hashCode();
       }
     }
   }
@@ -5487,7 +5487,7 @@ public abstract class URI
       }
       else
       {
-        int hashCode = ((this.hashCode * 31) + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
+        int hashCode = (this.hashCode * 31 + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
         return new Fragment(hashCode, this, splitInternFragment(fragment));
       }
     }
@@ -5503,7 +5503,7 @@ public abstract class URI
     }
     else
     {
-      int hashCode = ((this.hashCode * 31) + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
+      int hashCode = (this.hashCode * 31 + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
       return new Fragment(hashCode, this, fragment);
     }
   }
@@ -6076,7 +6076,7 @@ public abstract class URI
                 }
                 case 4:
                 {
-                  result.appendCodePoint(((bytes[0] & 0x7) << 18 | (bytes[1] & 0X3F) << 12 | (bytes[2] & 0X3F) << 6 | bytes[3] & 0x3F));
+                  result.appendCodePoint((bytes[0] & 0x7) << 18 | (bytes[1] & 0X3F) << 12 | (bytes[2] & 0X3F) << 6 | bytes[3] & 0x3F);
                   break;
                 }
               }
