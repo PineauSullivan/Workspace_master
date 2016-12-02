@@ -18,25 +18,52 @@ public class URITest {
     }
 
     @Test(expected=IllegalArgumentException.class)
-    public void testcreateGenericURIisArchiveScheme() {
+    public void testcreateGenericURIisArchiveScheme(){
         String scheme = "jar";
         String opaquePart = null;
         String fragment = null;
         URI.createGenericURI(scheme, opaquePart,fragment);
     }
-/*
+
+    @Test
+    public void testcreateGenericURI(){
+        String scheme = "test";
+        String opaquePart = "test";
+        String fragment = "test";
+        assertEquals(URI.createGenericURI(scheme, opaquePart,fragment),URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, false, scheme, opaquePart, null, false, null, null).appendFragment(fragment));
+    }
+
     @Test(expected=IllegalArgumentException.class)
-    public void testcreateGenericURI() {
-        String scheme = "jarrr";
-        String opaquePart = null;
-        String fragment = null;
-        assertEquals(URI.createGenericURI(scheme, opaquePart,fragment),POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, false, scheme, opaquePart, null, false, null, null).appendFragment(fragment));
+    public void createHierarchicalURIdiffnull(){
+        String scheme ="test";
+        String authority = "test";
+        String device = "test";
+        String query="test";
+        String fragment="test";
+        URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void createHierarchicalURIisarchive(){
+        String scheme ="jar";
+        String authority = null;
+        String device = "test";
+        String query="test";
+        String fragment="test";
+        URI.createHierarchicalURI(scheme, authority, device, query, fragment);
     }
 
     @Test
-    public void createHierarchicalURI() throws Exception {
-
+    public void createHierarchicalURI(){
+        String scheme ="jarr";
+        String authority = "test";
+        String device = null;
+        String query="test";
+        String fragment="test";
+        assertEquals(URI.createHierarchicalURI(scheme, authority, device, query, fragment),URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, scheme, authority, device, false, URI.NO_SEGMENTS, query).appendFragment(fragment));
     }
+
+    /*
 
     @Test
     public void createHierarchicalURI1() throws Exception {
