@@ -1,5 +1,7 @@
 package org.eclipse.emf.common.util;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,16 +11,16 @@ import static org.junit.Assert.*;
  */
 public class URITest {
 
-    @before
+    @Before
     public void setUp(){
-        super.setUp();
 
     }
 
-    @after
+    @After
     public void tearDown(){
-        super.tearDown();
+
     }
+
     //test methode createGenericURI
     @Test(expected=IllegalArgumentException.class)
     public void testcreateGenericURISchemeNull(){
