@@ -33,7 +33,7 @@ public class URITest {
     }
 
     @Test(expected=IllegalArgumentException.class)
-    public void testcreateGenericURIisArchiveScheme(){
+    public void testcreateGenericURIIsArchiveScheme(){
         String scheme = "jar";
         String opaquePart = null;
         String fragment = null;
@@ -50,7 +50,7 @@ public class URITest {
 
     //test methode createHierarchicalURI
     @Test(expected=IllegalArgumentException.class)
-    public void createHierarchicalURIdiffnull(){
+    public void createHierarchicalURIDiffNull(){
         String scheme ="test";
         String authority = "test";
         String device = "test";
@@ -60,7 +60,7 @@ public class URITest {
     }
 
     @Test(expected=IllegalArgumentException.class)
-    public void createHierarchicalURIisarchive(){
+    public void createHierarchicalURIIsArchive(){
         String scheme ="jar";
         String authority = null;
         String device = "test";
@@ -81,7 +81,7 @@ public class URITest {
 
     //test methode createHierarchicalURI
     @Test(expected=IllegalArgumentException.class)
-    public void createHierarchicalURI1isscheme() throws Exception {
+    public void createHierarchicalURI1IsScheme() throws Exception {
         String scheme = "jar";
         String authority = null;
         String device = "test";
@@ -92,7 +92,7 @@ public class URITest {
     }
 
     @Test(expected=IllegalArgumentException.class)
-    public void createHierarchicalURI1equals() throws Exception {
+    public void createHierarchicalURI1Equals() throws Exception {
         String scheme = "platform";
         String authority = null;
         String device = "test";
@@ -103,7 +103,7 @@ public class URITest {
     }
 
     @Test
-    public void createHierarchicalURI1devicenull() throws Exception {
+    public void createHierarchicalURI1DeviceNull() throws Exception {
         String scheme = null;
         String authority = null;
         String device = null;
@@ -155,13 +155,13 @@ public class URITest {
 
     //test méthode createURIWithCache
     @Test
-    public void createURIWithCachemoinsun() throws Exception {
+    public void createURIWithCacheMoinsUn() throws Exception {
         String uri="testdgxgfdfgdgfd";
         assertEquals(URI.POOL.intern(uri),URI.createURIWithCache(uri));
     }
 
     @Test(expected=IllegalArgumentException.class)
-    public void createURIWithCacheplusun(){
+    public void createURIWithCachePlusUn(){
         String uri="te#stdgxgfdfgdgfd";
         assertEquals(URI.POOL.intern(uri),URI.POOL.intern(uri.substring(0, 2)).appendFragment(uri.substring(2 + 1)));
     }
@@ -198,13 +198,13 @@ public class URITest {
 
     //test méthode validScheme
     @Test
-    public void validSchemevaluenull() throws Exception {
+    public void validSchemeValueNull() throws Exception {
         String value = null;
         assertEquals(true, URI.validScheme(null));
     }
 
     @Test
-    public void validSchemevaluenotnull() throws Exception {
+    public void validSchemeValueNotNull() throws Exception {
         String value = "test";
         assertEquals(true, URI.validScheme(null));
     }
@@ -216,55 +216,130 @@ public class URITest {
     }
 
     @Test
-    public void validOpaquePartindexdiese() throws Exception {
+    public void validOpaquePartIndexDiese() throws Exception {
         assertEquals(false,URI.validOpaquePart("test#test"));
     }
 
     @Test
-    public void validOpaquePartlengthzero() throws Exception {
+    public void validOpaquePartLengthZero() throws Exception {
         assertEquals(false,URI.validOpaquePart(""));
     }
 
     @Test
-    public void validOpaquePartchatatzero() throws Exception {
+    public void validOpaquePartChatAtZero() throws Exception {
         assertEquals(false,URI.validOpaquePart("#test"));
     }
 
     @Test
-    public void validOpaquePartnotnull() throws Exception {
+    public void validOpaquePartNotNull() throws Exception {
         assertEquals(true,URI.validOpaquePart("test"));
     }
 
-
-
-/*
-
-
-
     @Test
-    public void validAuthority() throws Exception {
+    public void validOpaquePartContain() throws Exception {
+        assertEquals(false,URI.validOpaquePart("/?#"));
+    }
 
+    //test méthode validAuthority
+    @Test
+    public void validAuthorityNull() throws Exception {
+        assertEquals(true,URI.validAuthority(null));
     }
 
     @Test
-    public void validArchiveAuthority() throws Exception {
-
+    public void validAuthoritynotnullAndNotCointain() throws Exception {
+        assertEquals(true,URI.validAuthority("test"));
     }
 
+    @Test
+    public void validAuthorityNotNullAndContain() throws Exception {
+        assertEquals(false,URI.validAuthority("/?#"));
+    }
+
+    //test méthode validArchive
+    @Test
+    public void validArchiveAuthorityNull() throws Exception {
+        assertEquals(false, URI.validArchiveAuthority(null));
+    }
+
+    @Test
+    public void validArchiveAuthorityLenghtNull() throws Exception {
+        assertEquals(false, URI.validArchiveAuthority(""));
+    }
+
+    @Test
+    public void validArchiveAuthorityCharAtFalse() throws Exception {
+        assertEquals(false, URI.validArchiveAuthority("!+"));
+    }
+
+    @Test
+    public void validArchiveAuthorityCharAtTrue() throws Exception {
+        String value ="+!";
+        URI archiveURI = URI.createURI(value.substring(0, value.length() - 1));
+        assertEquals(!archiveURI.hasFragment(), URI.validArchiveAuthority("+!"));
+    }
+
+    //tests méthode validJarAuthority
     @Test
     public void validJarAuthority() throws Exception {
+        assertEquals(URI.validJarAuthority("test"),URI.validArchiveAuthority("test"));
+    }
 
+    //tests méthode validDevice
+    @Test
+    public void validDeviceNull() throws Exception {
+        assertEquals(true, URI.validDevice(null));
+    }
+
+    @Test
+    public void validDeviceLength0() throws Exception {
+        assertEquals(false, URI.validDevice(""));
+    }
+
+    @Test
+    public void validDeviceDeviceidenFalse() throws Exception {
+        assertEquals(false, URI.validDevice(":o"));
+    }
+
+    @Test
+    public void validDeviceDeviceContainTrue() throws Exception {
+        assertEquals(false, URI.validDevice("/?#"));
     }
 
     @Test
     public void validDevice() throws Exception {
+        assertEquals(true, URI.validDevice(":"));
+    }
 
+    @Test
+    public void validSegmentNull() throws Exception {
+        assertEquals(false,URI.validSegment(null));
+    }
+
+    @Test
+    public void validSegmentValidateFalse() throws Exception {
+        assertEquals(false,URI.validSegment("/?#"));
     }
 
     @Test
     public void validSegment() throws Exception {
-
+        assertEquals(true,URI.validSegment("test"));
     }
+
+/*
+
+  public static boolean validSegment(String value)
+  {
+    return value != null && !contains(value, SEGMENT_END_HI, SEGMENT_END_LO);
+
+  // <p>A valid path segment must be non-null and may contain any allowed URI
+  // characters except for the following: <code>/ ?</code>
+
+    //return value != null && validate(value, SEGMENT_CHAR_HI, SEGMENT_CHAR_LO, true, true);
+  }
+
+
+
 
     @Test
     public void validSegments() throws Exception {
