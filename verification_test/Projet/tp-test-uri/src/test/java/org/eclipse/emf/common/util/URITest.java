@@ -8,6 +8,17 @@ import static org.junit.Assert.*;
  * Created by sullivan on 02/12/16.
  */
 public class URITest {
+
+    @before
+    public void setUp(){
+        super.setUp();
+
+    }
+
+    @after
+    public void tearDown(){
+        super.tearDown();
+    }
     //test methode createGenericURI
     @Test(expected=IllegalArgumentException.class)
     public void testcreateGenericURISchemeNull(){
