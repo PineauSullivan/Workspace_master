@@ -3,6 +3,7 @@ package org.eclipse.emf.common.util;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
@@ -151,41 +152,69 @@ public class URITest {
         String uri ="test";
         assertEquals(URI.createDeviceURI(uri),URI.createURIWithCache(uri));
     }
+
+    //test méthode createURIWithCache
+    @Test
+    public void createURIWithCachemoinsun() throws Exception {
+        String uri="testdgxgfdfgdgfd";
+        assertEquals(URI.POOL.intern(uri),URI.createURIWithCache(uri));
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void createURIWithCacheplusun(){
+        String uri="te#stdgxgfdfgdgfd";
+        assertEquals(URI.POOL.intern(uri),URI.POOL.intern(uri.substring(0, 2)).appendFragment(uri.substring(2 + 1)));
+    }
+
+    //test méthode createFileURI
+    @Test
+    public void createFileURI() throws Exception {
+        String pathname="test";
+        assertEquals(URI.createFileURI(pathname),URI.POOL.internFile(pathname));
+    }
+
+    //test méthode createPlatformResourceURI
+    @Test
+    public void createPlatformResourceURI() throws Exception {
+        String pathName = "test";
+        assertEquals(URI.createPlatformResourceURI(pathName),URI.createPlatformResourceURI(pathName, URI.ENCODE_PLATFORM_RESOURCE_URIS));
+    }
+
+    //test méthode createPlatformResourceURI 2 parametre
+    @Test
+    public void createPlatformResourceURI1() throws Exception {
+        String pathName="test";
+        boolean encode=false;
+        assertEquals(URI.createPlatformResourceURI(pathName,encode),URI.POOL.intern(URI.SEGMENT_RESOURCE, pathName, encode));
+    }
+
+    //test méthode createPlatformPluginURI
+    @Test
+    public void createPlatformPluginURI() throws Exception {
+        String pathName="test";
+        boolean encode = true;
+        assertEquals(URI.createPlatformPluginURI(pathName,encode),URI.POOL.intern(URI.SEGMENT_PLUGIN, pathName, encode));
+    }
+
+    //test méthode validScheme
+    @Test
+    public void validSchemevaluenull() throws Exception {
+        String value = null;
+        assertEquals(true, URI.validScheme(null));
+    }
+
+    @Test
+    public void validSchemevaluenotnull() throws Exception {
+        String value = "test";
+        assertEquals(true, URI.validScheme(null));
+    }
+
+
 /*
 
 
 
 
-
-    @Test
-    public void createURIWithCache() throws Exception {
-
-    }
-
-    @Test
-    public void createFileURI() throws Exception {
-
-    }
-
-    @Test
-    public void createPlatformResourceURI() throws Exception {
-
-    }
-
-    @Test
-    public void createPlatformResourceURI1() throws Exception {
-
-    }
-
-    @Test
-    public void createPlatformPluginURI() throws Exception {
-
-    }
-
-    @Test
-    public void validScheme() throws Exception {
-
-    }
 
     @Test
     public void validOpaquePart() throws Exception {
