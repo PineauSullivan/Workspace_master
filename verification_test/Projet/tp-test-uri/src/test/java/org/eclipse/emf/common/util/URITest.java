@@ -209,17 +209,37 @@ public class URITest {
         assertEquals(true, URI.validScheme(null));
     }
 
+    //test méthode validOpaquePart
+    @Test
+    public void validOpaquePart() throws Exception {
+        assertEquals(false,URI.validOpaquePart(null));
+    }
+
+    @Test
+    public void validOpaquePartindexdiese() throws Exception {
+        assertEquals(false,URI.validOpaquePart("test#test"));
+    }
+
+    @Test
+    public void validOpaquePartlengthzero() throws Exception {
+        assertEquals(false,URI.validOpaquePart(""));
+    }
+
+    @Test
+    public void validOpaquePartchatatzero() throws Exception {
+        assertEquals(false,URI.validOpaquePart("#test"));
+    }
+
+    @Test
+    public void validOpaquePartnotnull() throws Exception {
+        assertEquals(true,URI.validOpaquePart("test"));
+    }
+
+
 
 /*
 
 
-
-
-
-    @Test
-    public void validOpaquePart() throws Exception {
-
-    }
 
     @Test
     public void validAuthority() throws Exception {
