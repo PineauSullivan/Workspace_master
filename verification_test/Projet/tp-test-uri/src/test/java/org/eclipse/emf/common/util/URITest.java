@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by sullivan on 02/12/16.
@@ -46,6 +47,7 @@ public class URITest {
         assertEquals(URI.createGenericURI(scheme, opaquePart,fragment),URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, false, scheme, opaquePart, null, false, null, null).appendFragment(fragment));
     }
 
+    //test methode createHierarchicalURI
     @Test(expected=IllegalArgumentException.class)
     public void createHierarchicalURIdiffnull(){
         String scheme ="test";
@@ -76,37 +78,84 @@ public class URITest {
         assertEquals(URI.createHierarchicalURI(scheme, authority, device, query, fragment),URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, scheme, authority, device, false, URI.NO_SEGMENTS, query).appendFragment(fragment));
     }
 
-    /*
-
-    @Test
-    public void createHierarchicalURI1() throws Exception {
-
+    //test methode createHierarchicalURI
+    @Test(expected=IllegalArgumentException.class)
+    public void createHierarchicalURI1isscheme() throws Exception {
+        String scheme = "jar";
+        String authority = null;
+        String device = "test";
+        String[] segments = null;
+        String query = null;
+        String fragment = null;
+        URI.createHierarchicalURI(scheme, authority, device, segments, query, fragment);
     }
 
+    @Test(expected=IllegalArgumentException.class)
+    public void createHierarchicalURI1equals() throws Exception {
+        String scheme = "platform";
+        String authority = null;
+        String device = "test";
+        String[] segments = null;
+        String query = null;
+        String fragment = null;
+        URI.createHierarchicalURI(scheme, authority, device, segments, query, fragment);
+    }
+
+    @Test
+    public void createHierarchicalURI1devicenull() throws Exception {
+        String scheme = null;
+        String authority = null;
+        String device = null;
+        String[] segments = null;
+        String query = null;
+        String fragment = null;
+        assertEquals(URI.createHierarchicalURI(scheme, authority, device, segments, query, fragment),URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, scheme, authority, device, true, segments, query).appendFragment(fragment));
+    }
+
+    //test méthode createHierarchicalURI2
     @Test
     public void createHierarchicalURI2() throws Exception {
-
+        String[] segments =null;
+        String query=null;
+        String fragment=null;
+        assertEquals(URI.createHierarchicalURI(segments, query, fragment), URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, null, null, null, false, segments, query).appendFragment(fragment));
     }
 
+    //test méthode createURI
     @Test
     public void createURI() throws Exception {
-
+        String uri ="test";
+        assertEquals(URI.createURI(uri),URI.createURIWithCache(uri));
     }
 
+    //test méthode createURI1
     @Test
     public void createURI1() throws Exception {
-
+        String uri="test";
+        boolean ignoreEscaped=true;
+        assertEquals(URI.createURI(uri,ignoreEscaped),URI.createURIWithCache(URI.encodeURI(uri, ignoreEscaped, URI.FRAGMENT_LAST_SEPARATOR)));
     }
 
+    //test méthode createURI2
     @Test
     public void createURI2() throws Exception {
-
+        String uri="test";
+        boolean ignoreEscaped=true;
+        int fragmentLocationStyle=5;
+        assertEquals(URI.createURI(uri,ignoreEscaped,fragmentLocationStyle),URI.createURIWithCache(URI.encodeURI(uri, ignoreEscaped, fragmentLocationStyle)));
     }
 
+    //test méthode createDeviceURI
     @Test
     public void createDeviceURI() throws Exception {
-
+        String uri ="test";
+        assertEquals(URI.createDeviceURI(uri),URI.createURIWithCache(uri));
     }
+/*
+
+
+
+
 
     @Test
     public void createURIWithCache() throws Exception {
