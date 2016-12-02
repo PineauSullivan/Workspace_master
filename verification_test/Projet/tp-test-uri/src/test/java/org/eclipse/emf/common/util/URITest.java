@@ -311,6 +311,7 @@ public class URITest {
         assertEquals(true, URI.validDevice(":"));
     }
 
+    //tests méthode validSegment
     @Test
     public void validSegmentNull() throws Exception {
         assertEquals(false,URI.validSegment(null));
@@ -326,40 +327,56 @@ public class URITest {
         assertEquals(true,URI.validSegment("test"));
     }
 
-/*
-
-  public static boolean validSegment(String value)
-  {
-    return value != null && !contains(value, SEGMENT_END_HI, SEGMENT_END_LO);
-
-  // <p>A valid path segment must be non-null and may contain any allowed URI
-  // characters except for the following: <code>/ ?</code>
-
-    //return value != null && validate(value, SEGMENT_CHAR_HI, SEGMENT_CHAR_LO, true, true);
-  }
-
-
-
-
+    //tests méthode validSegments
     @Test
-    public void validSegments() throws Exception {
-
+    public void validSegmentsNull() throws Exception {
+        assertEquals(false, URI.validSegments(null) );
     }
 
     @Test
-    public void validQuery() throws Exception {
-
+    public void validSegmentsLengthZero() throws Exception {
+        assertEquals(true, URI.validSegments(new String[0]));
     }
 
+    @Test
+    public void validSegmentsForFalse() throws Exception {
+        String[] values = new String[1];
+        values[0] = "/?#";
+        assertEquals(false, URI.validSegments(values));
+    }
+
+    //tests méthode validQuery
+    @Test
+    public void validQueryNull() throws Exception {
+        assertEquals(true,URI.validQuery(null));
+    }
+
+    @Test
+    public void validQueryOIndexofmoins1() throws Exception {
+        assertEquals(true,URI.validQuery("test"));
+    }
+
+    @Test
+    public void validQueryOIndexofplus1() throws Exception {
+        assertEquals(false,URI.validQuery("test#test"));
+    }
+
+    //tests méthode validFragment
     @Test
     public void validFragment() throws Exception {
-
+        assertEquals(true,URI.validFragment(""));
     }
 
-    @Test
-    public void isRelative() throws Exception {
 
-    }
+
+/*
+
+
+
+
+
+
+
 
     @Test
     public void isHierarchical() throws Exception {

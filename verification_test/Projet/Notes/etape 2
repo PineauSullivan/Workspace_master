@@ -1,4 +1,5 @@
 etape 2
 
 return qui test deux contionnels pareil : ligne 2830 (if contain pas '#' et si ne commence pas par '#')
-
+return TRUE tout le temps : ligne 2977
+return tout le temps False : isRelative ligne 4994 (faire test ? car juste public et pas static ...)
