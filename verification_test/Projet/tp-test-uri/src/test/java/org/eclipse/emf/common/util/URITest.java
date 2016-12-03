@@ -594,38 +594,97 @@ public class URITest {
         assertEquals(false, monUriTest.isEmpty());
     }
 
-/*
 
-
-
-
-
-
-
+    //tests méthode isFile
     @Test
-    public void isFile() throws Exception {
-
+    public void isFileFalse() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "test";
+        String device = null;
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals(false,monUriTest.isFile());
     }
 
     @Test
-    public void isPlatform() throws Exception {
+    public void isFileTrue() throws Exception {
+        URI monUriTest = URI.createFileURI("test");
+        assertEquals(true,monUriTest.isFile());
+    }
 
+    //tests méthode isPlatform
+    @Test
+    public void isPlatformTrue() throws Exception {
+        URI monUriTest = URI.createPlatformResourceURI("test",true);
+        assertEquals(true,monUriTest.isPlatform());
+    }
+
+
+    @Test
+    public void isPlatformFalse() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(false,monUriTest.isPlatform());
+    }
+
+    //tests méthode isPlatformResource
+    @Test
+    public void isPlatformResourceTrue() throws Exception {
+        URI monUriTest = URI.createPlatformResourceURI("test",true);
+        assertEquals(true,monUriTest.isPlatformResource());
     }
 
     @Test
-    public void isPlatformResource() throws Exception {
+    public void isPlatformResourceFalse() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(false,monUriTest.isPlatformResource());
+    }
 
+    //tests méthode isPlatformPlugin
+    @Test
+    public void isPlatformPluginTrue() throws Exception {
+        URI monUriTest = URI.createPlatformPluginURI("test",true);
+        assertEquals(true,monUriTest.isPlatformPlugin());
     }
 
     @Test
-    public void isPlatformPlugin() throws Exception {
-
+    public void isPlatformPluginFalse() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(false,monUriTest.isPlatformPlugin());
     }
+
+    //tests méthode isArchive
+    //Réchercher test en dessous ... ...
+//    @Test
+//    public void isArchiveTrue() throws Exception {
+//
+//        assertEquals(true, monUriTest.isArchive());
+//    }
+
 
     @Test
-    public void isArchive() throws Exception {
-
+    public void isArchiveFalse() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(false, monUriTest.isArchive());
     }
+    /*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Test
     public void isArchiveScheme() throws Exception {
