@@ -382,7 +382,7 @@ public class URITest {
         assertEquals(false,monUriTest.isHierarchical());
     }
 
-
+    //tests méthode hasAuthority
     @Test
     public void hasAuthorityOtherwise() throws Exception {
         URI monUriTest = URI.createURI("test");
@@ -401,6 +401,7 @@ public class URITest {
         assertEquals(true,monUriTest.hasAuthority());
     }
 
+    //tests méthode hasOpaquePart
     @Test
     public void hasOpaquePartOtherwise() throws Exception {
         URI monUriTest = URI.createURI("test");
@@ -413,6 +414,7 @@ public class URITest {
         assertEquals(true,monUriTest.hasOpaquePart());
     }
 
+    //tests méthode hasDevice
     @Test
     public void hasDeviceTrue() throws Exception {
         URI monUriTest;
@@ -432,6 +434,7 @@ public class URITest {
         assertEquals(false,monUriTest.hasDevice());
     }
 
+    //tests méthode hasPath
     @Test
     public void hasPathTrue() throws Exception {
         URI monUriTest = URI.createPlatformPluginURI("pathName",true);
@@ -450,6 +453,7 @@ public class URITest {
         assertEquals(false,monUriTest.hasPath());
     }
 
+    //tests méthode hasAbsolutePath
     @Test
     public void hasAbsolutePathHierarchicalWithAbsolutePath() throws Exception {
         URI monUriTest = URI.createHierarchicalURI("test", "test", ":", null, "test", "test");
@@ -469,6 +473,8 @@ public class URITest {
         assertEquals(false,monUriTest.hasAbsolutePath());
     }
 
+
+    //tests méthode hasRelativePath
     @Test
     public void hasRelativePathHierarchicalWithRelativePath() throws Exception {
         URI monUriTest = URI.createFileURI("pathName");
@@ -488,6 +494,7 @@ public class URITest {
     }
 
 
+    //tests méthode hasEmptyPath
     @Test
     public void hasEmptyPathFalse() throws Exception {
         URI monUriTest = URI.createPlatformPluginURI("pathName",true);
@@ -506,6 +513,8 @@ public class URITest {
         assertEquals(false,monUriTest.hasEmptyPath());
     }
 
+
+    //tests méthode hasQuery
     @Test
     public void hasQueryTrue() throws Exception {
         URI monUriTest;
@@ -531,7 +540,7 @@ public class URITest {
         assertEquals(false,monUriTest.hasQuery());
     }
 
-
+    //tests méthode hasFragment
     @Test
     public void hasFragmentTrue() throws Exception {
         URI monUriTest;
@@ -556,7 +565,7 @@ public class URITest {
         assertEquals(false,monUriTest.hasFragment());
     }
 
-
+    //tests méthode isCurrentDocumentReference
     @Test
     public void isCurrentDocumentReferenceTrue() throws Exception {
         URI monUriTest;
@@ -570,6 +579,8 @@ public class URITest {
         assertEquals(false, monUriTest.isCurrentDocumentReference());
     }
 
+
+    //tests méthode isEmpty
     @Test
     public void isEmptyTrue() throws Exception {
         URI monUriTest;
