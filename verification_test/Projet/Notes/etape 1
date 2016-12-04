@@ -6,6 +6,36 @@ muvaise pratique :
 ** attribut non utilisée et protected donc ...
 
 
+lignes 204->220 WTF methods (elles sont pas redéfinies pour juste en empécher l'accès ? --> UnsupportedOperation)
+ 222->256  Redondance de code
+lignes 334 -> 353 : deux méthodes avec le même nom : internArray (dans la même classe interne ? pas le même prototype en fait)
+367->380  redondance de code
+méthode parseIntoURI(String uri) ligne 408 : trop longue suite de else if,  méthode beaucoup trop longue (300 lignes….)
+643 boucle for avec un break
+classe PlatformAccessUnit ligne 759 -> trop d’attributs.
+ligne 859 : méthode setValue trop longue (150 lignes) , trop d’else if
+ligne 1024 méthode “matches” redondante
+Classe Queue redondante (4 fois pour presque le même code)
+ligne 1212 : méthode setValue trop longue (200 lignes) trop d’else if imbriqués encore..
+ligne 1445 encore une méthode “matches”
+commentaires vides
+ligne 1451 getInternalizedValue() -> méthode trop longue (150 lignes)
+Override de la methode reset(...)
+Méthode “intern” redéfinie avec des paramètres différents
+utilisation d’opérateurs simple | et & (exemples nombreux lors de déclaration de constantes 
+
+ lignes 4982 -> 5205 -> useless methods ?
+méthode ligne 5242 -> manque les parenthèses
+lignes 5254 --> 5311 toutes les méthodes renvoient null
+lignes 5320-> 5330 : 2 méthodes pour la même fonctionnalité
+méthode decode ligne 6016 avec trop de conditionnelles
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////:
+
+
+
 	:: mvn validate -> BUILD SUCCESS
 	:: mvn compile -> BUILD SUCCESS
 	:: mvn pmd:pmd -DtargetJdk=1.7 -> BUILD SUCCESS -> création dossier TARGET
