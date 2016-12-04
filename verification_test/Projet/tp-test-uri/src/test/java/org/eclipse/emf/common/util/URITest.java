@@ -3,7 +3,10 @@ package org.eclipse.emf.common.util;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
+import java.util.Collections;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
@@ -60,6 +63,17 @@ public class URITest {
     }
 
     @Test(expected=IllegalArgumentException.class)
+    public void createHierarchicalURIFirstIf(){
+        String scheme ="test";
+        String authority = null;
+        String device = null;
+        String query="test";
+        String fragment="test";
+        URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+    }
+
+
+    @Test(expected=IllegalArgumentException.class)
     public void createHierarchicalURIIsArchive(){
         String scheme ="jar";
         String authority = null;
@@ -102,6 +116,7 @@ public class URITest {
         URI.createHierarchicalURI(scheme, authority, device, segments, query, fragment);
     }
 
+
     @Test
     public void createHierarchicalURI1DeviceNull() throws Exception {
         String scheme = null;
@@ -128,6 +143,13 @@ public class URITest {
         String uri ="test";
         assertEquals(URI.createURI(uri),URI.createURIWithCache(uri));
     }
+
+    @Test
+    public void createURIdiese() throws Exception {
+        String uri ="te#st";
+        assertEquals(URI.createURI(uri),URI.POOL.intern(uri.substring(0, 2)).appendFragment(uri.substring(2 + 1)));
+    }
+
 
     //test méthode createURI1
     @Test
@@ -199,14 +221,19 @@ public class URITest {
     //test méthode validScheme
     @Test
     public void validSchemeValueNull() throws Exception {
-        String value = null;
         assertEquals(true, URI.validScheme(null));
     }
 
     @Test
     public void validSchemeValueNotNull() throws Exception {
         String value = "test";
-        assertEquals(true, URI.validScheme(null));
+        assertEquals(true, URI.validScheme(value));
+    }
+
+    @Test
+    public void validSchemeValueNotNullFalse() throws Exception {
+        String value = ":/?#";
+        assertEquals(false, URI.validScheme(value));
     }
 
     //test méthode validOpaquePart
@@ -238,6 +265,11 @@ public class URITest {
     @Test
     public void validOpaquePartContain() throws Exception {
         assertEquals(false,URI.validOpaquePart("/?#"));
+    }
+
+    @Test
+    public void validOpaquePartContainFalse() throws Exception {
+        assertEquals(false,URI.validOpaquePart("/"));
     }
 
     //test méthode validAuthority
@@ -279,6 +311,13 @@ public class URITest {
         assertEquals(!archiveURI.hasFragment(), URI.validArchiveAuthority("+!"));
     }
 
+    @Test
+    public void validArchiveAuthorityCharAtFalse2() throws Exception {
+        String value ="/?#!";
+        URI archiveURI = URI.createURI(value.substring(0, value.length() - 1));
+        assertEquals(!archiveURI.hasFragment(), URI.validArchiveAuthority("/?#!"));
+    }
+
     //tests méthode validJarAuthority
     @Test
     public void validJarAuthority() throws Exception {
@@ -309,6 +348,11 @@ public class URITest {
     @Test
     public void validDevice() throws Exception {
         assertEquals(true, URI.validDevice(":"));
+    }
+
+    @Test
+    public void validDevicefalse() throws Exception {
+        assertEquals(false, URI.validDevice("/?#:::::::::::::"));
     }
 
     //tests méthode validSegment
@@ -510,7 +554,12 @@ public class URITest {
         String query = "test";
         String fragment = "test";
         monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
-        assertEquals(false,monUriTest.hasEmptyPath());
+    }
+
+    @Test
+    public void hasEmptyPathAuthorityNull() throws Exception {
+        URI monUriTest = URI.createHierarchicalURI(null, "test","test");
+        assertEquals(true,monUriTest.hasEmptyPath());
     }
 
 
@@ -641,6 +690,12 @@ public class URITest {
         assertEquals(false,monUriTest.isPlatformResource());
     }
 
+    @Test
+    public void isPlatformResourceFalse2() throws Exception {
+        URI monUriTest = URI.createPlatformPluginURI("test",false);
+        assertEquals(false,monUriTest.isPlatformResource());
+    }
+
     //tests méthode isPlatformPlugin
     @Test
     public void isPlatformPluginTrue() throws Exception {
@@ -654,12 +709,20 @@ public class URITest {
         assertEquals(false,monUriTest.isPlatformPlugin());
     }
 
+    @Test
+    public void isPlatformPluginFalse2() throws Exception {
+        URI monUriTest = URI.createPlatformResourceURI("test");
+        assertEquals(false,monUriTest.isPlatformPlugin());
+    }
+
     //tests méthode isArchive
     //Réchercher test en dessous ... ...
 //    @Test
 //    public void isArchiveTrue() throws Exception {
+//        URI monUriTest;
 //
-//        assertEquals(true, monUriTest.isArchive());
+//        System.out.println( monUriTest.isArchive());
+//        //assertEquals(true, monUriTest.isArchive());
 //    }
 
 
@@ -668,6 +731,404 @@ public class URITest {
         URI monUriTest = URI.createURI("test");
         assertEquals(false, monUriTest.isArchive());
     }
+
+
+    //tests méthode isArchiveScheme
+    @Test
+    public void isArchiveSchemeTrue() throws Exception {
+        assertEquals(true,URI.isArchiveScheme("archive"));
+    }
+
+    @Test
+    public void isArchiveSchemeFalse() throws Exception {
+        assertEquals(false,URI.isArchiveScheme("test"));
+    }
+
+
+    //tests méthode hashCode
+    @Test
+    public void hashCodeTest() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(3556498,monUriTest.hashCode());
+    }
+
+    //tests méthode scheme
+    @Test
+    public void schemeTest() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "test";
+        String device = null;
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals("jarr",monUriTest.scheme());
+    }
+
+
+    @Test
+    public void schemeNull() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(null,monUriTest.scheme());
+    }
+
+    //tests méthode opaquePart
+    @Test
+    public void opaquePartNull() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(null, monUriTest.opaquePart());
+    }
+
+    @Test
+    public void opaquePartNotNull() throws Exception {
+        URI monUriTest;
+        monUriTest = URI.createGenericURI("test","test","test");
+        assertNotEquals(null, monUriTest.opaquePart());
+    }
+
+    //test méthode authority
+    @Test
+    public void authorityNULL() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(null, monUriTest.authority());
+    }
+
+    @Test
+    public void authorityNotNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "test";
+        String device = null;
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals("test",monUriTest.authority());
+    }
+
+    //test méthode userInfo
+    @Test
+    public void userInfoNull() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(null, monUriTest.userInfo());
+    }
+
+    @Test
+    public void userInfoNotNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@st";
+        String device = null;
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertNotEquals(null, monUriTest.userInfo());
+    }
+
+
+    @Test
+    public void userInfoNotNull2() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "test";
+        String device = null;
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals(null, monUriTest.userInfo());
+    }
+
+    //tests méthode host
+    @Test
+    public void hostNull() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(null, monUriTest.host());
+    }
+
+    @Test
+    public void hostNotNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = null;
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertNotEquals(null, monUriTest.host());
+    }
+
+    @Test
+    public void hostNotNull2() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "test";
+        String device = null;
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertNotEquals(null, monUriTest.host());
+    }
+
+    //tests méthode port
+    @Test
+    public void portNull() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(null, monUriTest.port());
+    }
+
+    @Test
+    public void portNotNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = null;
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertNotEquals(null, monUriTest.port());
+    }
+
+
+
+    @Test
+    public void portNull2() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "test";
+        String device = null;
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals(null, monUriTest.port());
+    }
+
+
+    //tests méthode device
+    @Test
+    public void deviceNull() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(null, monUriTest.device());
+    }
+
+    @Test
+    public void deviceNotNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = ":";
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertNotEquals(null, monUriTest.device());
+    }
+
+    //tests méthode segments
+    @Test
+    public void segmentsNull() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(monUriTest.segments(),monUriTest.segments());
+    }
+
+    @Test
+    public void segmentsNotNull() throws Exception {
+        String[] segments = new String[1];
+        segments[0] = "test";
+        URI monUriTest = URI.createHierarchicalURI(segments,"test", "test");
+        assertNotEquals(null, monUriTest.segments());
+    }
+
+    //tests méthode segmentsList
+    @Test
+    public void segmentsListNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = ":";
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals(Collections.emptyList(),monUriTest.segmentsList());
+    }
+
+    @Test
+    public void segmentsListNotNull() throws Exception {
+        String[] segments = new String[1];
+        segments[0] = "test";
+        URI monUriTest = URI.createHierarchicalURI(segments,"test", "test");
+        assertNotEquals(null, monUriTest.segmentsList());
+    }
+
+
+    //tests méthode segmentCount
+    @Test
+    public void segmentCountZero() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = ":";
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals(0,monUriTest.segmentCount());
+    }
+
+    @Test
+    public void segmentCountUn() throws Exception {
+        String[] segments = new String[1];
+        segments[0] = "test";
+        URI monUriTest = URI.createHierarchicalURI(segments,"test", "test");
+        assertEquals(1,monUriTest.segmentCount());
+    }
+
+
+    //test méthode segment
+    public final ExpectedException exception = ExpectedException.none();
+    @Test
+    public void segmentTest(){
+        exception.expect(IndexOutOfBoundsException.class);
+        URI monUriTest = URI.createURI("test");
+        monUriTest.segment(0);
+    }
+
+    //tests méthode lastSegment
+    @Test
+    public void lastSegmentTest() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals("test",monUriTest.lastSegment());
+    }
+
+    @Test
+    public void lastSegmentNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = ":";
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals(null,monUriTest.lastSegment());
+    }
+
+    //tests méthode path
+    @Test
+    public void pathNotNull() throws Exception {
+        URI monUriTest = URI.createPlatformResourceURI("test",false);
+        assertEquals("/resource/test",monUriTest.path());
+    }
+
+    @Test
+    public void path() throws Exception {
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = ":";
+        String query = "test";
+        String fragment = "test";
+        URI monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals(null,monUriTest.path());
+    }
+
+    //tests méthode devicePath
+    @Test
+    public void devicePathNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = ":";
+        String query = "test";
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals(null,monUriTest.devicePath());
+    }
+
+    @Test
+    public void devicePathNotNull() throws Exception {
+        URI monUriTest = URI.createPlatformResourceURI("test",false);
+        assertEquals("/resource/test",monUriTest.devicePath());
+    }
+
+    //tests méthode query
+    @Test
+    public void queryNotNull() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertNotEquals(null,monUriTest.devicePath());
+    }
+
+    @Test
+    public void queryNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = ":";
+        String query = null;
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals(null,monUriTest.devicePath());
+    }
+
+    //test appendQuery
+    @Test(expected=IllegalArgumentException.class)
+    public void appendQueryNotValidQuery() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        monUriTest.appendQuery("#");
+    }
+
+
+    @Test
+    public void appendQueryValidQuery() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(monUriTest,monUriTest.appendQuery(null));
+    }
+
+
+    //test méthode trimQuery
+    @Test
+    public void trimQueryTest() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(monUriTest,monUriTest.trimQuery());
+    }
+
+
+
+    //test méthode fragment
+    @Test
+    public void fragmentNotNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = ":";
+        String query = null;
+        String fragment = "test";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals("test",monUriTest.fragment());
+    }
+
+    @Test
+    public void fragmentNull() throws Exception {
+        URI monUriTest = URI.createURI("test");
+        assertEquals(null,monUriTest.fragment());
+    }
+
+
+    //tests méthode appendFragment
+    @Test
+    public void appendFragmentNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = ":";
+        String query = null;
+        String fragment = null;
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
+        assertEquals(monUriTest,monUriTest.appendFragment(null));
+    }
+
+    @Test
+    public void appendFragmentNotNull() throws Exception {
+
+
+    }
+
+
+
     /*
 
 
@@ -676,120 +1137,6 @@ public class URITest {
 
 
 
-
-
-
-
-
-
-
-
-
-
-    @Test
-    public void isArchiveScheme() throws Exception {
-
-    }
-
-    @Test
-    public void hashCode() throws Exception {
-
-    }
-
-    @Test
-    public void scheme() throws Exception {
-
-    }
-
-    @Test
-    public void opaquePart() throws Exception {
-
-    }
-
-    @Test
-    public void authority() throws Exception {
-
-    }
-
-    @Test
-    public void userInfo() throws Exception {
-
-    }
-
-    @Test
-    public void host() throws Exception {
-
-    }
-
-    @Test
-    public void port() throws Exception {
-
-    }
-
-    @Test
-    public void device() throws Exception {
-
-    }
-
-    @Test
-    public void segments() throws Exception {
-
-    }
-
-    @Test
-    public void segmentsList() throws Exception {
-
-    }
-
-    @Test
-    public void segmentCount() throws Exception {
-
-    }
-
-    @Test
-    public void segment() throws Exception {
-
-    }
-
-    @Test
-    public void lastSegment() throws Exception {
-
-    }
-
-    @Test
-    public void path() throws Exception {
-
-    }
-
-    @Test
-    public void devicePath() throws Exception {
-
-    }
-
-    @Test
-    public void query() throws Exception {
-
-    }
-
-    @Test
-    public void appendQuery() throws Exception {
-
-    }
-
-    @Test
-    public void trimQuery() throws Exception {
-
-    }
-
-    @Test
-    public void fragment() throws Exception {
-
-    }
-
-    @Test
-    public void appendFragment() throws Exception {
-
-    }
 
     @Test
     public void trimFragment() throws Exception {
