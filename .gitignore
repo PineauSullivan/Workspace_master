@@ -1,2 +1,3 @@
 verification_test/Projet/tp-test-uri/.idea/*
 verification_test/Projet/tp-test-uri/target/*
+verification_test/Projet/tp-test-uri/src/test/java/org/eclipse/emf/common/util/URITest.java
