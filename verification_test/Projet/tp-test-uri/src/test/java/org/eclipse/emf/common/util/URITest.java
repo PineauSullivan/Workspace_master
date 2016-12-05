@@ -84,6 +84,16 @@ public class URITest {
     }
 
     @Test
+    public void createHierarchicalURISchemeNull(){
+        String scheme =null;
+        String authority = "test";
+        String device = ":";
+        String query="test";
+        String fragment="test";
+        assertEquals(URI.createHierarchicalURI(scheme, authority, device, query, fragment),URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, scheme, authority, device, false, URI.NO_SEGMENTS, query).appendFragment(fragment));
+    }
+
+    @Test
     public void createHierarchicalURI(){
         String scheme ="jarr";
         String authority = "test";
@@ -471,6 +481,7 @@ public class URITest {
         assertEquals(true,monUriTest.hasDevice());
     }
 
+
     @Test
     public void hasDeviceFalse() throws Exception {
         URI monUriTest = URI.createURI("test");
@@ -484,6 +495,7 @@ public class URITest {
         URI monUriTest = URI.createPlatformPluginURI("pathName",true);
         assertEquals(true,monUriTest.hasPath());
     }
+
 
     @Test
     public void hasPathFalse() throws Exception {
@@ -1025,6 +1037,8 @@ public class URITest {
         URI monUriTest = URI.createHierarchicalURI(scheme, authority, device, query, fragment);
         assertEquals(null,monUriTest.path());
     }
+
+
 
     //tests méthode devicePath
     @Test
