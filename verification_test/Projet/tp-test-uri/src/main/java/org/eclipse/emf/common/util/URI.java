@@ -6024,58 +6024,58 @@ public abstract class URI
       for (int len = value.length(); i < len; i++)
       {
         if (isEscaped(value, i))
-        {
+        {System.out.println("1");
           char character = unescape(value.charAt(i + 1), value.charAt(i + 2));
           i += 2;
 
           if (expectedBytes > 0)
-          {
+          {System.out.println("1.1");
             if ((character & 0xC0) == 0x80)
-            {
+            {System.out.println("1.1.1");
               bytes[receivedBytes++] = (byte)character;
             }
             else
-            {
+            {System.out.println("1.1.2");
               expectedBytes = 0;
             }
           }
           else if (character >= 0x80)
-          {
+          {System.out.println("1.2");
             if ((character & 0xE0) == 0xC0)
-            {
+            {System.out.println("1.2.1");
               bytes[receivedBytes++] = (byte)character;
               expectedBytes = 2;
             }
             else if ((character & 0xF0) == 0xE0)
-            {
+            {System.out.println("1.2.2");
               bytes[receivedBytes++] = (byte)character;
               expectedBytes = 3;
             }
             else if ((character & 0xF8) == 0xF0)
-            {
+            {System.out.println("1.2.3");
               bytes[receivedBytes++] = (byte)character;
               expectedBytes = 4;
             }
           }
 
           if (expectedBytes > 0)
-          {
+          {System.out.println("1.3");
             if (receivedBytes == expectedBytes)
-            {
+            {System.out.println("1.3.1");
               switch (receivedBytes)
               {
                 case 2:
-                {
+                {System.out.println("1.3.1.1");
                   result.append((char)((bytes[0] & 0x1F) << 6 | bytes[1] & 0x3F));
                   break;
                 }
                 case 3:
-                {
+                {System.out.println("1.3.1.2");
                   result.append((char)((bytes[0] & 0xF) << 12 | (bytes[1] & 0X3F) << 6 | bytes[2] & 0x3F));
                   break;
                 }
                 case 4:
-                {
+                {System.out.println("1.3.1.3");
                   result.appendCodePoint((bytes[0] & 0x7) << 18 | (bytes[1] & 0X3F) << 12 | (bytes[2] & 0X3F) << 6 | bytes[3] & 0x3F);
                   break;
                 }
@@ -6085,9 +6085,9 @@ public abstract class URI
             }
           }
           else
-          {
+          {System.out.println("1.4");
             for (int j = 0; j < receivedBytes; ++j)
-            {
+            {System.out.println("1.4.for");
               result.append((char)bytes[j]);
             }
             receivedBytes = 0;
@@ -6095,9 +6095,9 @@ public abstract class URI
           }
         }
         else
-        {
+        {System.out.println("2");
           for (int j = 0; j < receivedBytes; ++j)
-          {
+          {System.out.println("2.for");
             result.append((char)bytes[j]);
           }
           receivedBytes = 0;

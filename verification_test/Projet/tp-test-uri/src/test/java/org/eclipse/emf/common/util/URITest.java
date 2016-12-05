@@ -1255,12 +1255,79 @@ public class URITest {
     @Test
     public void encodeFragment() throws Exception {
 
+    }*/
+
+    @Test
+    public void decodeValueNull() throws Exception {
+        assertNull(URI.decode(null));
     }
 
     @Test
-    public void decode() throws Exception {
-
+    public void decodeValueWithoutPercent() throws Exception {
+        String value = "salut les amis !";
+        assertEquals(value,URI.decode(value));
     }
-    */
+
+    @Test
+    public void decodeValueWithoutFor() throws Exception {
+        String value = "fsfdsfdsfdsfsdf%";
+        assertEquals(value,URI.decode(value));
+    }
+
+    @Test
+    public void decodeValueWithIsEscapted1() throws Exception {
+        String value = "%aa";
+        System.out.println(URI.unescape('0','0'));
+        assertEquals("\u0000", URI.decode("%00"));
+    }
+    @Test
+    public void decodeValueWithIsEscapted2() throws Exception {
+        assertEquals("\u007F",URI.decode("%7F"));
+    }
+    @Test
+    public void decodeValueWithIsEscapted3() throws Exception {
+        String value = "dds%100";
+        assertEquals("",URI.decode("%E0"));
+    }
+    @Test
+    public void decodeValueWithIsEscapted4() throws Exception {
+        String value = "dds%100";
+        assertEquals("",URI.decode("%E2"));
+    }
+    @Test
+    public void decodeValueWithIsEscapted5() throws Exception {
+        String value = "dds%100";
+        assertEquals("",URI.decode("%E3"));
+    }
+    @Test
+    public void decodeValueWithIsEscapted6() throws Exception {
+        String value = "dds%100";
+        assertEquals("",URI.decode("%E4"));
+    }
+    @Test
+    public void decodeValueWithIsEscapted7() throws Exception {
+        String value = "dds%100";
+        assertEquals("",URI.decode("%E8"));
+    }
+    @Test
+    public void decodeValueWithIsEscapted8() throws Exception {
+        String value = "dds%100";
+        assertEquals("",URI.decode("%EB"));
+    }
+    @Test
+    public void decodeValueWithIsEscapted9() throws Exception {
+        String value = "dds%100";
+        assertEquals("",URI.decode("%EC"));
+    }
+    @Test
+    public void decodeValueWithIsEscapted10() throws Exception {
+        String value = "dds%100";
+        assertEquals("",URI.decode("%ee"));
+    }
+    @Test
+    public void decodeValueWithIsEscapted11() throws Exception {
+        String value = "dds%100";
+        assertEquals("",URI.decode("%11"));
+    }
 
 }
