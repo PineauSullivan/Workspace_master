@@ -1282,52 +1282,67 @@ public class URITest {
     }
     @Test
     public void decodeValueWithIsEscapted2() throws Exception {
-        assertEquals("\u007F",URI.decode("%7F"));
+        assertEquals("\u0020",URI.decode("%20"));
     }
     @Test
     public void decodeValueWithIsEscapted3() throws Exception {
         String value = "dds%100";
-        assertEquals("",URI.decode("%E0"));
+        assertEquals("!",URI.decode("%21"));
     }
     @Test
     public void decodeValueWithIsEscapted4() throws Exception {
         String value = "dds%100";
-        assertEquals("",URI.decode("%E2"));
+        assertEquals("~",URI.decode("%7E"));
     }
     @Test
     public void decodeValueWithIsEscapted5() throws Exception {
         String value = "dds%100";
-        assertEquals("",URI.decode("%E3"));
+        assertEquals("\u007F",URI.decode("%7f"));
     }
     @Test
     public void decodeValueWithIsEscapted6() throws Exception {
         String value = "dds%100";
-        assertEquals("",URI.decode("%E4"));
+        assertEquals("%\u00A0",URI.decode("%\u00A0"));
     }
     @Test
     public void decodeValueWithIsEscapted7() throws Exception {
         String value = "dds%100";
-        assertEquals("",URI.decode("%E8"));
+        assertEquals("%\u00A1",URI.decode("%\u00A1"));
     }
     @Test
     public void decodeValueWithIsEscapted8() throws Exception {
         String value = "dds%100";
-        assertEquals("",URI.decode("%EB"));
+        assertEquals("\u00FF",URI.decode("%ff"));
     }
     @Test
-    public void decodeValueWithIsEscapted9() throws Exception {
+    public void decodeValueWithNoUTF8_value1() throws Exception {
         String value = "dds%100";
-        assertEquals("",URI.decode("%EC"));
+        assertEquals("%ga",URI.decode("%ga"));
     }
     @Test
-    public void decodeValueWithIsEscapted10() throws Exception {
+    public void decodeValueWithNoUTF8_value2() throws Exception {
         String value = "dds%100";
-        assertEquals("",URI.decode("%ee"));
+        assertEquals("%ag",URI.decode("%ag"));
     }
     @Test
-    public void decodeValueWithIsEscapted11() throws Exception {
+    public void decodeValueWithNoUTF8_value3() throws Exception {
         String value = "dds%100";
-        assertEquals("",URI.decode("%11"));
+        assertEquals("%%",URI.decode("%%"));
+    }
+    @Test
+    public void decodeValueWithNoUTF8_value4() throws Exception {
+        String value = "dds%100";
+        assertEquals("FF",URI.decode("FF"));
+    }
+    @Test
+    public void decodeValueWithNoUTF8_value5() throws Exception {
+        String value = "dds%100";
+        assertEquals("%a",URI.decode("%a"));
+    }
+    @Test
+    public void decodeValueWithFor() throws Exception {
+        String value = "dds%100";
+        assertEquals("Aladin.Robert@mel.com",URI.decode("%41ladin%2e%52obert%40mel%2ecom"));
     }
 
 }
