@@ -1,4 +1,8 @@
 verification_test/Projet/tp-test-uri/.idea/*
 verification_test/Projet/tp-test-uri/target/*
-verification_test/Projet/tp-test-uri/src/test/java/org/eclipse/emf/common/util/URITest.java
 verification_test/Projet/tp-test-uri/URI.iml
+verification_test/Projet/TP_note/.idea/workspace.xml
+verification_test/Projet/TP_note/.idea/modules.xml
+verification_test/Projet/TP_note/.idea/misc.xml
+verification_test/Projet/TP_note/.idea/compiler.xml
+verification_test/Projet/TP_note/TP_note.iml
