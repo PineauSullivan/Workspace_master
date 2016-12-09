@@ -1243,44 +1243,99 @@ public class URITest {
     }*/
 
     @Test
-    public void encodeSegment() throws Exception {
-
-    }
-
-    @Test
-    public void encodeQueryIgnoreTrue1() throws Exception {
+    public void encodeSegmentIgnoreTrueAndNotEscapedHexAndChar() throws Exception {
         assertEquals("abc%70%2056%23",URI.encodeQuery("abc%70 56#",true));
     }
+
     @Test
-    public void encodeQueryIgnoreTrue2() throws Exception {
-        assertEquals("abc%25gh%2056%23",URI.encodeQuery("abc%gh 56#",true));
-    }
-    @Test
-    public void encodeQueryIgnoreFalse1() throws Exception {
-        assertEquals("abc%2570%2056%23",URI.encodeQuery("abc%70 56#",false));
-    }
-    @Test
-    public void encodeQueryIgnoreFalse2() throws Exception {
-        assertEquals("abc%25gh%2056%23",URI.encodeQuery("abc%gh 56#",false));
+    public void encodeSegmentIgnoreTrueAndEscapedHex() throws Exception {
+        assertEquals("abc%70%2056%23",URI.encodeQuery("abc%70 56#",true));
     }
 
     @Test
-    public void encodeFragmentIgnoreTrue1() {
-        assertEquals("abc%70%2056%23",URI.encodeFragment("abc%70 56#",true));
-    }
-    @Test
-    public void encodeFragmentIgnoreTrue2() {
-        assertEquals("abc%25gh%2056%23",URI.encodeFragment("abc%gh 56#",true));
-    }
-    @Test
-    public void encodeFragmentIgnoreFalse1() {
-        assertEquals("abc%2570%2056%23",URI.encodeFragment("abc%70 56#",false));
-    }
-    @Test
-    public void encodeFragmentIgnoreFalse2() {
-        assertEquals("abc%25gh%2056%23",URI.encodeFragment("abc%gh 56#",false));
+    public void encodeSegmentIgnoreTrue3() throws Exception {
+        assertEquals("abc%70%2056%23",URI.encodeQuery("abc%70 56#",true));
     }
 
+    @Test
+    public void encodeSegmentIgnoreTrue4() throws Exception {
+        assertEquals("abc%70%2056%23",URI.encodeQuery("abc%70 56#",true));
+    }
+
+    /////////////////////////////////////////////////////////////////
+    ////////////TEST encodeQuery(string,bool)////////////////////////
+    /////////////////////////////////////////////////////////////////
+    @Test
+    public void encodeQueryIgnoreTrueAndNotEscapedHex() {
+        assertEquals("abc%7056",URI.encodeFragment("abc%7056",true));
+    }
+    @Test
+    public void encodeQueryIgnoreTrueAndEscapedHex() {
+        assertEquals("abc%25gh56",URI.encodeFragment("abc%gh56",true));
+    }
+    @Test
+    public void encodeQueryIgnoreTrueAndEscapedChar() {
+        assertEquals("abc%2056%23",URI.encodeFragment("abc 56#",true));
+    }
+    @Test
+    public void encodeQueryIgnoreTrueAndNotEscapedChar() {
+        assertEquals("abc?56-",URI.encodeFragment("abc?56-",true));
+    }
+    @Test
+    public void encodeQueryIgnoreFalseAndNotEscapedHex() {
+        assertEquals("abc%257056",URI.encodeFragment("abc%7056",false));
+    }
+    @Test
+    public void encodeQueryIgnoreFalseAndEscapedHex() {
+        assertEquals("abc%25gh56",URI.encodeFragment("abc%gh56",false));
+    }
+    @Test
+    public void encodeQueryIgnoreFalseAndEscapedChar() {
+        assertEquals("abc?56-",URI.encodeFragment("abc?56-",false));
+    }
+    @Test
+    public void encodeQueryIgnoreFalseAndNotEscapedChar() {
+        assertEquals("abc%2056%23",URI.encodeFragment("abc 56#",false));
+    }
+    /////////////////////////////////////////////////////////////////
+    ////////////TEST encodeFragment(string,bool)/////////////////////
+    /////////////////////////////////////////////////////////////////
+    @Test
+    public void encodeFragmentIgnoreTrueAndNotEscapedHex() {
+        assertEquals("abc%7056",URI.encodeFragment("abc%7056",true));
+    }
+    @Test
+    public void encodeFragmentIgnoreTrueAndEscapedHex() {
+        assertEquals("abc%25gh56",URI.encodeFragment("abc%gh56",true));
+    }
+    @Test
+    public void encodeFragmentIgnoreTrueAndEscapedChar() {
+        assertEquals("abc%2056%23",URI.encodeFragment("abc 56#",true));
+    }
+    @Test
+    public void encodeFragmentIgnoreTrueAndNotEscapedChar() {
+        assertEquals("abc?56-",URI.encodeFragment("abc?56-",true));
+    }
+    @Test
+    public void encodeFragmentIgnoreFalseAndNotEscapedHex() {
+        assertEquals("abc%257056",URI.encodeFragment("abc%7056",false));
+    }
+    @Test
+    public void encodeFragmentIgnoreFalseAndEscapedHex() {
+        assertEquals("abc%25gh56",URI.encodeFragment("abc%gh56",false));
+    }
+    @Test
+    public void encodeFragmentIgnoreFalseAndEscapedChar() {
+        assertEquals("abc?56-",URI.encodeFragment("abc?56-",false));
+    }
+    @Test
+    public void encodeFragmentIgnoreFalseAndNotEscapedChar() {
+        assertEquals("abc%2056%23",URI.encodeFragment("abc 56#",false));
+    }
+
+    /////////////////////////////////////////////////////////////////
+    ////////////TEST decodeValue(string)/////////////////////////////
+    /////////////////////////////////////////////////////////////////
     @Test
     public void decodeValueNull() throws Exception {
         assertNull(URI.decode(null));
