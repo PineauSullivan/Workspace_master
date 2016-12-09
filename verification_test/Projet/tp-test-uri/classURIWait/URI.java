@@ -1076,7 +1076,7 @@ public abstract class URI
 
         // Create a hierarchical platform-scheme URI from the interned segments.
         //
-        return new Hierarchical(this.hashCode, true, SCHEME_PLATFORM, null, null, true, internArray(segments, 0, usedSegmentCount, hashCode), null);
+        return new Hierarchical(this.hashCode, SCHEME_PLATFORM, null, null, true, internArray(segments, 0, usedSegmentCount, hashCode), null);
       }
 
       @Override
@@ -1585,13 +1585,13 @@ public abstract class URI
         {
           // If it's absolute, we include the file scheme, and it has an absolute path, if there is one or more segments, or if we ignored an empty segment.
           //
-          return new Hierarchical(this.hashCode, true, SCHEME_FILE, authority, device, segmentCount > 0 || ignoredEmptySegment, internedSegments, null);
+          return new Hierarchical(this.hashCode, SCHEME_FILE, authority, device, segmentCount > 0 || ignoredEmptySegment, internedSegments, null);
         }
         else
         {
           // It's a relative URI...
           //
-          return new Hierarchical(this.hashCode, true, null, null, null, isAbsolutePath, internedSegments, null);
+          return new Hierarchical(this.hashCode, null, null, null, isAbsolutePath, internedSegments, null);
         }
       }
 
@@ -1872,7 +1872,7 @@ public abstract class URI
         //
         if (hierarchical)
         {
-          return new Hierarchical(hashCode, hierarchical, scheme, authority, device, absolutePath, segments, query);
+          return new Hierarchical(hashCode, scheme, authority, device, absolutePath, segments, query);
         }
         else
         {
@@ -2240,7 +2240,7 @@ public abstract class URI
       to = to < 64 ? to : 63;
       for (char c = from; c <= to; c++)
       {
-        result |= (1L << c);
+        result |= 1L << c;
       }
     }
     return result;
@@ -2261,7 +2261,7 @@ public abstract class URI
     for (int i = 0, len = chars.length(); i < len; i++)
     {
       char c = chars.charAt(i);
-      if (c < 64) result |= (1L << c);
+      if (c < 64) result |= 1L << c;
     }
     return result;
   }
@@ -2274,7 +2274,7 @@ public abstract class URI
     for (int i = 0, len = chars.length(); i < len; i++)
     {
       char c = chars.charAt(i);
-      if (c >= 64 && c < 128) result |= (1L << (c - 64));
+      if (c >= 64 && c < 128) result |= 1L << (c - 64);
     }
     return result;
   }
@@ -2868,15 +2868,8 @@ public abstract class URI
   {
     if (value != null && value.length() > 0 && value.charAt(value.length() - 1) == ARCHIVE_IDENTIFIER)
     {
-      try
-      {
         URI archiveURI = createURI(value.substring(0, value.length() - 1));
         return !archiveURI.hasFragment();
-      }
-      catch (IllegalArgumentException e)
-      {
-        // Ignore the exception and return false.
-      }
     }
     return false;
   }
@@ -3107,7 +3100,7 @@ public abstract class URI
      * Assertions are used to validate the integrity of the result.
      * I.e., all components must be interned and the hash code must be equal to the hash code of the {@link #toString()}.
      */
-    protected Hierarchical(int hashCode, boolean hierarchical, String scheme, String authority, String device, boolean absolutePath, String[] segments, String query)
+    protected Hierarchical(int hashCode, String scheme, String authority, String device, boolean absolutePath, String[] segments, String query)
     {
       super(hashCode);
 
@@ -3679,7 +3672,7 @@ public abstract class URI
 
             if (!anyRelPath && !shorterRelPath)
             {
-              // user rejects a relative path: keep absolute or no path
+              System.out.println("user rejects a relative path: keep absolute or no path");
             }
             else if (hasPath == baseHasPath && segmentsEqual(base) && query == base.query())
             {
@@ -3697,7 +3690,7 @@ public abstract class URI
             // exception if (!hasAbsolutePath())
             else if (hasCollapsableSegments(preserveRootParents))
             {
-              // path form demands an absolute path: keep it and query
+              System.out.println("path form demands an absolute path: keep it and query");
             }
             else
             {
@@ -3740,9 +3733,9 @@ public abstract class URI
       for (int i = 0, len = segments.length; i < len; i++)
       {
         String segment = segments[i];
-        if ((i < len - 1 && SEGMENT_EMPTY == segment) ||
+        if (i < len - 1 && SEGMENT_EMPTY == segment ||
               SEGMENT_SELF == segment ||
-              SEGMENT_PARENT == segment && (!preserveRootParents || (i != 0 && SEGMENT_PARENT != segments[i - 1])))
+              SEGMENT_PARENT == segment && (!preserveRootParents || i != 0 && SEGMENT_PARENT != segments[i - 1]))
         {
           return true;
         }
@@ -4036,9 +4029,9 @@ public abstract class URI
       return
         hierarchical &&
           hasAbsolutePath() == absolutePath &&
-          (validate >= URIPool.URIComponentsAccessUnit.VALIDATE_NONE ?
+          validate >= URIPool.URIComponentsAccessUnit.VALIDATE_NONE ?
              this.segments == segments && this.scheme == scheme && this.authority == authority && this.device == device && this.query == query :
-             Arrays.equals(this.segments, segments) && equals(this.scheme, scheme) && equals(this.authority, authority) && equals(this.device, device) && equals(this.query, query));
+             Arrays.equals(this.segments, segments) && equals(this.scheme, scheme) && equals(this.authority, authority) && equals(this.device, device) && equals(this.query, query);
     }
 
     @Override
@@ -4531,9 +4524,9 @@ public abstract class URI
           !absolutePath &&
           segments == null &&
           query == null &&
-          (validate >= URIPool.URIComponentsAccessUnit.VALIDATE_NONE ?
+          validate >= URIPool.URIComponentsAccessUnit.VALIDATE_NONE ?
              this.scheme == scheme && this.opaquePart == authority :
-             equals(this.scheme, scheme) && equals(this.opaquePart, authority));
+             equals(this.scheme, scheme) && equals(this.opaquePart, authority);
     }
   }
 
@@ -4881,7 +4874,7 @@ public abstract class URI
       //
       if (hashCode == 0)
       {
-        hashCode = ((uri.hashCode * 31) + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
+        hashCode = (uri.hashCode * 31 + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
 
         // In that case, also split intern the fragment, but check if it's really a string, because otherwise it really must be split interned already.
         //
@@ -5226,7 +5219,7 @@ public abstract class URI
   }
 
   /**
-   * Returns the hash code.
+    Returns the hash code.
    */
   @Override
   public int hashCode()
@@ -5466,7 +5459,7 @@ public abstract class URI
       if (uri != null)
       {
         uri.fragment = splitInternFragment(fragment);
-        uri.hashCode = ((uri.uri.hashCode * 31) + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + uri.fragment.hashCode();
+        uri.hashCode = (uri.uri.hashCode * 31 + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + uri.fragment.hashCode();
       }
     }
   }
@@ -5494,7 +5487,7 @@ public abstract class URI
       }
       else
       {
-        int hashCode = ((this.hashCode * 31) + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
+        int hashCode = (this.hashCode * 31 + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
         return new Fragment(hashCode, this, splitInternFragment(fragment));
       }
     }
@@ -5510,7 +5503,7 @@ public abstract class URI
     }
     else
     {
-      int hashCode = ((this.hashCode * 31) + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
+      int hashCode = (this.hashCode * 31 + FRAGMENT_SEPARATOR) * CommonUtil.powerOf31(fragment.length()) + fragment.hashCode();
       return new Fragment(hashCode, this, fragment);
     }
   }
@@ -6038,7 +6031,7 @@ public abstract class URI
           if (expectedBytes > 0)
           {
             if ((character & 0xC0) == 0x80)
-            {
+            {System.out.println("1.1.1");
               bytes[receivedBytes++] = (byte)character;
             }
             else
@@ -6083,7 +6076,7 @@ public abstract class URI
                 }
                 case 4:
                 {
-                  result.appendCodePoint(((bytes[0] & 0x7) << 18 | (bytes[1] & 0X3F) << 12 | (bytes[2] & 0X3F) << 6 | bytes[3] & 0x3F));
+                  result.appendCodePoint((bytes[0] & 0x7) << 18 | (bytes[1] & 0X3F) << 12 | (bytes[2] & 0X3F) << 6 | bytes[3] & 0x3F);
                   break;
                 }
               }
@@ -6094,7 +6087,7 @@ public abstract class URI
           else
           {
             for (int j = 0; j < receivedBytes; ++j)
-            {
+            {System.out.println("1.4.for");
               result.append((char)bytes[j]);
             }
             receivedBytes = 0;
