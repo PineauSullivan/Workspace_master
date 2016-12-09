@@ -1240,7 +1240,7 @@ public class URITest {
     @Test
     public void encodeAuthority() throws Exception {
 
-    }
+    }*/
 
     @Test
     public void encodeSegment() throws Exception {
@@ -1248,14 +1248,38 @@ public class URITest {
     }
 
     @Test
-    public void encodeQuery() throws Exception {
-
+    public void encodeQueryIgnoreTrue1() throws Exception {
+        assertEquals("abc%70%2056%23",URI.encodeQuery("abc%70 56#",true));
+    }
+    @Test
+    public void encodeQueryIgnoreTrue2() throws Exception {
+        assertEquals("abc%25gh%2056%23",URI.encodeQuery("abc%gh 56#",true));
+    }
+    @Test
+    public void encodeQueryIgnoreFalse1() throws Exception {
+        assertEquals("abc%2570%2056%23",URI.encodeQuery("abc%70 56#",false));
+    }
+    @Test
+    public void encodeQueryIgnoreFalse2() throws Exception {
+        assertEquals("abc%25gh%2056%23",URI.encodeQuery("abc%gh 56#",false));
     }
 
     @Test
-    public void encodeFragment() throws Exception {
-
-    }*/
+    public void encodeFragmentIgnoreTrue1() {
+        assertEquals("abc%70%2056%23",URI.encodeFragment("abc%70 56#",true));
+    }
+    @Test
+    public void encodeFragmentIgnoreTrue2() {
+        assertEquals("abc%25gh%2056%23",URI.encodeFragment("abc%gh 56#",true));
+    }
+    @Test
+    public void encodeFragmentIgnoreFalse1() {
+        assertEquals("abc%2570%2056%23",URI.encodeFragment("abc%70 56#",false));
+    }
+    @Test
+    public void encodeFragmentIgnoreFalse2() {
+        assertEquals("abc%25gh%2056%23",URI.encodeFragment("abc%gh 56#",false));
+    }
 
     @Test
     public void decodeValueNull() throws Exception {
