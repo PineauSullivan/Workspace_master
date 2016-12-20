@@ -1225,24 +1225,84 @@ public class URITest {
     @Test
     public void isPrefix() throws Exception {
 
-    }
+    }*/
+    /////////////////////////////////////////////////////////////////
+    ////////////TEST encodeOpaquePart(string,bool)////////////////////////
+    /////////////////////////////////////////////////////////////////
 
     @Test
     public void replacePrefix() throws Exception {
 
     }
-
+    /////////////////////////////////////////////////////////////////
+    ////////////TEST encodeOpaquePart(string,bool)////////////////////////
+    /////////////////////////////////////////////////////////////////
     @Test
-    public void encodeOpaquePart() throws Exception {
-
+    public void encodeOpaquePartIgnoreTrueAndNotEscapedHex() {
+        assertEquals("abc%7056;",URI.encodeFragment("abc%7056;",true));
     }
-    */
+    @Test
+    public void encodeOpaquePartIgnoreTrueAndEscapedHex() {
+        assertEquals("abc%25gh56",URI.encodeFragment("abc%gh56",true));
+    }
+    @Test
+    public void encodeOpaquePartIgnoreTrueAndEscapedChar() {
+        assertEquals("abc%2056%2388",URI.encodeFragment("abc 56#88?ty-",true));
+    }
+    @Test
+    public void encodeOpaquePartIgnoreTrueAndNotEscapedChar() {
+        assertEquals("abc?56-",URI.encodeFragment("abc?56-",true));
+    }
+    @Test
+    public void encodeOpaquePartIgnoreFalseAndNotEscapedHex() {
+        assertEquals("abc%257056",URI.encodeFragment("abc%7056",false));
+    }
+    @Test
+    public void encodeOpaquePartIgnoreFalseAndEscapedHex() {
+        assertEquals("abc%25gh56",URI.encodeFragment("abc%gh56",false));
+    }
+    @Test
+    public void encodeOpaquePartIgnoreFalseAndEscapedChar() {
+        assertEquals("abc?56-",URI.encodeFragment("abc?56-",false));
+    }
+    @Test
+    public void encodeOpaquePartIgnoreFalseAndNotEscapedChar() {
+        assertEquals("abc%2056%23",URI.encodeFragment("abc 56#",false));
+    }
     /////////////////////////////////////////////////////////////////
     ////////////TEST encodeAuthority(string,bool)////////////////////////
     /////////////////////////////////////////////////////////////////
     @Test
-    public void encodeAuthority() throws Exception {
-
+    public void encodeAuthorityIgnoreTrueAndNotEscapedHex() {
+        assertEquals("abc%7056;",URI.encodeFragment("abc%7056;",true));
+    }
+    @Test
+    public void encodeAuthorityIgnoreTrueAndEscapedHex() {
+        assertEquals("abc%25gh56",URI.encodeFragment("abc%gh56",true));
+    }
+    @Test
+    public void encodeAuthorityIgnoreTrueAndEscapedChar() {
+        assertEquals("abc%2056%2388",URI.encodeFragment("abc 56#88?ty-",true));
+    }
+    @Test
+    public void encodeAuthorityIgnoreTrueAndNotEscapedChar() {
+        assertEquals("abc?56-",URI.encodeFragment("abc?56-",true));
+    }
+    @Test
+    public void encodeAuthorityIgnoreFalseAndNotEscapedHex() {
+        assertEquals("abc%257056",URI.encodeFragment("abc%7056",false));
+    }
+    @Test
+    public void encodeAuthorityIgnoreFalseAndEscapedHex() {
+        assertEquals("abc%25gh56",URI.encodeFragment("abc%gh56",false));
+    }
+    @Test
+    public void encodeAuthorityIgnoreFalseAndEscapedChar() {
+        assertEquals("abc?56-",URI.encodeFragment("abc?56-",false));
+    }
+    @Test
+    public void encodeAuthorityIgnoreFalseAndNotEscapedChar() {
+        assertEquals("abc%2056%23",URI.encodeFragment("abc 56#",false));
     }
     /////////////////////////////////////////////////////////////////
     ////////////TEST encodeSegment(string,bool)////////////////////////
