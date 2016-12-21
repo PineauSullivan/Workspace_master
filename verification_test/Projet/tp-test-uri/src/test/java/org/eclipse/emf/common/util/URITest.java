@@ -1511,13 +1511,13 @@ public class URITest {
         assertEquals(null, monUriTest.toFileString());
     }
  //Fonction de Test UNIQUEMENT pour un OS Unix
-    @Test
+/*    @Test
     public void toFileStringNotNullLinux() throws Exception {
         String[] segments = {"test1", "test2"};
         URI monUriTest = URI.createHierarchicalURI(segments, null, "notnull");
         assertEquals("test1/test2", monUriTest.toFileString());
     }
-
+*/
 /*Fonction de test UNIQUEMENT pour un OS Windows
     @Test
     public void toFileStringNotNullWindows() throws Exception {
