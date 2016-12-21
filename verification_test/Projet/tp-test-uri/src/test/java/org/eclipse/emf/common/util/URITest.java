@@ -1516,7 +1516,7 @@ public class URITest {
     public void toFileStringNotNullWindows() throws Exception {
         String[] segments = {"test1", "test2"};
         URI monUriTest = URI.createHierarchicalURI(segments, null, "notnull");
-        assertEquals("test1/test2", monUriTest.toFileString());
+        assertEquals("test1\\test2", monUriTest.toFileString());
     }
 */
 
@@ -1614,7 +1614,7 @@ public class URITest {
     /////////////////////////////////////////////////////////////////
     @Test
     public void trimSegmentsWithNegativeInt() throws Exception {
-        String[] segments = { "unsegment", "deuxsegment","" ,"troissegment"};
+        String[] segments = { "unsegment", "deuxsegment","troissegment"};
         String query = "unequery";
         String fragment = "unfragment";
         URI uri = URI.createHierarchicalURI(segments, query, fragment);
@@ -1624,12 +1624,63 @@ public class URITest {
 
     @Test
     public void trimSegmentsWith0Int() throws Exception {
-        String[] segments = { "unsegment", "deuxsegment","" ,"troissegment"};
+        String[] segments = { "unsegment", "deuxsegment","troissegment"};
         String query = "unequery";
         String fragment = "unfragment";
         URI uri = URI.createHierarchicalURI(segments, query, fragment);
-        URI uriTrim = uri.trimSegments(-1);
+        URI uriTrim = uri.trimSegments(0);
         assertEquals(uri.toString(),uriTrim.toString());
+    }
+
+    @Test
+    public void trimSegmentsWithIntInferieurCountSegment() throws Exception {
+        String[] segments = { "unsegment", "deuxsegment","troissegment","quatresegment"};
+        String[] segments2 = { "unsegment", "deuxsegment"};
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        uri = uri.trimSegments(2);
+
+        URI uri2 = URI.createHierarchicalURI(segments2, query, fragment);
+        assertEquals(uri2.toString(),uri.toString());
+    }
+
+    @Test
+    public void trimSegmentsWithIntSuperieurCountSegment() throws Exception {
+        String[] segments = { "unsegment", "deuxsegment","troissegment","quatresegment"};
+        String[] segments2 = { };
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        uri = uri.trimSegments(5);
+
+        URI uri2 = URI.createHierarchicalURI(segments2, query, fragment);
+        assertEquals(uri2.toString(),uri.toString());
+    }
+    @Test
+    public void trimSegmentsWithEqualsCountSegment() throws Exception {
+        String[] segments = { "unsegment",  "deuxsegment","troissegment","quatresegment"};
+        String[] segments2 = {  };
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        uri = uri.trimSegments(4);
+
+        URI uri2 = URI.createHierarchicalURI(segments2, query, fragment);
+        assertEquals(uri2.toString(),uri.toString());
+    }
+
+    @Test
+    public void trimSegmentsWithPathSeparator() throws Exception {
+        String[] segments = { "unsegment", "", "deuxsegment","troissegment","quatresegment"};
+        String[] segments2 = { "unsegment", "", "deuxsegment" };
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        uri = uri.trimSegments(2);
+
+        URI uri2 = URI.createHierarchicalURI(segments2, query, fragment);
+        assertEquals(uri2.toString(),uri.toString());
     }
     /////////////////////////////////////////////////////////////////
     ////////////TEST HasTrailingPathSeparator()////////////////////////
@@ -1723,7 +1774,7 @@ public class URITest {
     /////////////////////////////////////////////////////////////////
 
     @Test
-    public void testAppendFileExtensionWithHierachicalURIAndExtension() {
+    public void AppendFileExtensionWithHierachicalURIAndExtension() {
         String authority = "authority!";
         String scheme = "unscheme";
         String device = "device:";
@@ -1736,7 +1787,7 @@ public class URITest {
         assertEquals("html", uri.fileExtension());
     }
     @Test
-    public void testAppendFileExtensionWithHierachicalURIWithoutExtension() {
+    public void AppendFileExtensionWithHierachicalURIWithoutExtension() {
         String authority = "authority!";
         String scheme = "unscheme";
         String device = "device:";
@@ -1750,7 +1801,7 @@ public class URITest {
     }
 
     @Test
-    public void testAppendFileExtensionWithoutExtention() {
+    public void AppendFileExtensionWithoutExtention() {
         String opaquePart = "opaque";
         String scheme = "unscheme";
         String fragment = "unfragment";
