@@ -1220,20 +1220,90 @@ public class URITest {
     @Test
     public void trimFileExtension() throws Exception {
 
-    }
+    }*/
 
     @Test
-    public void replacePrefix(URI,URI) throws Exception {
+    public void isPrefix(){
 
-    }*/
+    }
 
     /////////////////////////////////////////////////////////////////
     ////////////TEST replacePrefix(URI,URI)////////////////////////
     /////////////////////////////////////////////////////////////////
 
-    @Test
-    public void replacePrefix() throws Exception {
+    @Test(expected = IllegalArgumentException.class)
+    public void ReplacePrefix1() {
+        String[] segments = { "foo", "bar", "" };
+        String[] new_segments = { "bar", "bar", "" };
+        String query = "query";
+        String fragment = "fragment";
+        String old_query = "query";
+        String old_fragment = null;
+        String new_query = null;
+        String new_fragment = null;
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        URI old_prefix = URI.createHierarchicalURI(segments, old_query,
+                old_fragment);
+        URI new_prefix = URI.createHierarchicalURI(new_segments, new_query,
+                new_fragment);
+        uri.replacePrefix(old_prefix, new_prefix);
+    }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void ReplacePrefix2() {
+        String[] segments = { "foo", "bar", "" };
+        String[] new_segments = { "bar", "bar", "" };
+        String query = "query";
+        String fragment = "fragment";
+        String old_query = null;
+        String old_fragment = null;
+        String new_query = null;
+        String new_fragment = "fragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        URI old_prefix = URI.createHierarchicalURI(segments, old_query,
+                old_fragment);
+        URI new_prefix = URI.createHierarchicalURI(new_segments, new_query,
+                new_fragment);
+        uri.replacePrefix(old_prefix, new_prefix);
+    }
+
+    @Test
+    public void ReplacePrefix3() {
+        String[] segments = { "foo", "bar", "" };
+        String[] new_segments = { "bar", "bar", "" };
+        String query = "query";
+        String fragment = "fragment";
+        String old_query = null;
+        String old_fragment = null;
+        String new_query = null;
+        String new_fragment = null;
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        URI old_prefix = URI.createHierarchicalURI(new_segments, old_query,
+                old_fragment);
+        URI new_prefix = URI.createHierarchicalURI(new_segments, new_query,
+                new_fragment);
+
+        assertEquals(null, uri.replacePrefix(old_prefix, new_prefix));
+    }
+
+    @Test
+    public void ReplacePrefix4() {
+        String[] segments = { "foo", "bar", "" };
+        String[] new_segments = { "bar", "bar", "" };
+        String query = "query";
+        String fragment = "fragment";
+        String old_query = null;
+        String old_fragment = null;
+        String new_query = null;
+        String new_fragment = null;
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        URI old_prefix = URI.createHierarchicalURI(segments, old_query,
+                old_fragment);
+        URI new_prefix = URI.createHierarchicalURI(new_segments, new_query,
+                new_fragment);
+
+        assertEquals("bar/bar/#fragment",
+                uri.replacePrefix(old_prefix, new_prefix).toString());
     }
     /////////////////////////////////////////////////////////////////
     ////////////TEST encodeOpaquePart(string,bool)////////////////////////
