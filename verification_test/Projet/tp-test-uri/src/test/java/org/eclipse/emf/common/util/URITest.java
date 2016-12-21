@@ -1342,16 +1342,56 @@ public class URITest {
     @Test
     public void appendFileExtension() throws Exception {
 
-    }
-
-    @Test
-    public void trimFileExtension() throws Exception {
-
     }*/
 
     @Test
-    public void isPrefix(){
+    public void trimFileExtension() throws Exception {
+        URI uri = URI.createURI("alice/bob/monfichier.ex");
+        uri = uri.trimFileExtension();
 
+        assertEquals("alice/bob/monfichier",uri.toString());
+    }
+
+    /////////////////////////////////////////////////////////////////
+    ////////////TEST isPrefix()////////////////////////
+    /////////////////////////////////////////////////////////////////
+
+    @Test
+    public void testIsPrefixTrueNoFragmentNoQuery() {
+        String[] segments = { "alice", "bob", "" };
+        String query = null;
+        String fragment = null;
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        assertTrue(uri.isPrefix());
+    }
+
+    @Test
+    public void testIsPrefixFalseWithFragment() {
+        String[] segments = { "alice", "bob", "" };
+        String query = null;
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        assertFalse(uri.isPrefix());
+    }
+
+    @Test
+    public void testIsPrefixFalseWithQuery() {
+        String[] segments = { "alice", "bob", "" };
+        String query = "unequery";
+        String fragment = null;
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        assertFalse(uri.isPrefix());
+    }
+
+
+
+    @Test
+    public void testIsPrefixFalseWithQueryAndFragment() {
+        String[] segments = { "alice", "bob" };
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        assertFalse(uri.isPrefix());
     }
 
     /////////////////////////////////////////////////////////////////
@@ -1359,12 +1399,12 @@ public class URITest {
     /////////////////////////////////////////////////////////////////
 
     @Test(expected = IllegalArgumentException.class)
-    public void ReplacePrefix1() {
-        String[] segments = { "foo", "bar", "" };
-        String[] new_segments = { "bar", "bar", "" };
-        String query = "query";
-        String fragment = "fragment";
-        String old_query = "query";
+    public void ReplacePrefixException() {
+        String[] segments = { "alice", "bob", "" };
+        String[] new_segments = { "bob", "bob", "" };
+        String query = "unequery";
+        String fragment = "unfragment";
+        String old_query = "unequery";
         String old_fragment = null;
         String new_query = null;
         String new_fragment = null;
@@ -1377,15 +1417,15 @@ public class URITest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void ReplacePrefix2() {
-        String[] segments = { "foo", "bar", "" };
-        String[] new_segments = { "bar", "bar", "" };
-        String query = "query";
-        String fragment = "fragment";
+    public void ReplacePrefixException2() {
+        String[] segments = { "alice", "bob", "" };
+        String[] new_segments = { "bob", "bob", "" };
+        String query = "unequery";
+        String fragment = "unfragment";
         String old_query = null;
         String old_fragment = null;
         String new_query = null;
-        String new_fragment = "fragment";
+        String new_fragment = "unfragment";
         URI uri = URI.createHierarchicalURI(segments, query, fragment);
         URI old_prefix = URI.createHierarchicalURI(segments, old_query,
                 old_fragment);
@@ -1395,11 +1435,11 @@ public class URITest {
     }
 
     @Test
-    public void ReplacePrefix3() {
-        String[] segments = { "foo", "bar", "" };
-        String[] new_segments = { "bar", "bar", "" };
-        String query = "query";
-        String fragment = "fragment";
+    public void ReplacePrefixTrue() {
+        String[] segments = { "alice", "bob", "" };
+        String[] new_segments = { "bob", "bob", "" };
+        String query = "unequery";
+        String fragment = "unfragment";
         String old_query = null;
         String old_fragment = null;
         String new_query = null;
@@ -1414,11 +1454,11 @@ public class URITest {
     }
 
     @Test
-    public void ReplacePrefix4() {
-        String[] segments = { "foo", "bar", "" };
-        String[] new_segments = { "bar", "bar", "" };
-        String query = "query";
-        String fragment = "fragment";
+    public void ReplacePrefixtrue2() {
+        String[] segments = { "alice", "bob", "" };
+        String[] new_segments = { "alice", "bob", "" };
+        String query = "unequery";
+        String fragment = "unfragment";
         String old_query = null;
         String old_fragment = null;
         String new_query = null;
@@ -1429,7 +1469,7 @@ public class URITest {
         URI new_prefix = URI.createHierarchicalURI(new_segments, new_query,
                 new_fragment);
 
-        assertEquals("bar/bar/#fragment",
+        assertEquals("alice/bob/#unfragment",
                 uri.replacePrefix(old_prefix, new_prefix).toString());
     }
     /////////////////////////////////////////////////////////////////
