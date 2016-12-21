@@ -1550,34 +1550,178 @@ public class URITest {
     @Test
     public void appendSegments() throws Exception {
 
-    }
-
-    @Test
-    public void trimSegments() throws Exception {
-
-    }
-
-    @Test
-    public void hasTrailingPathSeparator() throws Exception {
-
-    }
-
-    @Test
-    public void fileExtension() throws Exception {
-
-    }
-
-    @Test
-    public void appendFileExtension() throws Exception {
-
     }*/
 
+    /////////////////////////////////////////////////////////////////
+    ////////////TEST trimSegments(int)////////////////////////
+    /////////////////////////////////////////////////////////////////
     @Test
-    public void trimFileExtension() throws Exception {
+    public void trimSegmentsWithNegativeInt() throws Exception {
+        String[] segments = { "unsegment", "deuxsegment","" ,"troissegment"};
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        URI uriTrim = uri.trimSegments(-1);
+        assertEquals(uri.toString(),uriTrim.toString());
+    }
+    /////////////////////////////////////////////////////////////////
+    ////////////TEST HasTrailingPathSeparator()////////////////////////
+    /////////////////////////////////////////////////////////////////
+    @Test
+    public void HasTrailingPathSeparatorWhithEmptySegment1() {
+        String[] segments = { "unsegment", "deuxsegment","" ,"troissegment"};
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        assertFalse(uri.hasTrailingPathSeparator());
+    }
+
+    @Test
+    public void HasTrailingPathSeparatorWhithEmptySegment2() {
+        String[] segments = { "unsegment", "deuxsegment",""};
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        assertTrue(uri.hasTrailingPathSeparator());
+    }
+
+    @Test
+    public void HasTrailingPathSeparatorWithoutEmptySegment() {
+        String[] segments = { "unsegment", "deuxsegment"};
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        assertFalse(uri.hasTrailingPathSeparator());
+    }
+
+    @Test
+    public void HasTrailingPathSeparatorWithoutHierachicalURI() {
+        String opaquePart = "opaque";
+        String scheme = "unscheme";
+        String fragment = "unfragment";
+        URI uri = URI.createGenericURI(scheme, opaquePart, fragment);
+        assertFalse(uri.hasTrailingPathSeparator());
+    }
+
+    /////////////////////////////////////////////////////////////////
+    ////////////TEST fileExtension()////////////////////////
+    /////////////////////////////////////////////////////////////////
+    @Test
+    public void fileExtensionWithHierachicalURIAndExtension() throws Exception {
+        String authority = "authority!";
+        String scheme = "unscheme";
+        String device = "device:";
+        String[] segments = { "alice", "bob.txt" };
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        assertEquals("txt",uri.fileExtension());
+    }
+    @Test
+    public void fileExtensionWithHierachicalURIAndExtensionOnlyPoint() throws Exception {
+        String authority = "authority!";
+        String scheme = "unscheme";
+        String device = "device:";
+        String[] segments = { "alice", "bob." };
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        assertEquals("",uri.fileExtension());
+    }
+    @Test
+    public void fileExtensionWithHierachicalURIWithoutExtension() throws Exception {
+        String authority = "authority!";
+        String scheme = "unscheme";
+        String device = "device:";
+        String[] segments = { "alice", "" };
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        assertNull(uri.fileExtension());
+    }
+
+    @Test
+    public void fileExtensionWithGenericURIWithAllExtension() throws Exception {
+        String opaquePart = "opaque.css";
+        String scheme = "unscheme.html";
+        String fragment = "unfragment.txt";
+        URI uri = URI.createGenericURI(scheme, opaquePart, fragment);
+        assertNull(uri.fileExtension());
+    }
+    /////////////////////////////////////////////////////////////////
+    ////////////TEST appendFileExtension(String)////////////////////////
+    /////////////////////////////////////////////////////////////////
+
+    @Test
+    public void testAppendFileExtensionWithHierachicalURIAndExtension() {
+        String authority = "authority!";
+        String scheme = "unscheme";
+        String device = "device:";
+        String[] segments = { "alice", "bob.txt" };
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        uri = uri.appendFileExtension("html");
+        assertEquals("html", uri.fileExtension());
+    }
+    @Test
+    public void testAppendFileExtensionWithHierachicalURIWithoutExtension() {
+        String authority = "authority!";
+        String scheme = "unscheme";
+        String device = "device:";
+        String[] segments = { "alice", "bob" };
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        uri = uri.appendFileExtension("html");
+        assertEquals("html", uri.fileExtension());
+    }
+
+    @Test
+    public void testAppendFileExtensionWithoutExtention() {
+        String opaquePart = "opaque";
+        String scheme = "unscheme";
+        String fragment = "unfragment";
+        URI uri = URI.createGenericURI(scheme, opaquePart, fragment);
+        URI new_uri = uri.appendFileExtension("html");
+        assertEquals(new_uri.toString(), uri.toString());
+    }
+
+    /////////////////////////////////////////////////////////////////
+    ////////////TEST trimFileExtension()////////////////////////
+    /////////////////////////////////////////////////////////////////
+    @Test
+    public void trimFileExtensionWithfichierComplet() throws Exception {
         URI uri = URI.createURI("alice/bob/monfichier.ex");
         uri = uri.trimFileExtension();
 
         assertEquals("alice/bob/monfichier",uri.toString());
+    }
+    @Test
+    public void trimFileExtensionWhithFichierOnlyPoint() throws Exception {
+        URI uri = URI.createURI("alice/bob/monfichier.");
+        uri = uri.trimFileExtension();
+
+        assertEquals("alice/bob/monfichier",uri.toString());
+    }
+    @Test
+    public void trimFileExtensionWhithFichierWhithoutType() throws Exception {
+        URI uri = URI.createURI("alice/bob/monfichier");
+        uri = uri.trimFileExtension();
+
+        assertEquals("alice/bob/monfichier",uri.toString());
+    }
+    @Test
+    public void trimFileExtensionWhithoutFichier() throws Exception {
+        URI uri = URI.createURI("alice.com/bob/");
+        uri = uri.trimFileExtension();
+
+        assertEquals("alice.com/bob/",uri.toString());
     }
 
     /////////////////////////////////////////////////////////////////
@@ -1585,7 +1729,7 @@ public class URITest {
     /////////////////////////////////////////////////////////////////
 
     @Test
-    public void testIsPrefixTrueNoFragmentNoQuery() {
+    public void IsPrefixTrueNoFragmentNoQuery() {
         String[] segments = { "alice", "bob", "" };
         String query = null;
         String fragment = null;
@@ -1594,7 +1738,7 @@ public class URITest {
     }
 
     @Test
-    public void testIsPrefixFalseWithFragment() {
+    public void IsPrefixFalseWithFragment() {
         String[] segments = { "alice", "bob", "" };
         String query = null;
         String fragment = "unfragment";
@@ -1603,7 +1747,7 @@ public class URITest {
     }
 
     @Test
-    public void testIsPrefixFalseWithQuery() {
+    public void IsPrefixFalseWithQuery() {
         String[] segments = { "alice", "bob", "" };
         String query = "unequery";
         String fragment = null;
@@ -1614,7 +1758,7 @@ public class URITest {
 
 
     @Test
-    public void testIsPrefixFalseWithQueryAndFragment() {
+    public void IsPrefixFalseWithQueryAndFragment() {
         String[] segments = { "alice", "bob" };
         String query = "unequery";
         String fragment = "unfragment";
@@ -1663,7 +1807,7 @@ public class URITest {
     }
 
     @Test
-    public void ReplacePrefixTrue() {
+    public void ReplacePrefixEqualsNull() {
         String[] segments = { "alice", "bob", "" };
         String[] new_segments = { "bob", "bob", "" };
         String query = "unequery";
@@ -1678,11 +1822,11 @@ public class URITest {
         URI new_prefix = URI.createHierarchicalURI(new_segments, new_query,
                 new_fragment);
 
-        assertEquals(null, uri.replacePrefix(old_prefix, new_prefix));
+        assertNull(uri.replacePrefix(old_prefix, new_prefix));
     }
 
     @Test
-    public void ReplacePrefixtrue2() {
+    public void ReplacePrefixEquals() {
         String[] segments = { "alice", "bob", "" };
         String[] new_segments = { "alice", "bob", "" };
         String query = "unequery";
