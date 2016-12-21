@@ -1223,11 +1223,12 @@ public class URITest {
     }
 
     @Test
-    public void isPrefix() throws Exception {
+    public void replacePrefix(URI,URI) throws Exception {
 
     }*/
+
     /////////////////////////////////////////////////////////////////
-    ////////////TEST encodeOpaquePart(string,bool)////////////////////////
+    ////////////TEST replacePrefix(URI,URI)////////////////////////
     /////////////////////////////////////////////////////////////////
 
     @Test
@@ -1247,7 +1248,7 @@ public class URITest {
     }
     @Test
     public void encodeOpaquePartIgnoreTrueAndEscapedChar() {
-        assertEquals("abc%2056%2388",URI.encodeFragment("abc 56#88?ty-",true));
+        assertEquals("abc%2056%2388?ty-",URI.encodeFragment("abc 56#88?ty-",true));
     }
     @Test
     public void encodeOpaquePartIgnoreTrueAndNotEscapedChar() {
@@ -1282,7 +1283,7 @@ public class URITest {
     }
     @Test
     public void encodeAuthorityIgnoreTrueAndEscapedChar() {
-        assertEquals("abc%2056%2388",URI.encodeFragment("abc 56#88?ty-",true));
+        assertEquals("abc%2056%2388?ty-",URI.encodeFragment("abc 56#88?ty-",true));
     }
     @Test
     public void encodeAuthorityIgnoreTrueAndNotEscapedChar() {
@@ -1318,7 +1319,7 @@ public class URITest {
     }
     @Test
     public void encodeSegmentIgnoreTrueAndEscapedChar() {
-        assertEquals("abc%2056%2388",URI.encodeFragment("abc 56#88?ty-",true));
+        assertEquals("abc%2056%2388?ty-",URI.encodeFragment("abc 56#88?ty-",true));
     }
     @Test
     public void encodeSegmentIgnoreTrueAndNotEscapedChar() {
