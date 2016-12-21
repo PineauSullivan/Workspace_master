@@ -1542,7 +1542,55 @@ public class URITest {
         assertEquals("/path%23", monUriTest.toPlatformString(false));
     }
 
+    ////////////////////////////////////////////////////////////////
+    ////////////TEST appendSegment /////////////////////////////////
+    ////////////////////////////////////////////////////////////////
+    @Test(expected = IllegalArgumentException.class)
+    public void appendSegmentException() throws Exception {
+        URI monUriTest = URI.createURI("jarr://test!/test:/test/test/bar?query#notnull");
+        monUriTest = monUriTest.appendSegment("segment/");
+    }
 
+    @Test
+    public void appendSegmentEquals() throws Exception {
+        String scheme = "test";
+        String authority = "test!";
+        String device = "test:";
+        String[] segments = { "foo", "bar" };
+        String query = "query";
+        String fragment = "notNull";
+        URI monUriTest = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        monUriTest = monUriTest.appendSegment("segment");
+        String[] s = { "foo", "bar", "segment" };
+        assertArrayEquals(s, monUriTest.segments());
+    }
+
+    ////////////////////////////////////////////////////////////////
+    ////////////TEST appendSegments ////////////////////////////////
+    ////////////////////////////////////////////////////////////////
+    @Test(expected = IllegalArgumentException.class)
+    public void appendSegments() throws Exception {
+        String[] s = { "segment1", "segment2", "segment/" };
+        URI monUriTest = URI.createURI("jarr://test!/test:/test/test/bar?query#notnull");
+        monUriTest = monUriTest.appendSegments(s);
+    }
+
+    @Test
+    public void appendSegmentsEquals() throws Exception {
+        String scheme = "test";
+        String authority = "test!";
+        String device = "test:";
+        String[] segments = { "foo", "bar" };
+        String query = "query";
+        String fragment = "notNull";
+        String[] new_s = { "segment1", "segment2" };
+        URI monUriTest = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        monUriTest = monUriTest.appendSegments(new_s);
+        String[] s = { "foo", "bar", "segment1", "segment2" };
+        assertArrayEquals(s, monUriTest.segments());
+    }
     /*
 
 
