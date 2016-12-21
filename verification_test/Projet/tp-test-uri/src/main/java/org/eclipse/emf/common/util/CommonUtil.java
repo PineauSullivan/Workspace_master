@@ -22,7 +22,7 @@ import org.eclipse.emf.common.CommonPlugin;
  * specifically a {@link #STRING_POOL string pool}, 
  * a {@link SegmentSequence#STRING_ARRAY_POOL string array pool},
  * a {@link SegmentSequence#POOL segment sequence pool}, 
- * and a {@link URI#POOL URI pool}.
+ * and a {@link URI_CONST#POOL URI pool}.
  * The weak referenced are optionally managed by a daemon thread.
  * The daemon thread is created by default only if there is no {@link System#setSecurityManager(SecurityManager) security manager},
  * but that default can be overridden by specifying a <code>true</code> or <code>false</code> for the {@link System#getProperty(String) system property} <code>"org.eclipse.emf.common.util.ReferenceClearingQueue"</code>.

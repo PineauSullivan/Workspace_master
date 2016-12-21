@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
 import java.util.Collections;
 
@@ -50,7 +49,7 @@ public class URITest {
         String scheme = "test";
         String opaquePart = "test";
         String fragment = "test";
-        assertEquals(URI.createGenericURI(scheme, opaquePart, fragment), URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, false, scheme, opaquePart, null, false, null, null).appendFragment(fragment));
+        assertEquals(URI.createGenericURI(scheme, opaquePart, fragment), URI_CONST.POOL.intern(false, URIPool.URIComponentsAccessUnit.VALIDATE_ALL, false, scheme, opaquePart, null, false, null, null).appendFragment(fragment));
     }
 
     /////////////////////////////////////////////////////////////////
@@ -94,7 +93,7 @@ public class URITest {
         String device = ":";
         String query = "test";
         String fragment = "test";
-        assertEquals(URI.createHierarchicalURI(scheme, authority, device, query, fragment), URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, scheme, authority, device, false, URI.NO_SEGMENTS, query).appendFragment(fragment));
+        assertEquals(URI.createHierarchicalURI(scheme, authority, device, query, fragment), URI_CONST.POOL.intern(false, URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, scheme, authority, device, false, URI_CONST.NO_SEGMENTS, query).appendFragment(fragment));
     }
 
     @Test
@@ -104,7 +103,7 @@ public class URITest {
         String device = null;
         String query = "test";
         String fragment = "test";
-        assertEquals(URI.createHierarchicalURI(scheme, authority, device, query, fragment), URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, scheme, authority, device, false, URI.NO_SEGMENTS, query).appendFragment(fragment));
+        assertEquals(URI.createHierarchicalURI(scheme, authority, device, query, fragment), URI_CONST.POOL.intern(false, URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, scheme, authority, device, false, URI_CONST.NO_SEGMENTS, query).appendFragment(fragment));
     }
 
     /////////////////////////////////////////////////////////////////
@@ -141,7 +140,7 @@ public class URITest {
         String[] segments = null;
         String query = null;
         String fragment = null;
-        assertEquals(URI.createHierarchicalURI(scheme, authority, device, segments, query, fragment), URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, scheme, authority, device, true, segments, query).appendFragment(fragment));
+        assertEquals(URI.createHierarchicalURI(scheme, authority, device, segments, query, fragment), URI_CONST.POOL.intern(false, URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, scheme, authority, device, true, segments, query).appendFragment(fragment));
     }
 
     /////////////////////////////////////////////////////////////////
@@ -152,7 +151,7 @@ public class URITest {
         String[] segments = null;
         String query = null;
         String fragment = null;
-        assertEquals(URI.createHierarchicalURI(segments, query, fragment), URI.POOL.intern(false, URI.URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, null, null, null, false, segments, query).appendFragment(fragment));
+        assertEquals(URI.createHierarchicalURI(segments, query, fragment), URI_CONST.POOL.intern(false, URIPool.URIComponentsAccessUnit.VALIDATE_ALL, true, null, null, null, false, segments, query).appendFragment(fragment));
     }
 
     /////////////////////////////////////////////////////////////////
@@ -168,7 +167,7 @@ public class URITest {
     @Test
     public void createURIdiese() throws Exception {
         String uri = "te#st";
-        assertEquals(URI.createURI(uri), URI.POOL.intern(uri.substring(0, 2)).appendFragment(uri.substring(2 + 1)));
+        assertEquals(URI.createURI(uri), URI_CONST.POOL.intern(uri.substring(0, 2)).appendFragment(uri.substring(2 + 1)));
     }
 
 
@@ -179,7 +178,7 @@ public class URITest {
     public void createURI1() throws Exception {
         String uri = "test";
         boolean ignoreEscaped = true;
-        assertEquals(URI.createURI(uri, ignoreEscaped), URI.createURIWithCache(URI.encodeURI(uri, ignoreEscaped, URI.FRAGMENT_LAST_SEPARATOR)));
+        assertEquals(URI.createURI(uri, ignoreEscaped), URI.createURIWithCache(URI.encodeURI(uri, ignoreEscaped, URI_CONST.FRAGMENT_LAST_SEPARATOR)));
     }
 
     /////////////////////////////////////////////////////////////////
@@ -208,13 +207,13 @@ public class URITest {
     @Test
     public void createURIWithCacheMoinsUn() throws Exception {
         String uri = "testdgxgfdfgdgfd";
-        assertEquals(URI.POOL.intern(uri), URI.createURIWithCache(uri));
+        assertEquals(URI_CONST.POOL.intern(uri), URI.createURIWithCache(uri));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void createURIWithCachePlusUn() {
         String uri = "te#stdgxgfdfgdgfd";
-        assertEquals(URI.POOL.intern(uri), URI.POOL.intern(uri.substring(0, 2)).appendFragment(uri.substring(2 + 1)));
+        assertEquals(URI_CONST.POOL.intern(uri), URI_CONST.POOL.intern(uri.substring(0, 2)).appendFragment(uri.substring(2 + 1)));
     }
 
     /////////////////////////////////////////////////////////////////
@@ -223,7 +222,7 @@ public class URITest {
     @Test
     public void createFileURI() throws Exception {
         String pathname = "test";
-        assertEquals(URI.createFileURI(pathname), URI.POOL.internFile(pathname));
+        assertEquals(URI.createFileURI(pathname), URI_CONST.POOL.internFile(pathname));
     }
 
 
@@ -233,7 +232,7 @@ public class URITest {
     @Test
     public void createPlatformResourceURI() throws Exception {
         String pathName = "test";
-        assertEquals(URI.createPlatformResourceURI(pathName), URI.createPlatformResourceURI(pathName, URI.ENCODE_PLATFORM_RESOURCE_URIS));
+        assertEquals(URI.createPlatformResourceURI(pathName), URI.createPlatformResourceURI(pathName, URI_CONST.ENCODE_PLATFORM_RESOURCE_URIS));
     }
 
     /////////////////////////////////////////////////////////////////
@@ -243,7 +242,7 @@ public class URITest {
     public void createPlatformResourceURI1() throws Exception {
         String pathName = "test";
         boolean encode = false;
-        assertEquals(URI.createPlatformResourceURI(pathName, encode), URI.POOL.intern(URI.SEGMENT_RESOURCE, pathName, encode));
+        assertEquals(URI.createPlatformResourceURI(pathName, encode), URI_CONST.POOL.intern(URI_CONST.SEGMENT_RESOURCE, pathName, encode));
     }
 
 
@@ -254,7 +253,7 @@ public class URITest {
     public void createPlatformPluginURI() throws Exception {
         String pathName = "test";
         boolean encode = true;
-        assertEquals(URI.createPlatformPluginURI(pathName, encode), URI.POOL.intern(URI.SEGMENT_PLUGIN, pathName, encode));
+        assertEquals(URI.createPlatformPluginURI(pathName, encode), URI_CONST.POOL.intern(URI_CONST.SEGMENT_PLUGIN, pathName, encode));
     }
 
     /////////////////////////////////////////////////////////////////
@@ -509,6 +508,14 @@ public class URITest {
         assertTrue(monUriTest.hasAuthority());
     }
 
+    @Test
+    public void testHasAuthority() {
+        String[] segments = { "s1", "s2" };
+        String query = "query";
+        String fragment = "fragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        assertFalse(uri.hasAuthority());
+    }
     ////////////////////////////////////////////////////////////////
     ////////////TEST hasOpaquePart /////////////////////////////////
     ////////////////////////////////////////////////////////////////
@@ -1503,14 +1510,14 @@ public class URITest {
         URI monUriTest = URI.createHierarchicalURI(null, "query", "notnull");
         assertEquals(null, monUriTest.toFileString());
     }
-/* Fonction de Test UNIQUEMENT pour un OS Unix
+ //Fonction de Test UNIQUEMENT pour un OS Unix
     @Test
     public void toFileStringNotNullLinux() throws Exception {
         String[] segments = {"test1", "test2"};
         URI monUriTest = URI.createHierarchicalURI(segments, null, "notnull");
         assertEquals("test1/test2", monUriTest.toFileString());
     }
-*/
+
 /*Fonction de test UNIQUEMENT pour un OS Windows
     @Test
     public void toFileStringNotNullWindows() throws Exception {
@@ -1540,6 +1547,23 @@ public class URITest {
     public void toPlatformStringDecodeFalseNotNull() throws Exception {
         URI monUriTest = URI.createURI("platform:/test/path%23");
         assertEquals("/path%23", monUriTest.toPlatformString(false));
+    }
+
+    ////////////////////////////////////////////////////////////////
+    ////////////TEST isRelative ////////////////////////////////////
+    ////////////////////////////////////////////////////////////////
+    @Test
+    public void testIsRelative1() {
+        String value = "foo://truc/bidule/machin";
+        URI uri = URI.createURI(value);
+        assertFalse(uri.isRelative());
+    }
+
+    @Test
+    public void testIsRelative2() {
+        String value = "truc/bidule/machin";
+        URI uri = URI.createURI(value);
+        assertTrue(uri.isRelative());
     }
 
     ////////////////////////////////////////////////////////////////
