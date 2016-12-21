@@ -1503,13 +1503,22 @@ public class URITest {
         URI monUriTest = URI.createHierarchicalURI(null, "query", "notnull");
         assertEquals(null, monUriTest.toFileString());
     }
-
+/* Fonction de Test UNIQUEMENT pour un OS Unix
     @Test
-    public void toFileStringNotNull() throws Exception {
+    public void toFileStringNotNullLinux() throws Exception {
         String[] segments = {"test1", "test2"};
         URI monUriTest = URI.createHierarchicalURI(segments, null, "notnull");
-        assertEquals("test1\\test2", monUriTest.toFileString());
+        assertEquals("test1/test2", monUriTest.toFileString());
     }
+*/
+/*Fonction de test UNIQUEMENT pour un OS Windows
+    @Test
+    public void toFileStringNotNullWindows() throws Exception {
+        String[] segments = {"test1", "test2"};
+        URI monUriTest = URI.createHierarchicalURI(segments, null, "notnull");
+        assertEquals("test1/test2", monUriTest.toFileString());
+    }
+*/
 
     ////////////////////////////////////////////////////////////////
     ////////////TEST toPlatformString //////////////////////////////
@@ -1557,6 +1566,16 @@ public class URITest {
     /////////////////////////////////////////////////////////////////
     @Test
     public void trimSegmentsWithNegativeInt() throws Exception {
+        String[] segments = { "unsegment", "deuxsegment","" ,"troissegment"};
+        String query = "unequery";
+        String fragment = "unfragment";
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        URI uriTrim = uri.trimSegments(-1);
+        assertEquals(uri.toString(),uriTrim.toString());
+    }
+
+    @Test
+    public void trimSegmentsWith0Int() throws Exception {
         String[] segments = { "unsegment", "deuxsegment","" ,"troissegment"};
         String query = "unequery";
         String fragment = "unfragment";
