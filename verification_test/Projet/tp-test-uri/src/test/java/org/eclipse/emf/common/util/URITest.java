@@ -1591,23 +1591,6 @@ public class URITest {
         String[] s = { "foo", "bar", "segment1", "segment2" };
         assertArrayEquals(s, monUriTest.segments());
     }
-    /*
-
-
-
-
-
-
-
-    @Test
-    public void appendSegment() throws Exception {
-
-    }
-
-    @Test
-    public void appendSegments() throws Exception {
-
-    }*/
 
     /////////////////////////////////////////////////////////////////
     ////////////TEST trimSegments(int)////////////////////////
