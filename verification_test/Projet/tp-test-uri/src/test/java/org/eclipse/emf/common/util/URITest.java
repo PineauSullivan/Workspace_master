@@ -1508,7 +1508,7 @@ public class URITest {
     public void toFileStringNotNull() throws Exception {
         String[] segments = {"test1", "test2"};
         URI monUriTest = URI.createHierarchicalURI(segments, null, "notnull");
-        assertEquals("test1/test2", monUriTest.toFileString());
+        assertEquals("test1\\test2", monUriTest.toFileString());
     }
 
     ////////////////////////////////////////////////////////////////
