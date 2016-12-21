@@ -1135,12 +1135,160 @@ public class URITest {
         assertEquals(monUriTest,monUriTest.appendFragment(null));
     }
 
+
     @Test
     public void appendFragmentNotNull() throws Exception {
-
-
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = ":";
+        String[] segments = { "foo", "bar" };
+        String query = null;
+        String fragment = "notnull";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        monUriTest = monUriTest.appendFragment("fragment");
+        assertEquals("fragment", monUriTest.fragment());
     }
 
+
+    @Test
+    public void trimFragmentNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "te@s:t";
+        String device = ":";
+        String[] segments = { "bar", "foo" };
+        String query = null;
+        String fragment = "notnull";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        URI monUriTestBis = monUriTest.trimQuery();
+        assertEquals(monUriTest,monUriTestBis);
+    }
+
+    @Test
+    public void trimFragmentNotNull() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "test!";
+        String device = "test:";
+        String[] segments = { "bar", "foo" };
+        String query = "query";
+        String fragment = "notnull";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        URI monUriTestBis = monUriTest.trimQuery();
+        assertEquals("jarr://test!/test:/bar/foo#notnull",monUriTestBis.toString());
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void resolveUnParamException() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "test!";
+        String device = "test:";
+        String[] segments = { "bar", "foo" };
+        String query = "query";
+        String fragment = "notnull";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, segments, query, fragment);
+        URI base = URI.createURI("basebase");
+        monUriTest.resolve(base);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void resolveUnParamNotRelative() throws Exception {
+        URI monUriTest;
+        String scheme = "bla";
+        String authority = "test!";
+        String device = "test:";
+        String[] segments = { "bar", "foo" };
+        String query = "query";
+        String fragment = "notnull";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, segments, query, fragment);
+        URI base = monUriTest.createHierarchicalURI(segments, query, fragment);
+        monUriTest.resolve(base);
+    }
+
+    @Test
+    public void resolveUnParamTest() throws Exception {
+        String scheme = "scheme";
+        String authority = "authority!";
+        String device = "device:";
+        String[] segments = { "foo", "bar" };
+        String query = "query";
+        String fragment = "fragment";
+        URI base = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        assertEquals("scheme://authority!/device:/foo/foo/bar?query#fragment",
+                uri.resolve(base).toString());
+    }
+
+
+    @Test(expected=IllegalArgumentException.class)
+    public void resolveDeuxParamException() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "test!";
+        String device = "test:";
+        String[] segments = { "bar", "foo" };
+        String query = "query";
+        String fragment = "notnull";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, segments, query, fragment);
+        URI base =  URI.createHierarchicalURI(segments, query, fragment);;
+        monUriTest.resolve(base,true);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void resolveDeuxParamNotHierarchical() throws Exception {
+        URI monUriTest;
+        String scheme = "jarr";
+        String authority = "test!";
+        String device = "test:";
+        String[] segments = { "bar", "foo" };
+        String query = "query";
+        String fragment = "notnull";
+        monUriTest = URI.createHierarchicalURI(scheme, authority, device, segments, query, fragment);
+        URI base = URI.createURI("basebase");
+        monUriTest.resolve(base,true);
+    }
+
+    @Test
+    public void resolveDeuxParamTrue() throws Exception {
+        String scheme = "jarr";
+        String authority = "test!";
+        String device = "test:";
+        String[] segments = { "foo", "bar" };
+        String query = "query";
+        String fragment = "notnull";
+        URI base = URI.createHierarchicalURI(scheme, authority, device,
+                segments, query, fragment);
+        URI uri = URI.createHierarchicalURI(segments, query, fragment);
+        assertEquals("jarr://test!/test:/foo/foo/bar?query#notnull",
+                uri.resolve(base, true).toString());
+    }
+
+
+
+    @Test
+    public void deresolveNotHi() throws Exception {
+        URI monUriTest = URI
+                .createURI("jarr://test!/test:/foo/foo/bar?query#notnull");
+        URI base = monUriTest.createURI("here");
+        assertEquals(monUriTest.toString(), monUriTest.deresolve(base).toString());
+    }
+
+    @Test
+    public void deresolveRelative() throws Exception {
+        String[] segments = { "test", "bar" };
+        String query = "query";
+        String fragment = "notnull";
+        URI monUriTest = URI
+                .createURI("jarr://test!/test:/test/test/bar?query#notnull");
+        URI base = URI.createHierarchicalURI(segments, query, fragment);
+        assertEquals(monUriTest.toString(), monUriTest.deresolve(base).toString());
+    }
 
 
     /*
@@ -1150,27 +1298,6 @@ public class URITest {
 
 
 
-
-
-    @Test
-    public void trimFragment() throws Exception {
-
-    }
-
-    @Test
-    public void resolve() throws Exception {
-
-    }
-
-    @Test
-    public void resolve1() throws Exception {
-
-    }
-
-    @Test
-    public void deresolve() throws Exception {
-
-    }
 
     @Test
     public void deresolve1() throws Exception {
