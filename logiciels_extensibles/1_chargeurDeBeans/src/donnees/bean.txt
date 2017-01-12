@@ -1,0 +1,4 @@
+class = dependances.Personne
+Nom = toto
+Ville = Nantes
+Age = 12
