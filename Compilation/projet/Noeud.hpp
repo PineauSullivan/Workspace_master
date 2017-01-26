@@ -27,7 +27,6 @@ class Noeud{
 
 		Noeud * getClasse();
 
-
-}
+};
 
 #endif // NOEUD_HPP

@@ -22,10 +22,12 @@ class grammaire{
 
 		Noeud * genStar(Noeud * p);
 
-		void genAtom(int code, int action, ATOMETYPES type);
+		Noeud * genAtom(int code, int action, ATOMETYPES type);
 		
 		Noeud * genUN(Noeud * p);
-}
+
+		Noeud * genForet();
+};
 
 
 #endif // GRAMMAIRE_HPP

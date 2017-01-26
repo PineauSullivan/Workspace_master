@@ -21,8 +21,6 @@ class Atom : Noeud{
 	public:
 		Atom(int code, int action, ATOMETYPES type);
 
-
-
 }
 
 #endif // ATOM_HPP
