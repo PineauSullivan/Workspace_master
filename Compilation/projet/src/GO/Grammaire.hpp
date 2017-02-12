@@ -5,15 +5,12 @@
  * @brief Définition d'une classe Grammaire
  *
 **/
- 
-
-#include "EnumerationType.cpp"
-#include "Noeud.cpp"
 
 #ifndef GRAMMAIRE_HPP
 #define GRAMMAIRE_HPP
 
-class grammaire{
+
+class Grammaire{
 	public:
 
 		Noeud * genConc(Noeud * p1, Noeud * p2);
@@ -22,11 +19,16 @@ class grammaire{
 
 		Noeud * genStar(Noeud * p);
 
-		Noeud * genAtom(int code, int action, ATOMETYPES type);
+		Noeud * genAtom(std::string code, int action, ATOMETYPES type);
 		
 		Noeud * genUN(Noeud * p);
 
-		Noeud * genForet();
+		Foret * genForet();
+
+		void afficheForet(Foret * F);
+
+		bool GoAnalyse(Noeud *noeud);
+
 };
 
 

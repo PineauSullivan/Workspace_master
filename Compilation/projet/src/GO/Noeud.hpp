@@ -6,27 +6,17 @@
  *
 **/
 
-#include "enumerationType.cpp"
-
 #ifndef NOEUD_HPP
 #define NOEUD_HPP
 
 class Noeud{
 	private:
-		Noeud * arbreGauche;
-		Noeud * arbreDroit;
-		OPERATIONS classe;
-
+		OPERATIONS classname;
 
 	public:
-		Noeud(Noeud * aG, Noeud * aD, OPERATIONS cl);
-
-		Noeud * getArbreGauche();
-
-		Noeud * getArbreDroit();
-
-		Noeud * getClasse();
-
+		Noeud();
+		void setOperations(OPERATIONS name);
+		virtual std::string toString(int depth) = 0;
 };
 
 #endif // NOEUD_HPP

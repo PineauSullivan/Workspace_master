@@ -5,22 +5,22 @@
  * @brief Définition d'une classe de Atom
  *
 **/
+using namespace std;
  
-#include "enumerationType.cpp"
-
 #ifndef ATOM_HPP
 #define ATOM_HPP
 
-class Atom : Noeud{
+class Atom : public Noeud{
 	private:
-		int code;
+		std::string code;
 		int action;
 		ATOMETYPES type;
 
 
 	public:
-		Atom(int code, int action, ATOMETYPES type);
+		Atom(std::string code, int action, ATOMETYPES type);
+		std::string toString(int level);
 
-}
+};
 
 #endif // ATOM_HPP

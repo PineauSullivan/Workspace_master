@@ -8,21 +8,9 @@
 
 #include "Noeud.hpp"
 
-Noeud::Noeud(Noeud * aG, Noeud * aD, OPERATIONS cl){
-	arbreGauche = aG;
-	arbreDroit = aD;
-	classe = cl;
-
+Noeud::Noeud(){
 }
 
-Noeud * Noeud::getArbreGauche(){
-	return arbreGauche;
-}
-
-Noeud * Noeud::getArbreDroit(){
-	return arbreDroit;
-}
-
-Noeud * Noeud::getClasse(){
-	return classe;
+void Noeud::setOperations(OPERATIONS name){
+	this->classname =  name;
 }
