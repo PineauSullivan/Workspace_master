@@ -18,9 +18,13 @@ int main()
 	Grammaire gram;
 	Foret * foret = gram.genForet();
 	gram.afficheForet(foret);
-	if(gram.GoAnalyse(foret[1]))
-		std::cout<<"Analyse ok"<<std::endl;
-	else	
-		std::cout<<"Analyse Non"<<std::endl;
+
+	std::cout<<std::endl;
+	std::cout<<"------------------"<<std::endl;
+	std::string str_go_analyse = (gram.GoAnalyse(foret[1]))?"\033[1;32mTRUE\033[0m":"\033[1;31mFALSE\033[0m";
+	std::cout<<"|Analyse| -> " + str_go_analyse <<std::endl;
+	std::cout<<"------------------"<<std::endl;
+	std::cout<<std::endl;
+
 	return 0;
 }
