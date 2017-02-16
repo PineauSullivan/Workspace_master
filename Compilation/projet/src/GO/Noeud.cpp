@@ -14,3 +14,7 @@ Noeud::Noeud(){
 void Noeud::setOperations(OPERATIONS name){
 	this->classname =  name;
 }
+
+OPERATIONS Noeud::donneClassname(){
+	return this->classname;
+}

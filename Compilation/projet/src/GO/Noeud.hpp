@@ -17,6 +17,7 @@ class Noeud{
 		Noeud();
 		void setOperations(OPERATIONS name);
 		virtual std::string toString(int depth) = 0;
+		OPERATIONS donneClassname();
 };
 
 #endif // NOEUD_HPP
