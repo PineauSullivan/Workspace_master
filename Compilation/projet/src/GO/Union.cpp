@@ -26,3 +26,11 @@ std::string Union::toString(int depth){
 	}
     return "---> Union \n" + branchLeft + this->left->toString(depth + 1) + "\n" + branchRight + this->right->toString(depth + 1) + "\n";
 }
+
+Noeud* Union::droite(){
+	this->right;
+}
+
+Noeud* Union::gauche(){
+	this->left;
+}

@@ -24,3 +24,7 @@ std::string Star::toString(int depth){
 
     return "---> Star \n" + branch + this->star->toString(depth + 1) + "\n";
 }
+
+Noeud* Star::gauche(){
+	this->star;
+}

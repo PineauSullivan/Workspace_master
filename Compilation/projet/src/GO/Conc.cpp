@@ -27,3 +27,12 @@ std::string Conc::toString(int depth){
 
     return "---> Conc \n" + branchLeft + this->left->toString(depth + 1) + "\n" + branchRight + this->right->toString(depth + 1);
 }
+
+
+Noeud* Conc::droite(){
+	this->right;
+}
+
+Noeud* Conc::gauche(){
+	this->left;
+}

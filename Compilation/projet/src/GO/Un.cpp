@@ -24,3 +24,8 @@ std::string Un::toString(int depth){
 
     return "---> Un \n" + branch + this->un->toString(depth +1) + "\n";
 }
+
+
+Noeud* Un::gauche(){
+	this->un;
+}

@@ -18,6 +18,12 @@ class Noeud{
 		void setOperations(OPERATIONS name);
 		virtual std::string toString(int depth) = 0;
 		OPERATIONS donneClassname();
+		virtual Noeud* droite();
+		virtual Noeud* gauche();
+		virtual ATOMETYPES donneType();
+		virtual int donneAction();
+		virtual std::string donneCode();
+
 };
 
 #endif // NOEUD_HPP

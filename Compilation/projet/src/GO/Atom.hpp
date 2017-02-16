@@ -20,7 +20,9 @@ class Atom : public Noeud{
 	public:
 		Atom(std::string code, int action, ATOMETYPES type);
 		std::string toString(int level);
-
+		virtual ATOMETYPES donneType();
+		virtual int donneAction();
+		virtual std::string donneCode();
 };
 
 #endif // ATOM_HPP

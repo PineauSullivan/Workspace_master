@@ -18,3 +18,23 @@ void Noeud::setOperations(OPERATIONS name){
 OPERATIONS Noeud::donneClassname(){
 	return this->classname;
 }
+
+Noeud* Noeud::droite(){
+	return NULL;
+}
+
+Noeud* Noeud::gauche(){
+	return NULL;
+}
+
+ATOMETYPES Noeud::donneType(){
+	return Terminal;
+}
+
+int Noeud::donneAction(){
+	return -1;
+}
+
+std::string Noeud::donneCode(){
+	return "";
+}

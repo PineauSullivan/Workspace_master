@@ -16,7 +16,8 @@ class Union : public Noeud{
 	public:
 		Union(Noeud *r, Noeud *l);
 		virtual std::string toString(int level);
-
+		virtual Noeud* droite();
+		virtual Noeud* gauche();
 
 };
 

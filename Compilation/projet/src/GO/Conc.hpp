@@ -16,6 +16,8 @@ class Conc : public Noeud{
 	public:
 		Conc(Noeud *r, Noeud *l);
 		virtual std::string toString(int level);
+		virtual Noeud* droite();
+		virtual Noeud* gauche();
 
 };
 

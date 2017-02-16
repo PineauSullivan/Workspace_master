@@ -102,5 +102,70 @@ void Grammaire::afficheForet(Foret * F){
 
 
 bool Grammaire::GoAnalyse(Noeud *noeud) {
-	return true;
+	bool analyse = false;
+	switch(noeud->donneClassname()){
+		case CONC:
+			if(GoAnalyse(noeud->gauche())){
+				analyse = GoAnalyse(noeud->droite());
+			}else{
+				analyse = false;
+			}
+			break;
+		
+		case UNION:
+			if(GoAnalyse(noeud->gauche())){
+				analyse = true;
+			}else{
+				analyse =  GoAnalyse(noeud->droite());
+			}
+			break;
+		
+		case STAR:
+			analyse = true;
+			while(GoAnalyse(noeud->gauche())){}
+			break;
+		
+		case UN:
+			analyse = true;
+			if(GoAnalyse(noeud->gauche())){};
+			break;
+		
+		case ATOM:
+			//REVOIR TOUS ATOM ET FONCTIONS GPAction, Scan
+			switch(noeud->donneType()){
+				case 0:
+					if(noeud->donneCode()==Scan(noeud->donneCode())){//A REVOIR !!!
+						analyse = true;
+						if(noeud->donneAction()!=0){
+							GPAction(noeud->donneAction());
+							//SCAN
+						}
+					}else{
+							analyse=false;
+					}
+					break;
+				case 1:
+					if(true){
+						if(noeud->donneAction()!=0){
+							GPAction(noeud->donneAction());
+							analyse = true;
+						}else{
+							analyse = false;
+						}
+					}
+					break;
+			}
+		break;
+	}
+    std::cout << "ANALYSE "<<analyse<<std::endl;;
+
+}
+
+void Grammaire::GPAction(int act){
+
+}
+
+
+std::string Grammaire::Scan(std::string code){
+	return code;
 }

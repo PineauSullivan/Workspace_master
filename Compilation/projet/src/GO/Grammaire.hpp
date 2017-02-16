@@ -29,6 +29,10 @@ class Grammaire{
 
 		bool GoAnalyse(Noeud *noeud);
 
+		void GPAction(int act);
+
+		std::string Scan(std::string code);
+
 };
 
 

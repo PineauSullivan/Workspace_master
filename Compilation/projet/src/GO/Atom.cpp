@@ -21,3 +21,16 @@ std::string Atom::toString(int depth){
 	std::string term = this->type ? "TERMINAL" : "NON-TERMINAL";
 	return "---> Atom : " + this->code + " ; " + act + " ; " + term;
 }
+
+ATOMETYPES Atom::donneType(){
+	return this->type;
+}
+
+int Atom::donneAction(){
+	this->action;
+}
+
+std::string Atom::donneCode(){
+	return this->code;
+}
+
