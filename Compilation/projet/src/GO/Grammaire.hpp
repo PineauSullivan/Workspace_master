@@ -27,9 +27,9 @@ class Grammaire{
 
 		void afficheForet(Foret * F);
 
-		bool GoAnalyse(Noeud *noeud);
+		bool GOAnalyse(Noeud *noeud);
 
-		void GPAction(int act);
+		void GOAction(int act);
 
 		std::string Scan(std::string code);
 

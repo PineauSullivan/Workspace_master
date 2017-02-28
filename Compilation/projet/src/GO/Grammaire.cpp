@@ -101,33 +101,33 @@ void Grammaire::afficheForet(Foret * F){
 
 
 
-bool Grammaire::GoAnalyse(Noeud *noeud) {
+bool Grammaire::GOAnalyse(Noeud *noeud) {
 	bool analyse = false;
 	switch(noeud->donneClassname()){
 		case CONC:
-			if(GoAnalyse(noeud->gauche())){
-				analyse = GoAnalyse(noeud->droite());
+			if(GOAnalyse(noeud->gauche())){
+				analyse = GOAnalyse(noeud->droite());
 			}else{
 				analyse = false;
 			}
 			break;
 		
 		case UNION:
-			if(GoAnalyse(noeud->gauche())){
+			if(GOAnalyse(noeud->gauche())){
 				analyse = true;
 			}else{
-				analyse =  GoAnalyse(noeud->droite());
+				analyse =  GOAnalyse(noeud->droite());
 			}
 			break;
 		
 		case STAR:
 			analyse = true;
-			while(GoAnalyse(noeud->gauche())){}
+			while(GOAnalyse(noeud->gauche())){}
 			break;
 		
 		case UN:
 			analyse = true;
-			if(GoAnalyse(noeud->gauche())){};
+			if(GOAnalyse(noeud->gauche())){};
 			break;
 		
 		case ATOM:
@@ -137,7 +137,7 @@ bool Grammaire::GoAnalyse(Noeud *noeud) {
 					if(noeud->donneCode()==Scan(noeud->donneCode())){//A REVOIR !!!
 						analyse = true;
 						if(noeud->donneAction()!=0){
-							GPAction(noeud->donneAction());
+							GOAction(noeud->donneAction());
 							//SCAN
 						}
 					}else{
@@ -147,7 +147,7 @@ bool Grammaire::GoAnalyse(Noeud *noeud) {
 				case 1:
 					if(true){
 						if(noeud->donneAction()!=0){
-							GPAction(noeud->donneAction());
+							GOAction(noeud->donneAction());
 							analyse = true;
 						}else{
 							analyse = false;
@@ -161,7 +161,7 @@ bool Grammaire::GoAnalyse(Noeud *noeud) {
 
 }
 
-void Grammaire::GPAction(int act){
+void Grammaire::GOAction(int act){
 
 }
 
