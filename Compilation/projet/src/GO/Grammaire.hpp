@@ -27,11 +27,13 @@ class Grammaire{
 
 		void afficheForet(Foret * F);
 
-		bool GOAnalyse(Noeud *noeud);
+		bool GOAnalyse(Noeud *noeud,  VariablesGlobales variables);
 
-		void GOAction(int act);
+		void GOAction(int act, std::string code, ATOMETYPES type, VariablesGlobales variables);
 
 		std::string Scan(std::string code);
+
+		std::string rechercheDico(std::string code, VariablesGlobales variables, bool terminal);
 
 };
 

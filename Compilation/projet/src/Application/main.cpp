@@ -16,12 +16,19 @@ int main()
 {
 	std::cout << "Test gen foret : " << std::endl;
 	Grammaire gram;
+	
 	Foret * foret = gram.genForet();
 	gram.afficheForet(foret);
 
+
+	VariablesGlobales * variables = new VariablesGlobales;
+	variables->foret = foret;
+	variables->pileGOAction = new PileGOAction;
+
+
 	std::cout<<std::endl;
 	std::cout<<"------------------"<<std::endl;
-	std::string str_go_analyse = (gram.GOAnalyse(foret[0]))?"\033[1;32mTRUE\033[0m":"\033[1;31mFALSE\033[0m";
+	std::string str_go_analyse = (gram.GOAnalyse(foret[0], * variables))?"\033[1;32mTRUE\033[0m":"\033[1;31mFALSE\033[0m";
 	std::cout<<"|Analyse| -> " + str_go_analyse <<std::endl;
 	std::cout<<"------------------"<<std::endl;
 	std::cout<<std::endl;

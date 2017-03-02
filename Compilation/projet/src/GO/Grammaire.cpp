@@ -101,33 +101,33 @@ void Grammaire::afficheForet(Foret * F){
 
 
 
-bool Grammaire::GOAnalyse(Noeud *noeud) {
+bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales variables) {
 	bool analyse = false;
 	switch(noeud->donneClassname()){
 		case CONC:
-			if(GOAnalyse(noeud->gauche())){
-				analyse = GOAnalyse(noeud->droite());
+			if(GOAnalyse(noeud->gauche(), variables)){
+				analyse = GOAnalyse(noeud->droite(), variables);
 			}else{
 				analyse = false;
 			}
 			break;
 		
 		case UNION:
-			if(GOAnalyse(noeud->gauche())){
+			if(GOAnalyse(noeud->gauche(), variables)){
 				analyse = true;
 			}else{
-				analyse =  GOAnalyse(noeud->droite());
+				analyse =  GOAnalyse(noeud->droite(), variables);
 			}
 			break;
 		
 		case STAR:
 			analyse = true;
-			while(GOAnalyse(noeud->gauche())){}
+			while(GOAnalyse(noeud->gauche(), variables)){}
 			break;
 		
 		case UN:
 			analyse = true;
-			if(GOAnalyse(noeud->gauche())){};
+			if(GOAnalyse(noeud->gauche(), variables)){};
 			break;
 		
 		case ATOM:
@@ -137,7 +137,7 @@ bool Grammaire::GOAnalyse(Noeud *noeud) {
 					if(noeud->donneCode()==Scan(noeud->donneCode())){//A REVOIR !!!
 						analyse = true;
 						if(noeud->donneAction()!=0){
-							GOAction(noeud->donneAction());
+							GOAction(noeud->donneAction(), noeud->donneCode(), noeud->donneType(), variables);
 							//SCAN
 						}
 					}else{
@@ -147,7 +147,7 @@ bool Grammaire::GOAnalyse(Noeud *noeud) {
 				case 1:
 					if(true){
 						if(noeud->donneAction()!=0){
-							GOAction(noeud->donneAction());
+							GOAction(noeud->donneAction(), noeud->donneCode(), noeud->donneType(), variables);
 							analyse = true;
 						}else{
 							analyse = false;
@@ -161,20 +161,37 @@ bool Grammaire::GOAnalyse(Noeud *noeud) {
 
 }
 
-void Grammaire::GOAction(int act){
-	Noeud *T1;
-	Noeud *T2;
+void Grammaire::GOAction(int act, std::string code, ATOMETYPES type, VariablesGlobales variables){
+	Noeud *t1;
+	Noeud *t2;
 	switch(act){
 		case 1:
+			t1 = variables.pileGOAction->pile.top();
+			variables.pileGOAction->pile.pop();
+			t2 = variables.pileGOAction->pile.top();
+			variables.pileGOAction->pile.pop();
+
+			//A[T2^cod+5]=T1
 			
 			break;
 		case 2:
-
+			variables.pileGOAction->pile.push(
+				genAtom(rechercheDico(code, variables, false), act, type)
+				);
 			break;
 		case 3:
+			t1 = variables.pileGOAction->pile.top();
+			variables.pileGOAction->pile.pop();
+			t2 = variables.pileGOAction->pile.top();
+			variables.pileGOAction->pile.pop();
+
 
 			break;
 		case 4:
+			t1 = variables.pileGOAction->pile.top();
+			variables.pileGOAction->pile.pop();
+			t2 = variables.pileGOAction->pile.top();
+			variables.pileGOAction->pile.pop();
 
 			break;
 		case 5:
@@ -196,3 +213,9 @@ void Grammaire::GOAction(int act){
 std::string Grammaire::Scan(std::string code){
 	return code;
 }
+
+std::string Grammaire::rechercheDico(std::string code, VariablesGlobales variables, bool terminal){
+	return "";
+}
+
+
