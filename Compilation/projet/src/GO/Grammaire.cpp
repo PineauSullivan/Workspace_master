@@ -134,7 +134,7 @@ bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales variables) {
 			//REVOIR TOUS ATOM ET FONCTIONS GPAction, Scan
 			switch(noeud->donneType()){
 				case 0:
-					if(noeud->donneCode()==Scan(noeud->donneCode())){//A REVOIR !!!
+					if(noeud->donneCode()==Scan(&variables)){//A REVOIR !!!
 						analyse = true;
 						if(noeud->donneAction()!=0){
 							GOAction(noeud->donneAction(), noeud->donneCode(), noeud->donneType(), variables);
@@ -210,8 +210,35 @@ void Grammaire::GOAction(int act, std::string code, ATOMETYPES type, VariablesGl
 }
 
 
-std::string Grammaire::Scan(std::string code){
-	return code;
+std::string Grammaire::Scan(VariablesGlobales * variables){
+	std::string result = "";
+	if(variables->grammaire.size()>variables->scan_ligne){
+		if(variables->grammaire[variables->scan_ligne].size()>variables->scan_col){
+			int i = variables->scan_col;
+			bool ok = true;
+			while(variables->grammaire[variables->scan_ligne].size()>variables->scan_col&&ok){
+				std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
+				if(st!=" "&&st!=""){
+					result = result + st;
+				}else{
+					ok= false;
+				}
+				variables->scan_col++;
+			}
+			if(variables->grammaire[variables->scan_ligne].size()==variables->scan_col){
+				variables->scan_ligne++;
+				variables->scan_col = 0;
+			}
+		}
+	}
+	if(result==""&&variables->grammaire[variables->scan_ligne].size()==variables->scan_col){
+		result = ',';
+	}
+	if(result==""&&variables->grammaire.size()==variables->scan_ligne){
+		result = ";";
+	}
+
+	return result;
 }
 
 std::string Grammaire::rechercheDico(std::string code, VariablesGlobales variables, bool terminal){

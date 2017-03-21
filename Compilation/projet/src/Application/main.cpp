@@ -24,7 +24,16 @@ int main()
 	VariablesGlobales * variables = new VariablesGlobales;
 	variables->foret = foret;
 	variables->pileGOAction = new PileGOAction;
+	variables->scan_col = 0;
+	variables->scan_ligne = 0;
 
+	std::vector<std::string> grammaire;
+  	grammaire.insert (grammaire.end(),"s := a + b");
+  	grammaire.insert (grammaire.end(),"z := c + x");
+  	grammaire.insert (grammaire.end(),"r := a + z");
+  	grammaire.insert (grammaire.end(),"h := m + t");
+  	grammaire.insert (grammaire.end(),"p := q + x");
+  	variables->grammaire=grammaire;
 
 	std::cout<<std::endl;
 	std::cout<<"------------------"<<std::endl;
@@ -32,6 +41,20 @@ int main()
 	std::cout<<"|Analyse| -> " + str_go_analyse <<std::endl;
 	std::cout<<"------------------"<<std::endl;
 	std::cout<<std::endl;
+
+	std::string result = "";
+	int regle = 1;
+	do{
+		result = gram.Scan(variables);
+		if(result!=";"){
+			std::cout<<regle<<" -> "<<result<<std::endl;
+		}
+		if(variables->scan_col==0){
+			regle++;
+			std::cout<<std::endl;
+		}
+	}while(result!=";");
+	
 
 	return 0;
 }
