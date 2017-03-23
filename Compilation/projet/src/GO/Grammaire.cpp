@@ -158,6 +158,7 @@ bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales variables) {
 		break;
 	}
     std::cout << "ANALYSE "<<analyse<<std::endl;;
+	return analyse;
 
 }
 
