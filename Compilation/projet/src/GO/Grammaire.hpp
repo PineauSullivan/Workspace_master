@@ -31,7 +31,7 @@ class Grammaire{
 
 		void GOAction(int act, std::string code, ATOMETYPES type, VariablesGlobales variables);
 
-		std::string Scan(VariablesGlobales * variables);
+		Noeud* Scan(VariablesGlobales * variables);
 
 		std::string rechercheDico(std::string code, VariablesGlobales variables, bool terminal);
 

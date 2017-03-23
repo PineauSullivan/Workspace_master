@@ -134,7 +134,7 @@ bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales variables) {
 			//REVOIR TOUS ATOM ET FONCTIONS GPAction, Scan
 			switch(noeud->donneType()){
 				case 0:
-					if(noeud->donneCode()==Scan(&variables)){//A REVOIR !!!
+					if(noeud->donneCode()==Scan(&variables)->donneCode()){//A REVOIR !!!
 						analyse = true;
 						if(noeud->donneAction()!=0){
 							GOAction(noeud->donneAction(), noeud->donneCode(), noeud->donneType(), variables);
@@ -210,8 +210,9 @@ void Grammaire::GOAction(int act, std::string code, ATOMETYPES type, VariablesGl
 }
 
 
-std::string Grammaire::Scan(VariablesGlobales * variables){
+Noeud* Grammaire::Scan(VariablesGlobales * variables){
 	std::string result = "";
+	// Atom mon_atom;
 	if(variables->grammaire.size()>variables->scan_ligne){
 		if(variables->grammaire[variables->scan_ligne].size()>variables->scan_col){
 			int i = variables->scan_col;
@@ -231,14 +232,18 @@ std::string Grammaire::Scan(VariablesGlobales * variables){
 			}
 		}
 	}
-	if(result==""&&variables->grammaire[variables->scan_ligne].size()==variables->scan_col){
-		result = ',';
-	}
-	if(result==""&&variables->grammaire.size()==variables->scan_ligne){
-		result = ";";
-	}
+	if(result==";"){
+		variables->scan_ligne++;
+		variables->scan_col=0;
+	}else if(result.size()>=3){
 
-	return result;
+		std::cout<<"result reduit ->"<<result.substr(1,result.size()-2)<<std::endl;
+		std::cout<<"result nonreduit ->"<<result<<std::endl;
+		return genAtom(result.substr(1,result.size()-2),0, Terminal);
+	}else{
+		return genAtom(result.substr(0,result.size()-1),0, Terminal);
+		// result = result + " -> Nonterminal";
+	}
 }
 
 std::string Grammaire::rechercheDico(std::string code, VariablesGlobales variables, bool terminal){

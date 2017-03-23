@@ -28,11 +28,11 @@ int main()
 	variables->scan_ligne = 0;
 
 	std::vector<std::string> grammaire;
-  	grammaire.insert (grammaire.end(),"s := a + b");
-  	grammaire.insert (grammaire.end(),"z := c + x");
-  	grammaire.insert (grammaire.end(),"r := a + z");
-  	grammaire.insert (grammaire.end(),"h := m + t");
-  	grammaire.insert (grammaire.end(),"p := q + x");
+  	grammaire.insert (grammaire.end(),"'s' := 'a' '+' 'b' ,");
+  	grammaire.insert (grammaire.end(),"'z' := 'c' '+' 'x' ,");
+  	grammaire.insert (grammaire.end(),"'r' := 'a' '+' 'z' ,");
+  	grammaire.insert (grammaire.end(),"'h' := 'm' '+' 't' ,");
+  	grammaire.insert (grammaire.end(),"'p' := 'q' '+' 'x' ;");
   	variables->grammaire=grammaire;
 
 	std::cout<<std::endl;
@@ -42,18 +42,18 @@ int main()
 	std::cout<<"------------------"<<std::endl;
 	std::cout<<std::endl;
 
-	std::string result = "";
+	Noeud* result;
 	int regle = 1;
 	do{
 		result = gram.Scan(variables);
-		if(result!=";"){
-			std::cout<<regle<<" -> "<<result<<std::endl;
+		if(result->donneCode()!=";"){
+			std::cout<<regle<<" -> "<<result->donneCode()<<std::endl;
 		}
 		if(variables->scan_col==0){
 			regle++;
 			std::cout<<std::endl;
 		}
-	}while(result!=";");
+	}while(result->donneCode()!=";");
 	
 
 	return 0;
