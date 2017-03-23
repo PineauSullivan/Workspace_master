@@ -235,13 +235,11 @@ Noeud* Grammaire::Scan(VariablesGlobales * variables){
 	if(result==";"){
 		variables->scan_ligne++;
 		variables->scan_col=0;
+		return genAtom(result,0, Terminal);
 	}else if(result.size()>=3){
-
-		std::cout<<"result reduit ->"<<result.substr(1,result.size()-2)<<std::endl;
-		std::cout<<"result nonreduit ->"<<result<<std::endl;
 		return genAtom(result.substr(1,result.size()-2),0, Terminal);
 	}else{
-		return genAtom(result.substr(0,result.size()-1),0, Terminal);
+		return genAtom(result,0, Terminal);
 		// result = result + " -> Nonterminal";
 	}
 }

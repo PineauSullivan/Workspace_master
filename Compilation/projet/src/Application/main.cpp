@@ -42,9 +42,9 @@ int main()
 	std::cout<<"------------------"<<std::endl;
 	std::cout<<std::endl;
 
-	Noeud* result;
+	Noeud* result = gram.genAtom("",0,Terminal);
 	int regle = 1;
-	do{
+	while(result->donneCode()!=";"){
 		result = gram.Scan(variables);
 		if(result->donneCode()!=";"){
 			std::cout<<regle<<" -> "<<result->donneCode()<<std::endl;
@@ -53,7 +53,8 @@ int main()
 			regle++;
 			std::cout<<std::endl;
 		}
-	}while(result->donneCode()!=";");
+	}
+		std::cout<<"FIN"<<std::endl;
 	
 
 	return 0;
