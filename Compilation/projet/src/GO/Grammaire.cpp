@@ -210,7 +210,7 @@ void Grammaire::GOAction(int act, std::string code, ATOMETYPES type, VariablesGl
 
 }
 
-
+//A revoir
 Noeud* Grammaire::Scan(VariablesGlobales * variables){
 	std::string result = "";
 	// Atom mon_atom;
