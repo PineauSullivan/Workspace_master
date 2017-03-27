@@ -16,10 +16,17 @@ Atom::Atom(std::string c, int a, ATOMETYPES t){
 	setOperations(ATOM);
 }
 
+Atom::Atom(int c, int a, ATOMETYPES t){
+	code = std::to_string(c);
+	action = a;
+	type = t;
+	setOperations(ATOM);
+}
+
 std::string Atom::toString(int depth){
 	std::string act = std::to_string(this->action);
 	std::string term = this->type ? "TERMINAL" : "NON-TERMINAL";
-	return "---> Atom : " + this->code + " ; " + act + " ; " + term;
+	return "---> Atom : '" + this->code + "' ; " + act + " ; " + term;
 }
 
 ATOMETYPES Atom::donneType(){

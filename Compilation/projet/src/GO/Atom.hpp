@@ -14,11 +14,11 @@ class Atom : public Noeud{
 	private:
 		std::string code;
 		int action;
-		ATOMETYPES type;
-
+		ATOMETYPES type;		
 
 	public:
 		Atom(std::string code, int action, ATOMETYPES type);
+		Atom(int code, int action, ATOMETYPES type);
 		std::string toString(int level);
 		virtual ATOMETYPES donneType();
 		virtual int donneAction();

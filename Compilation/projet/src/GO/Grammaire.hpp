@@ -6,6 +6,8 @@
  *
 **/
 
+#include <regex>
+
 #ifndef GRAMMAIRE_HPP
 #define GRAMMAIRE_HPP
 
@@ -29,12 +31,31 @@ class Grammaire{
 
 		bool GOAnalyse(Noeud *noeud,  VariablesGlobales variables);
 
-		void GOAction(int act, std::string code, ATOMETYPES type, VariablesGlobales variables);
+		void GOAction(int actionG0, int actionGPL, std::string code, ATOMETYPES type, VariablesGlobales variables);
 
 		Noeud* Scan(VariablesGlobales * variables);
 
-		std::string rechercheDico(std::string code, VariablesGlobales variables, bool terminal);
+		std::string rechercheDicoNT(std::string code, VariablesGlobales variables);
 
+		bool estVariable(std::string chaine);
+
+		bool estApostrophe(std::string chaine);
+
+		bool estFleche(std::string chaine);
+
+		bool estDiese(std::string chaine);
+
+		bool finLigne(std::string chaine);
+
+		int donneActionChaine(VariablesGlobales* variables);
+
+		bool estEspace(std::string chaine);
+
+		bool estVide(std::string chaine);
+
+		std::string getString(VariablesGlobales* variables);
+
+		std::string getStringSansApostrophe(VariablesGlobales* variables);
 };
 
 

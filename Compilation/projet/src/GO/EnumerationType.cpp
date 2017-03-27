@@ -1,4 +1,4 @@
-enum ATOMETYPES { Terminal = 0, NonTerminal = 1 };
+enum ATOMETYPES { Terminal = 1, NonTerminal = 0 };
 
 enum GPLTYPE { ENTIER = 0, IDENT = 1, SYMBOLE = 2 };
 

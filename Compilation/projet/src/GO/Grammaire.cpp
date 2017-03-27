@@ -38,7 +38,7 @@ Foret * Grammaire::genForet(){
 				genConc(
 					genConc(
 						genConc(genAtom("N", 0, NonTerminal), 
-						genAtom("F", 0, Terminal)
+						genAtom(":=", 0, Terminal)
 					),
 					genAtom("E", 0, NonTerminal)
 				),
@@ -50,12 +50,12 @@ Foret * Grammaire::genForet(){
 
 
 	//Règle 2 de la grammaire des grammaires
-	g[1] = genAtom("I",2,Terminal);
+	g[1] = genAtom("IDNTER",2,Terminal);
 
 
 	//Règle 3 de la grammaire des grammaires
 	g[2] = genConc(
-			genAtom("I",0, NonTerminal),
+			genAtom("T",0, NonTerminal),
 			genStar(
 				genConc(
 					genAtom("+",0,Terminal),
@@ -137,7 +137,7 @@ bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales variables) {
 					if(noeud->donneCode()==Scan(&variables)->donneCode()){//A REVOIR !!!
 						analyse = true;
 						if(noeud->donneAction()!=0){
-							GOAction(noeud->donneAction(), noeud->donneCode(), noeud->donneType(), variables);
+							GOAction(noeud->donneAction(),0, noeud->donneCode(), noeud->donneType(), variables);
 							//SCAN
 						}
 					}else{
@@ -147,7 +147,7 @@ bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales variables) {
 				case 1:
 					if(true){
 						if(noeud->donneAction()!=0){
-							GOAction(noeud->donneAction(), noeud->donneCode(), noeud->donneType(), variables);
+							GOAction(noeud->donneAction(),0, noeud->donneCode(), noeud->donneType(), variables);
 							analyse = true;
 						}else{
 							analyse = false;
@@ -162,22 +162,28 @@ bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales variables) {
 
 }
 
-void Grammaire::GOAction(int act, std::string code, ATOMETYPES type, VariablesGlobales variables){
+void Grammaire::GOAction(int actionG0, int actionGPL, std::string code, ATOMETYPES type, VariablesGlobales variables){
 	Noeud *t1;
 	Noeud *t2;
-	switch(act){
+	switch(actionG0){
+		case 0:
+		variables.pileGOAction->pile.push(
+				genAtom(code, actionGPL, type)
+				);
+		break;
 		case 1:
 			t1 = variables.pileGOAction->pile.top();
 			variables.pileGOAction->pile.pop();
 			t2 = variables.pileGOAction->pile.top();
 			variables.pileGOAction->pile.pop();
 
-			//A[T2^cod+5]=T1
+			variables.foretsGrammaire.push_back(t1);
+			// variables.dicont[t2->donneCode()] = variables.foretsGrammaire.size()-1;
 			
 			break;
 		case 2:
 			variables.pileGOAction->pile.push(
-				genAtom(rechercheDico(code, variables, false), act, type)
+				genAtom(rechercheDicoNT(code, variables), actionGPL, Terminal)
 				);
 			break;
 		case 3:
@@ -186,6 +192,7 @@ void Grammaire::GOAction(int act, std::string code, ATOMETYPES type, VariablesGl
 			t2 = variables.pileGOAction->pile.top();
 			variables.pileGOAction->pile.pop();
 
+			variables.pileGOAction->pile.push(genUnion(t1,t2));
 
 			break;
 		case 4:
@@ -194,15 +201,38 @@ void Grammaire::GOAction(int act, std::string code, ATOMETYPES type, VariablesGl
 			t2 = variables.pileGOAction->pile.top();
 			variables.pileGOAction->pile.pop();
 
+			variables.pileGOAction->pile.push(genConc(t1,t2));
+
 			break;
 		case 5:
+			if(type == 0){
+				variables.pileGOAction->pile.push(
+				genAtom(code, actionGPL, Terminal)
+				);
+			}
+			else{
+				variables.pileGOAction->pile.push(
+				genAtom(rechercheDicoNT(code, variables), actionGPL, NonTerminal)
+				);
+			}
 
 			break;
 		case 6:
+			t1 = variables.pileGOAction->pile.top();
+			variables.pileGOAction->pile.pop();
+
+			variables.pileGOAction->pile.push(
+				genStar(t1)
+				);
 
 			break;
 		case 7:
+			t1 = variables.pileGOAction->pile.top();
+			variables.pileGOAction->pile.pop();
 
+			variables.pileGOAction->pile.push(
+				genUN(t1)
+				);
 			break;
 	
 	}
@@ -213,39 +243,168 @@ void Grammaire::GOAction(int act, std::string code, ATOMETYPES type, VariablesGl
 //A revoir !!!!
 Noeud* Grammaire::Scan(VariablesGlobales * variables){
 	std::string result = "";
-	// Atom mon_atom;
+	Noeud* atomResult;
+	bool terminal=false;
+	int action = 0;
+	bool fin = true;
+	
 	if(variables->grammaire.size()>variables->scan_ligne){
 		if(variables->grammaire[variables->scan_ligne].size()>variables->scan_col){
 			int i = variables->scan_col;
-			bool ok = true;
-			while(variables->grammaire[variables->scan_ligne].size()>variables->scan_col&&ok){
-				std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
-				if(st!=" "&&st!=""){
-					result = result + st;
-				}else{
-					ok= false;
-				}
+			std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
+			if(finLigne(st)){
+				terminal = true;
+				result = st;
+			}else if(estEspace(st)){
 				variables->scan_col++;
+				return Scan(variables);
+			}else if(estApostrophe(st)){
+				fin = false;
+				variables->scan_col++;
+				result = getString(variables);
+				variables->scan_col++;
+				std::string actionTest= variables->grammaire[variables->scan_ligne].substr(variables->scan_col,1);
+				action = 0;
+				if(estDiese(actionTest)){
+					action = donneActionChaine(variables);
+				}
+				terminal = true;
+
+			}else{
+				result = getStringSansApostrophe(variables);
+				std::string actionTest=variables->grammaire[variables->scan_ligne].substr(variables->scan_col,1);
+				if(estDiese(actionTest)){
+					action = donneActionChaine(variables);
+				}
+				terminal = false;
+				if(actionTest==";"){
+					terminal = true;	
+				}
 			}
-			if(variables->grammaire[variables->scan_ligne].size()==variables->scan_col){
-				variables->scan_ligne++;
-				variables->scan_col = 0;
+			if(terminal==true){
+				atomResult = genAtom(result, action, Terminal);
+			}else{
+				atomResult = genAtom(result,action, NonTerminal);
 			}
+
 		}
 	}
-	if(result==";"){
+
+	if(estEspace(result)||estVide(result)){
+		variables->scan_col++;
+		return Scan(variables);
+	}
+
+	if(estFleche(result)){
+		atomResult = genAtom(result,action, Terminal);
+	}
+	if(finLigne(result)&&fin){
 		variables->scan_ligne++;
 		variables->scan_col=0;
-		return genAtom(result,0, Terminal);
-	}else if(result.size()>=3){
-		return genAtom(result.substr(1,result.size()-2),0, Terminal);
-	}else{
-		return genAtom(result,0, Terminal);
-		// result = result + " -> Nonterminal";
 	}
+
+	return atomResult;
 }
 
-std::string Grammaire::rechercheDico(std::string code, VariablesGlobales variables, bool terminal){
+
+bool Grammaire::estVariable(std::string chaine){
+	if (regex_match(chaine, regex("[a-zA-Z][a-zA-Z0-9]*"))){
+        return true;
+    }
+    return false;
+}
+
+
+bool Grammaire::estApostrophe(std::string chaine){
+ 	if (regex_match(chaine, regex("[']"))){
+        return true;
+    }
+    return false;
+}
+
+bool Grammaire::estVide(std::string chaine){
+        return chaine.size()==0;
+}
+
+bool Grammaire::estDiese(std::string chaine){
+ 	if (regex_match(chaine, regex("[#]"))){
+        return true;
+    }
+    return false;
+}
+
+bool Grammaire::estFleche(std::string chaine){
+ 	if (regex_match(chaine, regex(":="))){
+        return true;
+    }
+    return false;
+}
+
+bool Grammaire::finLigne(std::string chaine){
+ 	if (regex_match(chaine, regex("[,;]"))){
+        return true;
+    }
+    return false;
+}
+
+int Grammaire::donneActionChaine(VariablesGlobales* variables){
+ 	std::string result = "";
+	int i = variables->scan_col;
+	variables->scan_col++;
+	std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
+	std::string stringTest=st;
+	while(variables->grammaire[variables->scan_ligne].size()>variables->scan_col&&!estEspace(stringTest)){
+		std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
+		stringTest=st;
+		result = result + stringTest;
+		variables->scan_col++;
+	}
+	if(variables->grammaire[variables->scan_ligne].size()==variables->scan_col){
+		variables->scan_ligne++;
+		variables->scan_col = 0;
+	}
+	int action = -1;
+	if (result != "")
+	{
+		action = std::atoi(result.c_str());
+	}
+    return action;
+}
+
+bool Grammaire::estEspace(std::string chaine){
+ 	if (regex_match(chaine, regex(" "))){
+        return true;
+    }
+    return false;
+}
+
+std::string Grammaire::getString(VariablesGlobales* variables){
+	std::string result = "";
+	std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
+	std::string stringTest=st;
+	while(!estApostrophe(stringTest)&&!estEspace(stringTest)){
+		result = result + stringTest;
+		variables->scan_col++;
+		std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
+		stringTest=st;
+	}
+	return result;
+}
+
+std::string Grammaire::getStringSansApostrophe(VariablesGlobales* variables){
+	std::string result = "";
+	std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
+	std::string stringTest=st;
+	while(!estDiese(stringTest)&&!estEspace(stringTest)){
+		result = result + stringTest;
+		variables->scan_col++;
+		std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
+		stringTest=st;
+	}
+	return result;
+}
+
+std::string Grammaire::rechercheDicoNT(std::string code, VariablesGlobales variables){
 	return "";
 }
 
