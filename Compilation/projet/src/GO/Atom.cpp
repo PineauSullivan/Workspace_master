@@ -10,17 +10,17 @@
 #include "Atom.hpp"
 
 Atom::Atom(std::string c, int a, ATOMETYPES t){
+	setOperations(ATOM);
 	code = c;
 	action = a;
 	type = t;
-	setOperations(ATOM);
 }
 
 Atom::Atom(int c, int a, ATOMETYPES t){
+	setOperations(ATOM);
 	code = std::to_string(c);
 	action = a;
 	type = t;
-	setOperations(ATOM);
 }
 
 std::string Atom::toString(int depth){
@@ -34,7 +34,7 @@ ATOMETYPES Atom::donneType(){
 }
 
 int Atom::donneAction(){
-	this->action;
+	return this->action;
 }
 
 std::string Atom::donneCode(){

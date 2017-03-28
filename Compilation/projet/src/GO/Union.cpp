@@ -9,7 +9,7 @@
 #include "Union.hpp"
 
 
-Union::Union(Noeud *r, Noeud *l){
+Union::Union(Noeud *l, Noeud *r){
 	setOperations(UNION);
 	this->right = r;
 	this->left = l;
@@ -28,9 +28,9 @@ std::string Union::toString(int depth){
 }
 
 Noeud* Union::droite(){
-	this->right;
+	return this->right;
 }
 
 Noeud* Union::gauche(){
-	this->left;
+	return this->left;
 }

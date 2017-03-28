@@ -15,8 +15,8 @@ class Un : public Noeud{
 
 	public:
 		Un(Noeud *u);
-		virtual std::string toString(int level);
-		virtual Noeud* gauche();
+		std::string toString(int level);
+		Noeud* gauche();
 
 };
 

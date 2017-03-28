@@ -27,5 +27,5 @@ std::string Un::toString(int depth){
 
 
 Noeud* Un::gauche(){
-	this->un;
+	return this->un;
 }

@@ -26,5 +26,9 @@ std::string Star::toString(int depth){
 }
 
 Noeud* Star::gauche(){
-	this->star;
+	if (this->star==NULL)
+	{
+		std::cout<<"null!!! "<<std::endl;
+	}
+	return this->star;
 }

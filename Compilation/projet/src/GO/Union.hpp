@@ -14,10 +14,10 @@ class Union : public Noeud{
   		Noeud *right;
   		Noeud *left;
 	public:
-		Union(Noeud *r, Noeud *l);
-		virtual std::string toString(int level);
-		virtual Noeud* droite();
-		virtual Noeud* gauche();
+		Union(Noeud *l, Noeud *r);
+		std::string toString(int level);
+		Noeud* droite();
+		Noeud* gauche();
 
 };
 

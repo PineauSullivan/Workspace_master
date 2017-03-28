@@ -29,16 +29,104 @@ Noeud * Grammaire::genUN(Noeud * p){
 }
 
 
+void Grammaire::remplirDictionnaireG0(VariablesGlobales* variables){
+	variables->dictionnaireG0["terminaisonGPL"].push_back(";");
+
+	variables->dictionnaireG0["commencementRegle"].push_back("->");
+	variables->dictionnaireG0["commencementRegle"].push_back(":=");
+	variables->dictionnaireG0["terminaisonRegle"].push_back(",");
+
+	variables->dictionnaireG0["concatenation"].push_back(".");
+	variables->dictionnaireG0["union"].push_back("+");
+
+	variables->dictionnaireG0["comencementStar"].push_back("[");	
+	variables->dictionnaireG0["terminaisonStar"].push_back("]");
+
+	variables->dictionnaireG0["commencementUn"].push_back("(");	
+	variables->dictionnaireG0["terminaisonUn"].push_back(")");
+	variables->dictionnaireG0["commencementUn"].push_back("(\\");	
+	variables->dictionnaireG0["terminaisonUn"].push_back("\\)");
+
+	variables->dictionnaireG0["commencementTerminaux"].push_back("'");
+	variables->dictionnaireG0["terminaisonTerminaux"].push_back("'");
+
+	variables->dictionnaireG0["identificationTerminaux"].push_back("ELTER");
+	variables->dictionnaireG0["identificationNonTerminaux"].push_back("IDNTER");
+	variables->dictionnaireG0["identificationAction"].push_back("#");
+
+
+}
+
+
+// Foret * Grammaire::genForet(){
+// 	Foret *g = new Foret[5];
+
+// 	//Règle 1 de la grammaire des grammaires
+// 	g[0] = genConc(
+// 			genStar(
+// 				genConc(
+// 					genConc(
+// 						genConc(genAtom("N", 0, NonTerminal), 
+// 						genAtom("commencementRegle", 0, Terminal)
+// 					),
+// 					genAtom("E", 0, NonTerminal)
+// 				),
+// 				genAtom("terminaisonRegle", 1, Terminal)
+// 				)
+// 			),
+// 		genAtom("terminaisonGPL", 0, Terminal)
+// 		);
+
+
+// 	//Règle 2 de la grammaire des grammaires
+// 	g[1] = genAtom("identificationNonTerminaux",2,Terminal);
+
+
+// 	//Règle 3 de la grammaire des grammaires
+// 	g[2] = genConc(
+// 			genAtom("T",0, NonTerminal),
+// 			genStar(
+// 				genConc(
+// 					genAtom("union",0,Terminal),
+// 					genAtom("T",3,NonTerminal)
+// 				)
+// 			)
+// 		);
+
+// 	//Règle 4 de la grammaire des grammaires
+// 	g[3] = genConc(
+// 			genAtom("F",0, NonTerminal),
+// 			genStar(
+// 				genConc(
+// 					genAtom("concatenation",0,Terminal),
+// 					genAtom("F",4,NonTerminal)
+// 				)
+// 			)
+// 		);
+
+// 	//Règle 5 de la grammaire des grammaires
+// 	g[4] = genUnion(
+// 	  genUnion(
+// 	      genUnion(genUnion(genAtom("identificationNonTerminaux", 5, Terminal), genAtom("identificationTerminaux", 5, Terminal)),
+// 	             genConc(genAtom("commencementUn", 0, Terminal), genConc(genAtom("E", 0, NonTerminal),
+// 	                                                 genAtom("terminaisonUn", 0, Terminal)))),
+// 	      genConc(genAtom("comencementStar", 0, Terminal),
+// 	            genConc(genAtom("E", 0, NonTerminal), genAtom("terminaisonStar", 6, Terminal)))),
+// 	  genConc(genAtom("commencementUn", 0, Terminal),
+// 	        genConc(genAtom("E", 0, NonTerminal), genAtom("terminaisonUn", 7, Terminal))));
+
+// 	return g;
+// }
 Foret * Grammaire::genForet(){
-	Foret *g = new Foret[5];
+	Foret * g = new Foret;
 
 	//Règle 1 de la grammaire des grammaires
-	g[0] = genConc(
+	(*g)["S"] = genConc(
 			genStar(
 				genConc(
 					genConc(
-						genConc(genAtom("N", 0, NonTerminal), 
-						genAtom(":=", 0, Terminal)
+						genConc(genAtom("N", 0, NonTerminal),
+							genAtom(":=", 0, Terminal)
 					),
 					genAtom("E", 0, NonTerminal)
 				),
@@ -50,11 +138,11 @@ Foret * Grammaire::genForet(){
 
 
 	//Règle 2 de la grammaire des grammaires
-	g[1] = genAtom("IDNTER",2,Terminal);
+	(*g)["N"] = genAtom("IDNTER",2,Terminal);
 
 
 	//Règle 3 de la grammaire des grammaires
-	g[2] = genConc(
+	(*g)["E"] = genConc(
 			genAtom("T",0, NonTerminal),
 			genStar(
 				genConc(
@@ -65,7 +153,7 @@ Foret * Grammaire::genForet(){
 		);
 
 	//Règle 4 de la grammaire des grammaires
-	g[3] = genConc(
+	(*g)["T"] = genConc(
 			genAtom("F",0, NonTerminal),
 			genStar(
 				genConc(
@@ -76,7 +164,7 @@ Foret * Grammaire::genForet(){
 		);
 
 	//Règle 5 de la grammaire des grammaires
-	g[4] = genUnion(
+	(*g)["F"] = genUnion(
 	  genUnion(
 	      genUnion(genUnion(genAtom("IDNTER", 5, Terminal), genAtom("ELTER", 5, Terminal)),
 	             genConc(genAtom("(", 0, Terminal), genConc(genAtom("E", 0, NonTerminal),
@@ -89,20 +177,46 @@ Foret * Grammaire::genForet(){
 	return g;
 }
 
-void Grammaire::afficheForet(Foret * F){
+void Grammaire::afficheForet(Foret * F, std::string key = ""){
+	if(key!=""){
+		cout << "A["<<key<<"] :" << endl;
+		cout << (*F)[key]->toString(0) << endl;	
+		cout << "------------------------------" << endl; 
+	}else{
+		cout << "A[S] :" << endl;
+		cout << (*F)["S"]->toString(0) << endl;
+		for (map<string,Noeud*>::iterator  i=F->begin(); i!=F->end(); ++i)
+		{
+			if(i->first!="S"){
+			cout << "A[" << i->first << "] :" << endl;
+			cout << i->second->toString(0) << endl;
+			cout << "------------------------------" << endl; 
+			}
+		}
+	}
+}
 
-   for (int i = 0; i < 5; ++i)
-   {
-      cout << "A[" << i << "] :" << endl;
-      cout << F[i]->toString(0) << endl;
-      cout << "------------------------------" << endl; 
-   }
+void Grammaire::afficheForetGrammaire(vector<Noeud*> foretsGrammaire, int key = -1){
+	if(key!=-1){
+		cout << "A[" << key << "] :" << endl;
+		cout << foretsGrammaire[key]->toString(0) << endl;
+		cout << "------------------------------" << endl; 
+	}else{
+		std::cout<<"taille foret Grammaire : "<<foretsGrammaire.size()<<std::endl;
+		for(int i =0; i<foretsGrammaire.size(); ++i){
+			cout << "A[" << i << "] :" << endl;
+			cout << foretsGrammaire[i]->toString(0) << endl;
+			cout << "------------------------------" << endl; 
+		}
+	}
+	
 }
 
 
-
-bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales variables) {
+bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales* variables) {
 	bool analyse = false;
+	int col = 0;
+	int ligne = 0;
 	switch(noeud->donneClassname()){
 		case CONC:
 			if(GOAnalyse(noeud->gauche(), variables)){
@@ -113,124 +227,146 @@ bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales variables) {
 			break;
 		
 		case UNION:
+			col = variables->scan_col;
+			ligne = variables->scan_ligne;
 			if(GOAnalyse(noeud->gauche(), variables)){
 				analyse = true;
 			}else{
+				variables->scan_col = col;
+				variables->scan_ligne = ligne;
 				analyse =  GOAnalyse(noeud->droite(), variables);
 			}
 			break;
 		
 		case STAR:
 			analyse = true;
-			while(GOAnalyse(noeud->gauche(), variables)){}
+			col = variables->scan_col;
+			ligne = variables->scan_ligne;
+			while(GOAnalyse(noeud->gauche(), variables)){
+				col = variables->scan_col;
+				ligne = variables->scan_ligne;
+			};
+			variables->scan_col = col;
+			variables->scan_ligne = ligne;
 			break;
 		
 		case UN:
 			analyse = true;
-			if(GOAnalyse(noeud->gauche(), variables)){};
+			col = variables->scan_col;
+			ligne = variables->scan_ligne;
+			if(GOAnalyse(noeud->gauche(), variables)){			
+			}else{
+				variables->scan_col = col;
+				variables->scan_ligne = ligne;
+			}
+
 			break;
 		
 		case ATOM:
 			//REVOIR TOUS ATOM ET FONCTIONS GPAction, Scan
+			Noeud* resultScan =  genAtom("-1",-1,Terminal); 
 			switch(noeud->donneType()){
 				case 0:
-					if(noeud->donneCode()==Scan(&variables)->donneCode()){//A REVOIR !!!
+					if(GOAnalyse((*variables->foret)[noeud->donneCode()],variables)){
+						if(noeud->donneAction()!=0){
+							GOAction(noeud->donneAction(),resultScan->donneAction(), resultScan->donneCode(), resultScan->donneType(), variables);
+							
+						}
+						analyse = true;
+					}
+					break;
+
+				case 1:
+					resultScan =  Scan(variables);
+					bool suite = false;
+					if( noeud->donneCode()=="IDNTER" && !resultScan->donneType() && estVariable(resultScan->donneCode())){
+						suite = true;
+					}
+					if( noeud->donneCode()=="ELTER" && resultScan->donneType()){
+						suite = true;
+					}
+					if( suite ||noeud->donneCode()==resultScan->donneCode()){
 						analyse = true;
 						if(noeud->donneAction()!=0){
-							GOAction(noeud->donneAction(),0, noeud->donneCode(), noeud->donneType(), variables);
+							GOAction(noeud->donneAction(),resultScan->donneAction(), resultScan->donneCode(), resultScan->donneType(), variables);
 							//SCAN
 						}
 					}else{
 							analyse=false;
 					}
 					break;
-				case 1:
-					if(true){
-						if(noeud->donneAction()!=0){
-							GOAction(noeud->donneAction(),0, noeud->donneCode(), noeud->donneType(), variables);
-							analyse = true;
-						}else{
-							analyse = false;
-						}
-					}
-					break;
+				
 			}
 		break;
 	}
-    std::cout << "ANALYSE "<<analyse<<std::endl;;
 	return analyse;
 
 }
 
-void Grammaire::GOAction(int actionG0, int actionGPL, std::string code, ATOMETYPES type, VariablesGlobales variables){
+void Grammaire::GOAction(int actionG0, int actionGPL, std::string code, ATOMETYPES type, VariablesGlobales* variables){
 	Noeud *t1;
 	Noeud *t2;
 	switch(actionG0){
-		case 0:
-		variables.pileGOAction->pile.push(
-				genAtom(code, actionGPL, type)
-				);
-		break;
 		case 1:
-			t1 = variables.pileGOAction->pile.top();
-			variables.pileGOAction->pile.pop();
-			t2 = variables.pileGOAction->pile.top();
-			variables.pileGOAction->pile.pop();
+			t1 = variables->pileGOAction->pile.top();
+			variables->pileGOAction->pile.pop();
+			t2 = variables->pileGOAction->pile.top();
+			variables->pileGOAction->pile.pop();
 
-			variables.foretsGrammaire.push_back(t1);
+			variables->foretsGrammaire.push_back(t1);
 			// variables.dicont[t2->donneCode()] = variables.foretsGrammaire.size()-1;
 			
 			break;
 		case 2:
-			variables.pileGOAction->pile.push(
+			variables->pileGOAction->pile.push(
 				genAtom(rechercheDicoNT(code, variables), actionGPL, Terminal)
 				);
 			break;
 		case 3:
-			t1 = variables.pileGOAction->pile.top();
-			variables.pileGOAction->pile.pop();
-			t2 = variables.pileGOAction->pile.top();
-			variables.pileGOAction->pile.pop();
+			t1 = variables->pileGOAction->pile.top();
+			variables->pileGOAction->pile.pop();
+			t2 = variables->pileGOAction->pile.top();
+			variables->pileGOAction->pile.pop();
 
-			variables.pileGOAction->pile.push(genUnion(t1,t2));
+			variables->pileGOAction->pile.push(genUnion(t2,t1));
 
 			break;
 		case 4:
-			t1 = variables.pileGOAction->pile.top();
-			variables.pileGOAction->pile.pop();
-			t2 = variables.pileGOAction->pile.top();
-			variables.pileGOAction->pile.pop();
+			t1 = variables->pileGOAction->pile.top();
+			variables->pileGOAction->pile.pop();
+			t2 = variables->pileGOAction->pile.top();
+			variables->pileGOAction->pile.pop();
 
-			variables.pileGOAction->pile.push(genConc(t1,t2));
+			variables->pileGOAction->pile.push(genConc(t2,t1));
 
 			break;
 		case 5:
 			if(type == 0){
-				variables.pileGOAction->pile.push(
+				variables->pileGOAction->pile.push(
 				genAtom(code, actionGPL, Terminal)
 				);
 			}
 			else{
-				variables.pileGOAction->pile.push(
+				variables->pileGOAction->pile.push(
 				genAtom(rechercheDicoNT(code, variables), actionGPL, NonTerminal)
 				);
 			}
 
 			break;
 		case 6:
-			t1 = variables.pileGOAction->pile.top();
-			variables.pileGOAction->pile.pop();
+			t1 = variables->pileGOAction->pile.top();
+			variables->pileGOAction->pile.pop();
 
-			variables.pileGOAction->pile.push(
+			variables->pileGOAction->pile.push(
 				genStar(t1)
 				);
 
 			break;
 		case 7:
-			t1 = variables.pileGOAction->pile.top();
-			variables.pileGOAction->pile.pop();
+			t1 = variables->pileGOAction->pile.top();
+			variables->pileGOAction->pile.pop();
 
-			variables.pileGOAction->pile.push(
+			variables->pileGOAction->pile.push(
 				genUN(t1)
 				);
 			break;
@@ -240,25 +376,26 @@ void Grammaire::GOAction(int actionG0, int actionGPL, std::string code, ATOMETYP
 
 }
 
-//A revoir !!!!
 Noeud* Grammaire::Scan(VariablesGlobales * variables){
 	std::string result = "";
 	Noeud* atomResult;
 	bool terminal=false;
 	int action = 0;
 	bool fin = true;
-	
+	bool entreApo = false;	
 	if(variables->grammaire.size()>variables->scan_ligne){
 		if(variables->grammaire[variables->scan_ligne].size()>variables->scan_col){
 			int i = variables->scan_col;
 			std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
 			if(finLigne(st)){
-				terminal = true;
+				terminal = false;
 				result = st;
+				variables->scan_col++;
 			}else if(estEspace(st)){
 				variables->scan_col++;
 				return Scan(variables);
 			}else if(estApostrophe(st)){
+				entreApo = true;
 				fin = false;
 				variables->scan_col++;
 				result = getString(variables);
@@ -281,28 +418,33 @@ Noeud* Grammaire::Scan(VariablesGlobales * variables){
 					terminal = true;	
 				}
 			}
-			if(terminal==true){
+			if((result=="]"||result=="["||result==":=")&&!entreApo){
+				terminal = false;
+			}
+			// std::cout<<"result -> "<<result<<" -> entreApo ? "<<entreApo<<", terminal ?"<<terminal<<std::endl;
+
+			if(terminal){
 				atomResult = genAtom(result, action, Terminal);
 			}else{
 				atomResult = genAtom(result,action, NonTerminal);
 			}
-
 		}
 	}
 
 	if(estEspace(result)||estVide(result)){
 		variables->scan_col++;
-		return Scan(variables);
+		if(variables->scan_ligne<variables->grammaire.size()&&variables->scan_col<variables->grammaire[variables->scan_ligne].size()){
+			return Scan(variables);
+		}
 	}
 
-	if(estFleche(result)){
-		atomResult = genAtom(result,action, Terminal);
-	}
-	if(finLigne(result)&&fin){
+	if(variables->scan_col==(variables->grammaire[variables->scan_ligne].size())){
 		variables->scan_ligne++;
 		variables->scan_col=0;
 	}
-
+	if(variables->scan_ligne==(variables->grammaire.size())){
+		atomResult = genAtom(";",0, NonTerminal);
+	}
 	return atomResult;
 }
 
@@ -404,8 +546,21 @@ std::string Grammaire::getStringSansApostrophe(VariablesGlobales* variables){
 	return result;
 }
 
-std::string Grammaire::rechercheDicoNT(std::string code, VariablesGlobales variables){
-	return "";
+std::string Grammaire::rechercheDicoNT(std::string code, VariablesGlobales* variables){
+	bool trouver = false;
+	std::string ligneDico = code;
+	for (map<std::string,vector<string>>::iterator  i=variables->dictionnaireG0.begin(); i!=variables->dictionnaireG0.end(); ++i)
+	{
+		for(string valeur : i->second){
+			if(code==valeur){
+				ligneDico= i->first;
+			}
+		}
+	}
+	variables->dicont[code]=ligneDico;
+
+	
+	return code;
 }
 
 

@@ -9,7 +9,7 @@
 #include "Conc.hpp"
 
 
-Conc::Conc(Noeud *r, Noeud *l){
+Conc::Conc(Noeud *l, Noeud *r){
 	setOperations(CONC);
 	this->right = r;
 	this->left = l;
@@ -30,9 +30,9 @@ std::string Conc::toString(int depth){
 
 
 Noeud* Conc::droite(){
-	this->right;
+	return this->right;
 }
 
 Noeud* Conc::gauche(){
-	this->left;
+	return this->left;
 }

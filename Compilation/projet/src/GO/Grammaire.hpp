@@ -6,8 +6,6 @@
  *
 **/
 
-#include <regex>
-
 #ifndef GRAMMAIRE_HPP
 #define GRAMMAIRE_HPP
 
@@ -25,17 +23,21 @@ class Grammaire{
 		
 		Noeud * genUN(Noeud * p);
 
+		void remplirDictionnaireG0(VariablesGlobales* variables);
+
 		Foret * genForet();
 
-		void afficheForet(Foret * F);
+		void afficheForet(Foret * F, std::string key);
+		
+		void afficheForetGrammaire(vector<Noeud*> foretsGrammaire, int key);
 
-		bool GOAnalyse(Noeud *noeud,  VariablesGlobales variables);
+		bool GOAnalyse(Noeud *noeud,  VariablesGlobales *variables);
 
-		void GOAction(int actionG0, int actionGPL, std::string code, ATOMETYPES type, VariablesGlobales variables);
+		void GOAction(int actionG0, int actionGPL, std::string code, ATOMETYPES type, VariablesGlobales* variables);
 
 		Noeud* Scan(VariablesGlobales * variables);
 
-		std::string rechercheDicoNT(std::string code, VariablesGlobales variables);
+		std::string rechercheDicoNT(std::string code, VariablesGlobales* variables);
 
 		bool estVariable(std::string chaine);
 

@@ -14,10 +14,10 @@ class Conc : public Noeud{
   		Noeud *right;
   		Noeud *left;
 	public:
-		Conc(Noeud *r, Noeud *l);
-		virtual std::string toString(int level);
-		virtual Noeud* droite();
-		virtual Noeud* gauche();
+		Conc(Noeud *l, Noeud *r);
+		std::string toString(int level);
+		Noeud* droite();
+		Noeud* gauche();
 
 };
 

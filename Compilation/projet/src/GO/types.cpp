@@ -3,21 +3,25 @@
 #include <map>
 #include <vector>
 
-typedef Noeud *Foret;
+typedef map<string, Noeud*> Foret;
+
+using namespace std;
 
 typedef struct _PileGOAction{
 	std::stack<Noeud *> pile;
 } PileGOAction;
 
 typedef struct _VariablesGlobales{
+	map<string, vector<string>> dictionnaireG0;
+
 	Foret* foret;
 	PileGOAction * pileGOAction;
 	int scan_col, scan_ligne;
-	std::vector<std::string> grammaire;
+	vector<string> grammaire;
 
-	std::vector<Noeud*> foretsGrammaire;  //Crée un tableau de 5 entiers valant tous 3
+	vector<Noeud*> foretsGrammaire;
 
-	std::map<std::string,int> dicont;
-	std::map<std::string,int> dicot;
+	map<string,std::string> dicont;
+	map<string,int> dicot;
 
 } VariablesGlobales;

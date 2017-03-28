@@ -15,8 +15,8 @@ class Star : public Noeud{
 
 	public:
 		Star(Noeud *s);
-		virtual std::string toString(int level);
-		virtual Noeud* gauche();
+		std::string toString(int level);
+		Noeud* gauche();
 
 };
 
