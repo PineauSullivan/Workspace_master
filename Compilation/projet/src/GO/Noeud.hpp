@@ -12,6 +12,7 @@
 class Noeud{
 	private:
 		OPERATIONS classname;
+		
 
 	public:
 		Noeud();
