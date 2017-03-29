@@ -2,7 +2,6 @@
 #include <vector>
 #include <map>
 #include <vector>
-
 typedef map<string, Noeud*> Foret;
 
 using namespace std;
@@ -13,6 +12,11 @@ typedef struct _PileGOAction{
 
 typedef struct _VariablesGlobales{
 	map<string, vector<string>> dictionnaireG0;
+
+	string regexTerminal = "'*'";
+	string regexNonTerminal = "[a-zA-Z][a-zA-Z0-9]*" ;
+	string regexSymbole = "[,;(->)(:=)+.\\]\\[\\(\\)]" ;
+	string regexAction = "#[0-9]*" ;
 
 	Foret* foret;
 	PileGOAction * pileGOAction;
