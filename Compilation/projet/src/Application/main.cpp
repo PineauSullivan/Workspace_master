@@ -63,7 +63,6 @@ int main()
 		cout << "------------------------------" << endl; 
 		std::cout<<std::endl;
 
-
 		gram.afficheForet(foret,"S");
 		gram.afficheForetGrammaire(variables->foretsGrammaire,0);
 		std::cout<<"------------------"<<std::endl;

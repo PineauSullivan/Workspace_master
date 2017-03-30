@@ -341,14 +341,14 @@ void Grammaire::GOAction(int actionG0, int actionGPL, std::string code, ATOMETYP
 
 			break;
 		case 5:
-			if(type == 0){
+			if(type == NonTerminal){
 				variables->pileGOAction->pile.push(
-				genAtom(code, actionGPL, Terminal)
+				genAtom(code, actionGPL, NonTerminal)
 				);
 			}
 			else{
 				variables->pileGOAction->pile.push(
-				genAtom(rechercheDicoNT(code, variables), actionGPL, NonTerminal)
+				genAtom(rechercheDicoNT(code, variables), actionGPL, Terminal)
 				);
 			}
 
