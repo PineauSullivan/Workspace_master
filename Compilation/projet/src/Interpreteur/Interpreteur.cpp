@@ -17,7 +17,7 @@ Interpreteur::Interpreteur(vector<string> p_code, int nbvariables){
 void Interpreteur::Interpreteur::executer(){
 	while(curseurP_code<(int)(p_code.size())){
 		string instructionCourante = p_code[curseurP_code];
-		cout<<"INSTRUCT :"<<curseurP_code<<" == "<<instructionCourante<<endl;
+		//cout<<"INSTRUCT :"<<curseurP_code<<" == "<<instructionCourante<<endl;
 
 		if(instructionCourante.compare("LDA") == 0)
             LDA();
@@ -118,7 +118,6 @@ void Interpreteur::remplirPileInitiale(){
 }
 
 int Interpreteur::convertirLectureP_code(string str){
-	cout<<"converion en int -> "<<str<<" =? "<<std::stoi( str )<<endl;
 	return std::stoi( str );
 }
 
@@ -150,13 +149,11 @@ int Interpreteur::boolFaux(){
 //!\ INSTRUCTIONS DE CHANGEMENT//////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////
 void Interpreteur::LDA(){
-	std::cout<<"LDA : "<<convertirLectureP_code(p_code[curseurP_code+1])<<endl;
 	pile_x.push_back(convertirLectureP_code(p_code[curseurP_code+1]));
 	curseurP_code+=2;
 }
 
 void Interpreteur::LDV(){
-	std::cout<<"LDV : "<<pile_x[convertirLectureP_code(p_code[curseurP_code+1])]<<" - curseur p_code : "<<(curseurP_code+1)<<endl;
 	pile_x.push_back(pile_x[convertirLectureP_code(p_code[curseurP_code+1])]);
 	curseurP_code+=2;
 }
@@ -291,7 +288,7 @@ void Interpreteur::AND(){
 	variable1 = pile_x.back();
 	pile_x.pop_back();
 
-	if(variable1 == boolVraie() && variable2 == boolFaux())
+	if(variable1 >= boolVraie() && variable2 >= boolVraie())
 		pile_x.push_back(boolVraie());
 	else
 		pile_x.push_back(boolFaux());
@@ -308,7 +305,7 @@ void Interpreteur::OR(){
 	variable1 = pile_x.back();
 	pile_x.pop_back();
 
-	if(variable1 == boolVraie() || variable2 == boolFaux())
+	if(variable1 >= boolVraie() || variable2 >= boolVraie())
 		pile_x.push_back(boolVraie());
 	else
 		pile_x.push_back(boolFaux());
@@ -322,7 +319,7 @@ void Interpreteur::NOT(){
 	int variable1;
 	variable1 = pile_x.back();
 	pile_x.pop_back();
-	if(variable1 == boolVraie())
+	if(variable1 >= boolVraie())
 		pile_x.push_back(boolFaux());
 	else
 		pile_x.push_back(boolVraie());
@@ -336,7 +333,6 @@ void Interpreteur::NOT(){
 
 void Interpreteur::JMP(){
 	//on ne comsomme rien de la pile
-	std::cout<<"JMP :"<<convertirLectureP_code(p_code[curseurP_code+1])<<endl;
 	curseurP_code = convertirLectureP_code(p_code[curseurP_code+1]);
 	//pas de changement d'instruction
 }
@@ -347,9 +343,8 @@ void Interpreteur::JIF(){
 	int variable;
 	variable = pile_x.back();
 	pile_x.pop_back();
-	std::cout<<variable<<endl;
 
-	if(variable == boolVraie())
+	if(variable >= boolVraie())
 		curseurP_code+=2;//on passe a l'instruction suivante
 	else
 		curseurP_code = convertirLectureP_code(p_code[curseurP_code+1]); // on fait un saut
@@ -391,8 +386,6 @@ void Interpreteur::ADD(){
 	pile_x.pop_back();
 	variable1 = pile_x.back();
 	pile_x.pop_back();
-
-	std::cout<<"ADDITION DE "<< variable1<<"et"<<variable2<<std::endl;
 
 	pile_x.push_back(convertirEcriturePile(variable1 + variable2));
 
@@ -529,9 +522,7 @@ void Interpreteur::AFF(){
 	int adresse = pile_x.back();
 	pile_x.pop_back();
 
-	std::cout<<"AFF : "<<adresse<<" = "<<valeur<<"verif "<<pile_x[adresse];
 	pile_x[adresse] = valeur;
-	std::cout<<"verif "<<pile_x[adresse]<<std::endl;
 
 	curseurP_code++;
 	 
