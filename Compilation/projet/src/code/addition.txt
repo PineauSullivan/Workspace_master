@@ -1,6 +1,9 @@
+Program Add ;
+	var S;
 DEBUT
-	a = 1 ;
-	b = 2 ;
-	c = a + b ;
-	Writeln c ;
+	Writeln S ;
+	S = 3 ;
+	Writeln S ;
+	S = S + 4 ;
+	Writeln S ;
 FIN .

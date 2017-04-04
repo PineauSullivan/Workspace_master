@@ -14,6 +14,8 @@
 #include "../GO/Grammaire.cpp"
 #include "../GPL/GPL.cpp"
 
+#include "../Interpreteur/Interpreteur.cpp"
+
 
 int main()
 {
@@ -151,7 +153,7 @@ int main()
 	variables->scan_col_GPL = 0;
 	variables->scan_ligne_GPL = 0;
 
-  	path = "src/code/addition.txt";
+  	path = "src/code/factoriel.txt";
   	    
   	ifstream fichierCode(path, ios::in);  // on ouvre en lecture
 
@@ -172,19 +174,7 @@ int main()
 
   	variables->code=grammaire_code;
 
-	// Noeud* result = gram.genAtom("",0,Terminal);
-	// int regle = 1;
-	// while(regle!=variables->code.size()+1){
-	// 	if(variables->scan_col_GPL==0){
-	// 		std::cout<<"regle "<<regle<<" : "<<variables->code[regle-1]<<std::endl;
-	// 	}
-	// 	result = gpl.Scan(variables);
-	// 	std::cout<<regle<<" -"<<result->toString(1)<<std::endl;
-	// 	if(variables->scan_col_GPL==0){
-	// 		regle++;
-	// 		std::cout<<std::endl;
-	// 	}
-	// }
+
 	
 
 	std::cout<<std::endl;
@@ -201,8 +191,22 @@ int main()
 
 	std::cout<<" ligne : "<<variables->scan_ligne_GPL;
 	std::cout<<", colonne : "<<variables->scan_col_GPL<<endl;;
+	
+	std::vector<string> variable = gpl.getVariables();
+	cout<<"variable :"<<endl;
+	for(int i =0; i<variable.size(); ++i){
+		cout<<variable[i]<<endl;
+	}
 
+	std::vector<string> p_code = gpl.getP_code();
+	cout<<"p code :"<<endl;
+	for(int i =0; i<p_code.size(); ++i){
+		cout<<i<<" -> "<<p_code[i]<<endl;
+	}
 
-	std::cout<<"FIN"<<std::endl;
+	std::cout<<"INTERPRETEUR :"<<std::endl;
+	Interpreteur *inter = new Interpreteur(p_code, variable.size());
+	inter->executer();
+	std::cout<<"FIN MAIN"<<std::endl;
 	return 0;
 }

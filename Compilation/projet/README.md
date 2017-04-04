@@ -7,3 +7,4 @@ https://github.com/PineauSullivan/Workspace_master/tree/master/Compilation/proje
 # Launch
 
 Make
+./bin/main

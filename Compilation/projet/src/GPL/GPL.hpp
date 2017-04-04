@@ -11,6 +11,13 @@
 
 
 class GPL{
+	private:
+		vector<string> p_code;
+		vector<string> operateurs;
+		vector<string> variables;
+		vector<int> jump;
+		vector<int> jumpif;
+
 	public:
 		bool GPLAnalyse(Noeud *noeud,  VariablesGlobales *variables);
 
@@ -31,6 +38,14 @@ class GPL{
 		std::string getStringSansApostrophe(VariablesGlobales* variables);
 
 		int rechercheInDicoNT(std::string code, VariablesGlobales* variables);
+
+		int rechercheInVariable(std::string code, std::vector<string> v);
+
+		bool estEntier(std::string chaine);
+
+		std::vector<string> getP_code();
+
+		std::vector<string> getVariables();
 };
 
 
