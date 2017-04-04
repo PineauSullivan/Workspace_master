@@ -1,0 +1,14 @@
+Program Fac ;
+	var I , S , N ;
+DEBUT
+	Read N ;
+	S = 1 ;
+	I = 1 ;
+	IF S<I OR S>I OR S==I THEN
+		Writeln N;
+	ENDIF
+	IF S==I AND S==N THEN
+		Writeln N;
+	ENDIF
+	Writeln S ;
+FIN .
