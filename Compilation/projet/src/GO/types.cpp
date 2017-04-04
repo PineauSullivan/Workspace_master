@@ -21,11 +21,15 @@ typedef struct _VariablesGlobales{
 	Foret* foret;
 	PileGOAction * pileGOAction;
 	int scan_col, scan_ligne;
+	int scan_col_GPL, scan_ligne_GPL;
+
 	vector<string> grammaire;
+
+	vector<string> code;
 
 	vector<Noeud*> foretsGrammaire;
 
-	map<string,std::string> dicont;
+	map<string,int> dicont;
 	map<string,int> dicot;
 
 } VariablesGlobales;

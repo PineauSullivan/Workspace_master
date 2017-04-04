@@ -37,10 +37,6 @@ class Grammaire{
 
 		Noeud* Scan(VariablesGlobales * variables);
 
-		Noeud* ScanBis(VariablesGlobales * variables,int colonne, int ligne, std::string chaine = "");
-
-		int ScanBisAction(VariablesGlobales * variables,int colonne, int ligne, std::string chaine = "");
-
 		std::string rechercheDicoNT(std::string code, VariablesGlobales* variables);
 
 		bool estVariable(std::string chaine);

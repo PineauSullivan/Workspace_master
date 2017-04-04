@@ -341,14 +341,14 @@ void Grammaire::GOAction(int actionG0, int actionGPL, std::string code, ATOMETYP
 
 			break;
 		case 5:
-			if(type == NonTerminal){
+			if(type == 0){
 				variables->pileGOAction->pile.push(
 				genAtom(code, actionGPL, NonTerminal)
 				);
 			}
 			else{
 				variables->pileGOAction->pile.push(
-				genAtom(rechercheDicoNT(code, variables), actionGPL, Terminal)
+				genAtom(code , actionGPL, Terminal)
 				);
 			}
 
@@ -448,102 +448,9 @@ Noeud* Grammaire::Scan(VariablesGlobales * variables){
 	return atomResult;
 }
 
-Noeud* Grammaire::ScanBis(VariablesGlobales * variables,int colonne, int ligne, std::string chaine){
-	if(variables->grammaire.size()>ligne){
-		if(variables->grammaire[ligne].size()>colonne){
-			chaine = chaine + variables->grammaire[variables->scan_ligne].substr(colonne,1);
-
-			if(estEspace(chaine)){
-				chaine = "";
-				return ScanBis(variables, colonne+1,ligne,chaine);
-			}
-			else{
-
-				if(regex_match(chaine, regex(variables->regexTerminal))){
-					variables->scan_col = colonne+1;
-					variables->scan_ligne = ligne;
-
-					return genAtom(chaine.substr(1,chaine.size()-2),ScanBisAction(variables, colonne+1, ligne), Terminal);
-				}
-				else if(regex_match(chaine, regex(variables->regexNonTerminal))){
-					variables->scan_col = colonne+1;
-					variables->scan_ligne = ligne;
-
-					Noeud* tmp = ScanBis(variables,colonne+1,ligne, chaine);
-
-					if(tmp == NULL)
-						return genAtom(chaine,ScanBisAction(variables, colonne+1, ligne), NonTerminal);
-					else
-						return tmp;				
-					
-
-				}
-				else if(regex_match(chaine, regex(variables->regexSymbole))){
-					variables->scan_col = colonne+1;
-					variables->scan_ligne = ligne;
-
-					return genAtom(chaine,ScanBisAction(variables, colonne+1, ligne), Symbole);
-		
-				}
-				else{
-					return ScanBis(variables, colonne+1, ligne, chaine);
-				}
-			}
-
-		}
-		else{
-			return ScanBis(variables, 0, ligne+1, chaine);
-		}
-
-	}
-	else{
-		return NULL;
-	}
-}
-
-int Grammaire::ScanBisAction(VariablesGlobales * variables,int colonne, int ligne, std::string chaine){
-	if(variables->grammaire.size()>ligne){
-		if(variables->grammaire[ligne].size()>colonne){
-			chaine = chaine + variables->grammaire[variables->scan_ligne].substr(colonne,1);
-			if(estEspace(chaine)){
-				chaine = "";
-				return ScanBisAction(variables, colonne+1,ligne,chaine);
-			}
-			else{
-				if(regex_match(chaine, regex(variables->regexAction))){
-					variables->scan_col = colonne+1;
-					variables->scan_ligne = ligne;
-
-					int tmp = ScanBisAction(variables,colonne+1,ligne, chaine);
-
-					if(tmp == -1){
-						if(chaine.size()>=2)
-							return std::stoi (chaine.substr(1,chaine.size()-1));
-						else
-							return 0;
-					}
-					else
-						return tmp;	
-
-				}
-				else{
-					return 0;
-				}
-			}
-		}
-		else{
-			return ScanBisAction(variables, 0, ligne+1, chaine);
-		}
-
-	}
-	else{
-		return -1;
-	}
-}
-
 
 bool Grammaire::estVariable(std::string chaine){
-	if (regex_match(chaine, regex("[a-zA-Z][a-zA-Z0-9]*"))){
+	if (regex_match(chaine, regex("[a-zA-Z][a-zA-Z0-9]*[-]*[a-zA-Z0-9]*"))){
         return true;
     }
     return false;
@@ -641,19 +548,17 @@ std::string Grammaire::getStringSansApostrophe(VariablesGlobales* variables){
 
 std::string Grammaire::rechercheDicoNT(std::string code, VariablesGlobales* variables){
 	bool trouver = false;
-	std::string ligneDico = code;
-	for (map<std::string,vector<string>>::iterator  i=variables->dictionnaireG0.begin(); i!=variables->dictionnaireG0.end(); ++i)
-	{
-		for(string valeur : i->second){
-			if(code==valeur){
-				ligneDico= i->first;
-			}
-		}
-	}
-	variables->dicont[code]=ligneDico;
+	// std::string ligneDico = code;
+	// for (map<std::string,vector<string>>::iterator  i=variables->dictionnaireG0.begin(); i!=variables->dictionnaireG0.end(); ++i)
+	// {
+	// 	for(string valeur : i->second){
+	// 		if(code==valeur){
+	// 			ligneDico= i->first;
+	// 		}
+	// 	}
+	// }
+	variables->dicont[code]=variables->dicont.size()-1;
 
 	
 	return code;
 }
-
-
