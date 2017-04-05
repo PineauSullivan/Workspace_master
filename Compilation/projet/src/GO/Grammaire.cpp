@@ -392,7 +392,12 @@ Noeud* Grammaire::Scan(VariablesGlobales * variables){
 				result = st;
 				variables->scan_col++;
 			}else if(estEspace(st)){
-				variables->scan_col++;
+				if(variables->scan_col==variables->grammaire[variables->scan_ligne].size()-1){
+					variables->scan_col=0;
+					variables->scan_ligne++;
+				}else{
+					variables->scan_col++;
+				}
 				return Scan(variables);
 			}else if(estApostrophe(st)){
 				entreApo = true;

@@ -4,11 +4,39 @@ DEBUT
 	I := 0 ;
 	A := 4 ;
 	B := 9 ;
-	IF I == 0 THEN
+	IF I == 1 ET I == 1 THEN
+		A = 1 ;
+		Writeln A ;
+	ELSE
+		B = 2 ;
+		Writeln B ;
+	ENDIF
+	IF I == 0 ET I == 0 THEN
+		A = 3 ;
+		Writeln A ;
+	ELSE
+		B = 4 ;
+		Writeln B ;
+	ENDIF
+	IF I == 0 ET I == 1 THEN
 		A = 5 ;
 		Writeln A ;
 	ELSE
+		B = 6 ;
+		Writeln B ;
+	ENDIF
+	IF I == 0 OU I == 1 THEN
+		A = 7 ;
+		Writeln A ;
+	ELSE
 		B = 8 ;
+		Writeln B ;
+	ENDIF
+	IF I == 1 OU I == 1 THEN
+		A = 9 ;
+		Writeln A ;
+	ELSE
+		B = 10 ;
 		Writeln B ;
 	ENDIF
 	Writeln I ;

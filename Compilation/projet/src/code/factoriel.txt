@@ -1,13 +1,13 @@
 Program Fac ;
 	var I , S , N ;
 DEBUT
-	Read N ;
+	Read N ; // Demande_à_l'utilisateur_de_rentrer_un_nombre
 	S = 1 ;
-	I = 1 ;
+	I = 1 ; // Test_commentaires
 	WHILE NON I > N DO
 		S = S * I ;
 		I = I + 1 ;
-		Writeln S ;
+		Writeln S ; // Affichage_S
 	ENDWHILE
 	Writeln S ;
 FIN .

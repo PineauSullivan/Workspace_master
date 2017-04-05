@@ -1,4 +1,4 @@
-Prgm := 'Program' . 'IDNTER' . ';' . (\ Decl-Var \) . Bloc . '.'#28 ,
+Prgm := 'Program' . 'IDNTER' . ';' . (\ Decl-Var \) . (\ Decl-Const \) . Bloc . '.'#28 ,
 Decl-Const := 'const' . 'IDNTER'#1 . '=' . ENTIER#2 . [ ';' . 'IDNTER'#1 . '=' . ENTIER#2 ] . ';' ,
 Decl-Var := 'var' . 'IDNTER'#1 . [ ',' . 'IDNTER'#1 ] . ';' ,
 Bloc := 'DEBUT' . Inst . 'FIN' ,
@@ -11,8 +11,9 @@ OPREL := ( '=='#41 + '>'#42 + '<'#43 + '>='#44 + '<='#45 + '!='#46 ) ,
 OPMATH := ( '+'#61 + '++'#62 + '-'#63 + '--'#64 + '*'#65 + '/'#66 + '%'#67 + '!'#68 ) ,
 OPEGAL := ( ':=' + '=' ) ,
 Inst := ( AFFECTATION#27 + COND + WHILE + READ + WRITE ) . [ Inst ] ,
-AFFECTATION := ( 'IDNTER'#3 . OPEGAL . ( 'IDNTER'#4 + ENTIER ) . ( ';' + ( OPMATH . ( 'IDNTER'#4 + ENTIER ) . [ OPMATH#1000 . ( 'IDNTER'#4 + ENTIER ) ] . ';'#1000 ) ) ) ,
+AFFECTATION := ( 'IDNTER'#3 . OPEGAL . ( 'IDNTER'#4 + ENTIER ) . ( ';' . (\ COMMENTAIRES \) + ( OPMATH . ( 'IDNTER'#4 + ENTIER ) . [ OPMATH#1000 . ( 'IDNTER'#4 + ENTIER ) ] . ';'#1000 . (\ COMMENTAIRES \) ) ) ) ,
 COND := 'IF' . Booleen#2000 . 'THEN'#2005 . Inst#2002 . 'ELSE'#2001 . Inst . 'ENDIF'#2003 ,
 WHILE := 'WHILE' . Booleen#2000 . 'DO' . Inst#2004 . 'ENDWHILE'#50 ,
-READ := 'Read' . 'IDNTER'#3 . ';'#14 ,
-WRITE := 'Writeln' . ( 'IDNTER'#4 + ENTIER#5 ) . ';'#16 , ;
+READ := 'Read' . 'IDNTER'#3 . ';'#14 . (\ COMMENTAIRES \) ,
+WRITE := 'Writeln' . ( 'IDNTER'#4 + ENTIER#5 ) . ';'#16 . (\ COMMENTAIRES \) ,
+COMMENTAIRES := (\ '//' . 'TODO' \) , ;

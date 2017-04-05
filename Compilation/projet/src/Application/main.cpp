@@ -85,26 +85,37 @@ int main()
 	std::cout<<"|Analyse GO| -> " + str_go_analyse <<std::endl;
 	std::cout<<"------------------"<<std::endl;
 	std::cout<<std::endl;
-
-	std::cout<<" ligne : "<<variables->scan_ligne;
-	std::cout<<", colonne : "<<variables->scan_col;
 	
+	if(!analyse){
+		cout << "Deboguage : "<<endl;
+		std::cout<<" ligne : "<<variables->scan_ligne;
+		std::cout<<", colonne : "<<variables->scan_col;
+	}
+
 	if(analyse){
 
-		std::cout<<std::endl;
-		cout << "------------------------------" << endl; 
-		std::cout<<std::endl;
-		std::cout<<"dicont : "<<std::endl;
-		for (map<string,int>::iterator  i=variables->dicont.begin(); i!=variables->dicont.end(); ++i)
-		{
-			cout << i->first <<" -> "<<i->second << endl;
-			cout << "------------------------------" << endl; 
-		}
-		std::cout<<std::endl;
-		cout << "------------------------------" << endl; 
-		std::cout<<std::endl;
+		//
+		//Affichage dicont
+		//
+		//
+		// std::cout<<std::endl;
+		// cout << "------------------------------" << endl; 
+		// std::cout<<std::endl;
+		// std::cout<<"dicont : "<<std::endl;
+		// for (map<string,int>::iterator  i=variables->dicont.begin(); i!=variables->dicont.end(); ++i)
+		// {
+		// 	cout << i->first <<" -> "<<i->second << endl;
+		// 	cout << "------------------------------" << endl; 
+		// }
+		// std::cout<<std::endl;
+		// cout << "------------------------------" << endl; 
+		// std::cout<<std::endl;
 
-		gram.afficheForetGrammaire(variables->foretsGrammaire);
+		//Affichage FORET
+		//
+		// gram.afficheForetGrammaire(variables->foretsGrammaire);
+		//
+
 
 	// 	gram.afficheForet(foret,"S");
 	// 	gram.afficheForetGrammaire(variables->foretsGrammaire,0);
@@ -153,7 +164,7 @@ int main()
 	variables->scan_col_GPL = 0;
 	variables->scan_ligne_GPL = 0;
 
-  	path = "src/code/orand.txt";
+  	path = "src/code/factoriel.txt";
   	    
   	ifstream fichierCode(path, ios::in);  // on ouvre en lecture
 
@@ -189,20 +200,31 @@ int main()
 	std::cout<<"------------------"<<std::endl;
 	std::cout<<std::endl;
 
-	std::cout<<" ligne : "<<variables->scan_ligne_GPL;
-	std::cout<<", colonne : "<<variables->scan_col_GPL<<endl;;
+	if(!analyse){
+		cout << "Deboguage : "<<endl;
+		std::cout<<" ligne : "<<variables->scan_ligne_GPL;
+		std::cout<<", colonne : "<<variables->scan_col_GPL<<endl;;
+	}
 	
 	std::vector<string> variable = gpl.getVariables();
-	cout<<"variable :"<<endl;
-	for(int i =0; i<variable.size(); ++i){
-		cout<<variable[i]<<endl;
-	}
+	
+	//
+	//Affiche variables
+	//
+	// cout<<"variable :"<<endl;
+	// for(int i =0; i<variable.size(); ++i){
+	// 	cout<<variable[i]<<endl;
+	// }
 
 	std::vector<string> p_code = gpl.getP_code();
-	cout<<"p code :"<<endl;
-	for(int i =0; i<p_code.size(); ++i){
-		cout<<i<<" -> "<<p_code[i]<<endl;
-	}
+	
+	//
+	//Affiche PCode
+	//
+	// cout<<"p code :"<<endl;
+	// for(int i =0; i<p_code.size(); ++i){
+	// 	cout<<i<<" -> "<<p_code[i]<<endl;
+	// }
 
 	std::cout<<"INTERPRETEUR :"<<std::endl;
 	Interpreteur *inter = new Interpreteur(p_code, variable.size());

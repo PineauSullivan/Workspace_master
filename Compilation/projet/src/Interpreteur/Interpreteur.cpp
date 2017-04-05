@@ -246,7 +246,7 @@ void Interpreteur::EG(){
 	int variableCible, variableComp;
 	variableComp = pile_x.back();
 	pile_x.pop_back();
-	variableComp = pile_x.back();
+	variableCible = pile_x.back();
 	pile_x.pop_back();
 
 	if(variableCible==variableComp)

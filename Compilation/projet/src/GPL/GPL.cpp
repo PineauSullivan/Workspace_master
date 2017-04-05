@@ -89,6 +89,10 @@ bool GPL::GPLAnalyse(Noeud *noeud,  VariablesGlobales *variables){
 					if( noeud->donneCode()=="ENTIER" && resultScan->donneType() && estEntier(resultScan->donneCode())){
 						suite = true;
 					}
+					if( noeud->donneCode()=="TODO" ){
+						suite = true;
+					}
+					
 					// cout<<"test variable 2 -> "<< suite<<endl;
 					// cout<<"suite ?"<<suite<<", noeud->donneAction -> "<<noeud->donneAction()<<", noeud->donneCode()-> "<<noeud->donneCode()<<endl;
 					// cout<<"resultscan->donneAction -> "<<resultScan->donneAction()<<", resultscan->donneCode()-> "<<resultScan->donneCode()<<endl;
@@ -112,7 +116,7 @@ bool GPL::GPLAnalyse(Noeud *noeud,  VariablesGlobales *variables){
 
 
 void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type, VariablesGlobales* variables){
-	cout<<"actionGPL : "<<actionGPL<<" - code : "<<code<<endl;
+	// cout<<"actionGPL : "<<actionGPL<<" - code : "<<code<<endl;
 	int posVariable = -1;
 	string operateur = "";
 	string adressep_code = "";
@@ -218,7 +222,7 @@ void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type
 		case 31:
 			do{
 				operateur = this->operateurs.back();
-				cout<<operateur<<", taille putain : "<<this->operateurs.size()<<endl;
+				// cout<<operateur<<", taille putain : "<<this->operateurs.size()<<endl;
 				this->operateurs.pop_back();
 				this->p_code.push_back(operateur);
 				if(this->operateurs.size()>0){
@@ -230,7 +234,7 @@ void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type
 			this->operateurs.push_back("AND");
 			break;
 		case 33:
-			cout<<"OUI J'AJOUTE NOT !!!"<<endl;
+			// cout<<"OUI J'AJOUTE NOT !!!"<<endl;
 			this->operateurs.push_back("NOT");
 			break;
 		case 1000:
@@ -239,13 +243,13 @@ void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type
 			this->p_code.push_back(operateur);
 			break;
 		case 2000:
-			cout<<"taille putain : "<<this->operateurs.size()<<endl;
+			// cout<<"taille putain : "<<this->operateurs.size()<<endl;
 			this->p_code.push_back("JIF");
 			this->jumpif.push_back(this->p_code.size());
 			this->p_code.push_back("?????");
 			break;
 		case 2001:
-			cout<<"taille putain : "<<this->operateurs.size()<<endl;
+			// cout<<"taille putain : "<<this->operateurs.size()<<endl;
 			adressep_code = to_string(this->p_code.size()+2);
 			adressejumpif = this->jumpif.back();
 			this->jumpif.pop_back();
@@ -288,7 +292,12 @@ Noeud* GPL::Scan(VariablesGlobales * variables){
 				result = st;
 				variables->scan_col_GPL++;
 			}else if(estEspace(st)){
-				variables->scan_col_GPL++;
+				if(variables->scan_col_GPL==variables->code[variables->scan_ligne_GPL].size()-1){
+					variables->scan_col_GPL=0;
+					variables->scan_ligne_GPL++;
+				}else{
+					variables->scan_col_GPL++;
+				}
 				return Scan(variables);
 			}else{
 				result = getStringSansApostrophe(variables);
