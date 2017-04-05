@@ -8,27 +8,44 @@
 
 #include "Grammaire.hpp"
 
+//-----------------------------------------------------------------------
+//Fonction permetant de générer une Conc
+//-----------------------------------------------------------------------
 Noeud * Grammaire::genConc(Noeud * p1, Noeud * p2){
 	return new Conc(p1, p2);
 }
 
+//-----------------------------------------------------------------------
+//Fonction permetant de générer une Union
+//-----------------------------------------------------------------------
 Noeud * Grammaire::genUnion(Noeud * p1, Noeud * p2){
 	return new Union(p1, p2);
 }
 
+//-----------------------------------------------------------------------
+//Fonction permetant de générer une Star
+//-----------------------------------------------------------------------
 Noeud * Grammaire::genStar(Noeud * p){
 	return new Star(p);
 }
 
+//-----------------------------------------------------------------------
+//Fonction permetant de générer un Atom
+//-----------------------------------------------------------------------
 Noeud * Grammaire::genAtom(std::string code, int action, ATOMETYPES type){
 	return new Atom(code,action, type);
 }
 
+//-----------------------------------------------------------------------
+//Fonction permetant de générer un Un
+//-----------------------------------------------------------------------
 Noeud * Grammaire::genUN(Noeud * p){
 	return new Un(p);
 }
 
-
+//-----------------------------------------------------------------------
+//Fonction permetant de remplir de dictionnaireGO
+//-----------------------------------------------------------------------
 void Grammaire::remplirDictionnaireG0(VariablesGlobales* variables){
 	variables->dictionnaireG0["terminaisonGPL"].push_back(";");
 
@@ -57,66 +74,9 @@ void Grammaire::remplirDictionnaireG0(VariablesGlobales* variables){
 
 }
 
-
-// Foret * Grammaire::genForet(){
-// 	Foret *g = new Foret[5];
-
-// 	//Règle 1 de la grammaire des grammaires
-// 	g[0] = genConc(
-// 			genStar(
-// 				genConc(
-// 					genConc(
-// 						genConc(genAtom("N", 0, NonTerminal), 
-// 						genAtom("commencementRegle", 0, Terminal)
-// 					),
-// 					genAtom("E", 0, NonTerminal)
-// 				),
-// 				genAtom("terminaisonRegle", 1, Terminal)
-// 				)
-// 			),
-// 		genAtom("terminaisonGPL", 0, Terminal)
-// 		);
-
-
-// 	//Règle 2 de la grammaire des grammaires
-// 	g[1] = genAtom("identificationNonTerminaux",2,Terminal);
-
-
-// 	//Règle 3 de la grammaire des grammaires
-// 	g[2] = genConc(
-// 			genAtom("T",0, NonTerminal),
-// 			genStar(
-// 				genConc(
-// 					genAtom("union",0,Terminal),
-// 					genAtom("T",3,NonTerminal)
-// 				)
-// 			)
-// 		);
-
-// 	//Règle 4 de la grammaire des grammaires
-// 	g[3] = genConc(
-// 			genAtom("F",0, NonTerminal),
-// 			genStar(
-// 				genConc(
-// 					genAtom("concatenation",0,Terminal),
-// 					genAtom("F",4,NonTerminal)
-// 				)
-// 			)
-// 		);
-
-// 	//Règle 5 de la grammaire des grammaires
-// 	g[4] = genUnion(
-// 	  genUnion(
-// 	      genUnion(genUnion(genAtom("identificationNonTerminaux", 5, Terminal), genAtom("identificationTerminaux", 5, Terminal)),
-// 	             genConc(genAtom("commencementUn", 0, Terminal), genConc(genAtom("E", 0, NonTerminal),
-// 	                                                 genAtom("terminaisonUn", 0, Terminal)))),
-// 	      genConc(genAtom("comencementStar", 0, Terminal),
-// 	            genConc(genAtom("E", 0, NonTerminal), genAtom("terminaisonStar", 6, Terminal)))),
-// 	  genConc(genAtom("commencementUn", 0, Terminal),
-// 	        genConc(genAtom("E", 0, NonTerminal), genAtom("terminaisonUn", 7, Terminal))));
-
-// 	return g;
-// }
+//-----------------------------------------------------------------------
+//Fonction permetant de genérer la foret
+//-----------------------------------------------------------------------
 Foret * Grammaire::genForet(){
 	Foret * g = new Foret;
 
@@ -177,6 +137,9 @@ Foret * Grammaire::genForet(){
 	return g;
 }
 
+//-----------------------------------------------------------------------
+//utile pour afficher la foret de GO
+//-----------------------------------------------------------------------
 void Grammaire::afficheForet(Foret * F, std::string key = ""){
 	if(key!=""){
 		cout << "A["<<key<<"] :" << endl;
@@ -196,6 +159,9 @@ void Grammaire::afficheForet(Foret * F, std::string key = ""){
 	}
 }
 
+//-----------------------------------------------------------------------
+//utile pour afficher la foret de GPL
+//-----------------------------------------------------------------------
 void Grammaire::afficheForetGrammaire(vector<Noeud*> foretsGrammaire, int key = -1){
 	if(key!=-1){
 		cout << "A[" << key << "] :" << endl;
@@ -212,7 +178,9 @@ void Grammaire::afficheForetGrammaire(vector<Noeud*> foretsGrammaire, int key = 
 	
 }
 
-
+//-----------------------------------------------------------------------
+//GOAnalyse
+//-----------------------------------------------------------------------
 bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales* variables) {
 	bool analyse = false;
 	int col = 0;
@@ -263,7 +231,6 @@ bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales* variables) {
 			break;
 		
 		case ATOM:
-			//REVOIR TOUS ATOM ET FONCTIONS GPAction, Scan
 			Noeud* resultScan =  genAtom("-1",-1,Terminal); 
 			switch(noeud->donneType()){
 				case 0:
@@ -289,7 +256,6 @@ bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales* variables) {
 						analyse = true;
 						if(noeud->donneAction()!=0){
 							GOAction(noeud->donneAction(),resultScan->donneAction(), resultScan->donneCode(), resultScan->donneType(), variables);
-							//SCAN
 						}
 					}else{
 							analyse=false;
@@ -303,6 +269,9 @@ bool Grammaire::GOAnalyse(Noeud *noeud,  VariablesGlobales* variables) {
 
 }
 
+//-----------------------------------------------------------------------
+//GoAction
+//-----------------------------------------------------------------------
 void Grammaire::GOAction(int actionG0, int actionGPL, std::string code, ATOMETYPES type, VariablesGlobales* variables){
 	Noeud *t1;
 	Noeud *t2;
@@ -312,9 +281,7 @@ void Grammaire::GOAction(int actionG0, int actionGPL, std::string code, ATOMETYP
 			variables->pileGOAction->pile.pop();
 			t2 = variables->pileGOAction->pile.top();
 			variables->pileGOAction->pile.pop();
-
 			variables->foretsGrammaire.push_back(t1);
-			// variables.dicont[t2->donneCode()] = variables.foretsGrammaire.size()-1;
 			
 			break;
 		case 2:
@@ -376,6 +343,9 @@ void Grammaire::GOAction(int actionG0, int actionGPL, std::string code, ATOMETYP
 
 }
 
+//-----------------------------------------------------------------------
+//scan
+//-----------------------------------------------------------------------
 Noeud* Grammaire::Scan(VariablesGlobales * variables){
 	std::string result = "";
 	Noeud* atomResult;
@@ -426,8 +396,6 @@ Noeud* Grammaire::Scan(VariablesGlobales * variables){
 			if((result=="]"||result=="["||result==":=")&&!entreApo){
 				terminal = false;
 			}
-			// std::cout<<"result -> "<<result<<" -> entreApo ? "<<entreApo<<", terminal ?"<<terminal<<std::endl;
-
 			if(terminal){
 				atomResult = genAtom(result, action, Terminal);
 			}else{
@@ -453,7 +421,9 @@ Noeud* Grammaire::Scan(VariablesGlobales * variables){
 	return atomResult;
 }
 
-
+//-----------------------------------------------------------------------
+//Fonction permetant de savoir si la chaine est sous la forme d'une variable (par exemple : Aaaa1)
+//-----------------------------------------------------------------------
 bool Grammaire::estVariable(std::string chaine){
 	if (regex_match(chaine, regex("[a-zA-Z][a-zA-Z0-9]*[-]*[a-zA-Z0-9]*"))){
         return true;
@@ -461,7 +431,9 @@ bool Grammaire::estVariable(std::string chaine){
     return false;
 }
 
-
+//-----------------------------------------------------------------------
+//Fonction permetant de savoir si la chaine est un apostrophe
+//-----------------------------------------------------------------------
 bool Grammaire::estApostrophe(std::string chaine){
  	if (regex_match(chaine, regex("[']"))){
         return true;
@@ -469,10 +441,16 @@ bool Grammaire::estApostrophe(std::string chaine){
     return false;
 }
 
+//-----------------------------------------------------------------------
+//Fonction permetant de savoir si la chaine est vide
+//-----------------------------------------------------------------------
 bool Grammaire::estVide(std::string chaine){
         return chaine.size()==0;
 }
 
+//-----------------------------------------------------------------------
+//Fonction permetant de savoir si la chaine est un dièse
+//-----------------------------------------------------------------------
 bool Grammaire::estDiese(std::string chaine){
  	if (regex_match(chaine, regex("[#]"))){
         return true;
@@ -480,6 +458,9 @@ bool Grammaire::estDiese(std::string chaine){
     return false;
 }
 
+//-----------------------------------------------------------------------
+//Fonction permetant de savoir si la chaine est une fleche (dans notre cas un :=)
+//-----------------------------------------------------------------------
 bool Grammaire::estFleche(std::string chaine){
  	if (regex_match(chaine, regex(":="))){
         return true;
@@ -487,6 +468,9 @@ bool Grammaire::estFleche(std::string chaine){
     return false;
 }
 
+//-----------------------------------------------------------------------
+//Fonction permetant de savoir si la chaine est un ; ou ,
+//-----------------------------------------------------------------------
 bool Grammaire::finLigne(std::string chaine){
  	if (regex_match(chaine, regex("[,;]"))){
         return true;
@@ -494,6 +478,9 @@ bool Grammaire::finLigne(std::string chaine){
     return false;
 }
 
+//-----------------------------------------------------------------------
+//donne l'action qui se trouve après un dièse (ne l'appeler que si un dièse se trouvait avant !)
+//-----------------------------------------------------------------------
 int Grammaire::donneActionChaine(VariablesGlobales* variables){
  	std::string result = "";
 	int i = variables->scan_col;
@@ -518,6 +505,9 @@ int Grammaire::donneActionChaine(VariablesGlobales* variables){
     return action;
 }
 
+//-----------------------------------------------------------------------
+//Fonction permetant de savoir si la chaine est un espace
+//-----------------------------------------------------------------------
 bool Grammaire::estEspace(std::string chaine){
  	if (regex_match(chaine, regex(" "))){
         return true;
@@ -525,6 +515,9 @@ bool Grammaire::estEspace(std::string chaine){
     return false;
 }
 
+//-----------------------------------------------------------------------
+//Fonction permetant de retourner la suite de string jusqu'à un espace ou apostrophe
+//-----------------------------------------------------------------------
 std::string Grammaire::getString(VariablesGlobales* variables){
 	std::string result = "";
 	std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
@@ -538,6 +531,10 @@ std::string Grammaire::getString(VariablesGlobales* variables){
 	return result;
 }
 
+
+//-----------------------------------------------------------------------
+//Fonction permetant de retourner la suite de string sans les apostrophe
+//-----------------------------------------------------------------------
 std::string Grammaire::getStringSansApostrophe(VariablesGlobales* variables){
 	std::string result = "";
 	std::string st(variables->grammaire[variables->scan_ligne],variables->scan_col,1);
@@ -551,19 +548,11 @@ std::string Grammaire::getStringSansApostrophe(VariablesGlobales* variables){
 	return result;
 }
 
+//-----------------------------------------------------------------------
+//Fonction permetant de remplir correctement le DicoNT
+//-----------------------------------------------------------------------
 std::string Grammaire::rechercheDicoNT(std::string code, VariablesGlobales* variables){
 	bool trouver = false;
-	// std::string ligneDico = code;
-	// for (map<std::string,vector<string>>::iterator  i=variables->dictionnaireG0.begin(); i!=variables->dictionnaireG0.end(); ++i)
-	// {
-	// 	for(string valeur : i->second){
-	// 		if(code==valeur){
-	// 			ligneDico= i->first;
-	// 		}
-	// 	}
-	// }
 	variables->dicont[code]=variables->dicont.size()-1;
-
-	
 	return code;
 }

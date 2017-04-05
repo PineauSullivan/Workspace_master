@@ -7,7 +7,9 @@
 **/
 
 #include "GPL.hpp"
-
+//-----------------------------------------------------------------------
+//GPLAnalyse
+//-----------------------------------------------------------------------
 bool GPL::GPLAnalyse(Noeud *noeud,  VariablesGlobales *variables){
 	Grammaire gram;
 	bool analyse = false;
@@ -106,7 +108,9 @@ bool GPL::GPLAnalyse(Noeud *noeud,  VariablesGlobales *variables){
 	return analyse;
 }
 
-
+//-----------------------------------------------------------------------
+//GPLAction
+//-----------------------------------------------------------------------
 void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type, VariablesGlobales* variables){
 	// cout<<"actionGPL : "<<actionGPL<<" - code : "<<code<<endl;
 	int posVariable = -1;
@@ -260,6 +264,9 @@ void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type
 	}
 }
 
+//-----------------------------------------------------------------------
+//scan
+//-----------------------------------------------------------------------
 Noeud* GPL::Scan(VariablesGlobales * variables){
 	Grammaire gram;
 	std::string result = "";
@@ -320,7 +327,9 @@ Noeud* GPL::Scan(VariablesGlobales * variables){
 	return atomResult;
 }
 
-
+//-----------------------------------------------------------------------
+//fonction permetant de savoir si la chaine pourrait une variable
+//-----------------------------------------------------------------------
 bool GPL::estVariable(std::string chaine){
 	if (regex_match(chaine, regex("[a-zA-Z][a-zA-Z0-9]*[-]*[a-zA-Z0-9]*"))){
         return true;
@@ -328,10 +337,16 @@ bool GPL::estVariable(std::string chaine){
     return false;
 }
 
+//-----------------------------------------------------------------------
+//fonction permetant de savoir si la chaine est vide
+//-----------------------------------------------------------------------
 bool GPL::estVide(std::string chaine){
         return chaine.size()==0;
 }
 
+//-----------------------------------------------------------------------
+//fonction permetant de savoir si la chaine est une fleche (dans notre cas :=)
+//-----------------------------------------------------------------------
 bool GPL::estFleche(std::string chaine){
  	if (regex_match(chaine, regex(":="))){
         return true;
@@ -339,6 +354,9 @@ bool GPL::estFleche(std::string chaine){
     return false;
 }
 
+//-----------------------------------------------------------------------
+//fonction permetant de savoir si la chaine est une fin de ligne ou non , ; .
+//-----------------------------------------------------------------------
 bool GPL::finLigne(std::string chaine){
  	if (regex_match(chaine, regex("[,;.]"))){
         return true;
@@ -346,6 +364,9 @@ bool GPL::finLigne(std::string chaine){
     return false;
 }
 
+//-----------------------------------------------------------------------
+//fonction permetant de savoir si la chaine est un espace
+//-----------------------------------------------------------------------
 bool GPL::estEspace(std::string chaine){
  	if (regex_match(chaine, regex(" "))||regex_match(chaine, regex("	"))){
         return true;
@@ -354,6 +375,9 @@ bool GPL::estEspace(std::string chaine){
 }
 
 
+//-----------------------------------------------------------------------
+//fonction permetant de savoir si la chaine est un entier
+//-----------------------------------------------------------------------
 bool GPL::estEntier(std::string chaine){
  	if (regex_match(chaine, regex("[0-9][0-9]*"))){
         return true;
@@ -361,7 +385,9 @@ bool GPL::estEntier(std::string chaine){
     return false;
 }
 
-
+//-----------------------------------------------------------------------
+//fonction permetant de retourner la string sans les apostrophe
+//-----------------------------------------------------------------------
 std::string GPL::getStringSansApostrophe(VariablesGlobales* variables){
 	std::string result = "";
 	std::string st(variables->code[variables->scan_ligne_GPL],variables->scan_col_GPL,1);
@@ -382,6 +408,9 @@ std::string GPL::getStringSansApostrophe(VariablesGlobales* variables){
 	return result;
 }
 
+//-----------------------------------------------------------------------
+//fonction permetant de retourner la position de la variable (code) dans le variables->dicont
+//-----------------------------------------------------------------------
 int GPL::rechercheInDicoNT(std::string code, VariablesGlobales* variables){
 	int ligneDico = -1;
 	for (map<string,int>::iterator  i=variables->dicont.begin(); i!=variables->dicont.end(); ++i)
@@ -393,6 +422,9 @@ int GPL::rechercheInDicoNT(std::string code, VariablesGlobales* variables){
 	return ligneDico;
 }
 
+//-----------------------------------------------------------------------
+//fonction permetant de retourner la position de la variable (code) dans le vector
+//-----------------------------------------------------------------------
 int GPL::rechercheInVariable(std::string code, std::vector<string> v){
 	int ligneDico = -1;
 	int i = 0;
@@ -405,11 +437,16 @@ int GPL::rechercheInVariable(std::string code, std::vector<string> v){
 	return ligneDico;
 }
 
-
+//-----------------------------------------------------------------------
+//fonction permetant de retourner le p_code
+//-----------------------------------------------------------------------
 std::vector<string> GPL::getP_code(){
 	return this->p_code;
 }
 
+//-----------------------------------------------------------------------
+//fonction permetant de retourner variables
+//-----------------------------------------------------------------------
 std::vector<string> GPL::getVariables(){
 	return this->variables;
 }
