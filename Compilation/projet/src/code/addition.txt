@@ -1,9 +1,9 @@
 Program Add ;
 	var S;
 DEBUT
-	Writeln S ;
+	Writeln S ; // pas_initialisé
 	S = 3 ;
-	Writeln S ;
+	Writeln S ; // 3
 	S = S + 4 ;
-	Writeln S ;
+	Writeln S ; // 7
 FIN .

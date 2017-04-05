@@ -9,14 +9,14 @@ DEBUT
 		Writeln A ;
 	ELSE
 		B = 8 ;
-		Writeln B ;
+		Writeln B ; // OUI
 	ENDIF
 	IF I == 0 THEN
 		A = 5 ;
-		Writeln A ;
+		Writeln A ; // OUI
 	ELSE
 		B = 8 ;
 		Writeln B ;
 	ENDIF
-	Writeln I ;
+	Writeln I ; // OUI
 FIN .

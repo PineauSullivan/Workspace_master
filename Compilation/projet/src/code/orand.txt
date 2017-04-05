@@ -9,11 +9,11 @@ DEBUT
 		Writeln A ;
 	ELSE
 		B = 2 ;
-		Writeln B ;
+		Writeln B ; // OUI
 	ENDIF
 	IF I == 0 ET I == 0 THEN
 		A = 3 ;
-		Writeln A ;
+		Writeln A ; // OUI
 	ELSE
 		B = 4 ;
 		Writeln B ;
@@ -23,21 +23,21 @@ DEBUT
 		Writeln A ;
 	ELSE
 		B = 6 ;
-		Writeln B ;
+		Writeln B ; // OUI
 	ENDIF
 	IF I == 0 OU I == 1 THEN
 		A = 7 ;
-		Writeln A ;
+		Writeln A ;  // OUI
 	ELSE
 		B = 8 ;
-		Writeln B ;
+		Writeln B ;   
 	ENDIF
 	IF I == 1 OU I == 1 THEN
 		A = 9 ;
 		Writeln A ;
 	ELSE
 		B = 10 ;
-		Writeln B ;
+		Writeln B ;  // OUI
 	ENDIF
 	Writeln I ;
 FIN .

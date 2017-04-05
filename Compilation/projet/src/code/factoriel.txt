@@ -9,5 +9,5 @@ DEBUT
 		I = I + 1 ;
 		Writeln S ; // Affichage_S
 	ENDWHILE
-	Writeln S ;
+	Writeln S ; // Affiche_N!
 FIN .

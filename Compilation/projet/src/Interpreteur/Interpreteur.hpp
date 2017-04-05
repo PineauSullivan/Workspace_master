@@ -1,7 +1,7 @@
 /**
  * @file Interpreteur.hpp
  * @author P. Sullivan, V. Sebastien
- * @since 04/04/2017
+ * @since 19/01/2017
  * @brief Définition d'une classe Interpreteur
  *
 **/

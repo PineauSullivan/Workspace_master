@@ -81,27 +81,19 @@ bool GPL::GPLAnalyse(Noeud *noeud,  VariablesGlobales *variables){
 					if( noeud->donneCode()=="IDNTER" && !resultScan->donneType() && estVariable(resultScan->donneCode())){
 						suite = true;
 					}
-					// cout<<"test variable 1 -> "<< suite<<endl;
 					if( noeud->donneCode()!="IDNTER" && noeud->donneType() && resultScan->donneType()){
 						suite = true;
 					}
-					// cout<<"test variable 1 -> "<< suite<<endl;
 					if( noeud->donneCode()=="ENTIER" && resultScan->donneType() && estEntier(resultScan->donneCode())){
 						suite = true;
 					}
 					if( noeud->donneCode()=="TODO" ){
 						suite = true;
 					}
-					
-					// cout<<"test variable 2 -> "<< suite<<endl;
-					// cout<<"suite ?"<<suite<<", noeud->donneAction -> "<<noeud->donneAction()<<", noeud->donneCode()-> "<<noeud->donneCode()<<endl;
-					// cout<<"resultscan->donneAction -> "<<resultScan->donneAction()<<", resultscan->donneCode()-> "<<resultScan->donneCode()<<endl;
 					if( suite ||noeud->donneCode()==resultScan->donneCode()){
-						// cout<<"OUUIIIIIIIIIIIIIIIIIIIIIIIIiIII !!!!!!!!!!!!!!!!!!!!!"<<noeud->donneCode()<<endl;
 						analyse = true;
 						if(noeud->donneAction()!=0){
 							GPLAction(noeud->donneAction(),resultScan->donneAction(), resultScan->donneCode(), resultScan->donneType(), variables);
-							//SCAN
 						}
 					}else{
 						analyse=false;
@@ -222,7 +214,6 @@ void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type
 		case 31:
 			do{
 				operateur = this->operateurs.back();
-				// cout<<operateur<<", taille putain : "<<this->operateurs.size()<<endl;
 				this->operateurs.pop_back();
 				this->p_code.push_back(operateur);
 				if(this->operateurs.size()>0){
@@ -234,7 +225,6 @@ void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type
 			this->operateurs.push_back("AND");
 			break;
 		case 33:
-			// cout<<"OUI J'AJOUTE NOT !!!"<<endl;
 			this->operateurs.push_back("NOT");
 			break;
 		case 1000:
@@ -243,13 +233,11 @@ void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type
 			this->p_code.push_back(operateur);
 			break;
 		case 2000:
-			// cout<<"taille putain : "<<this->operateurs.size()<<endl;
 			this->p_code.push_back("JIF");
 			this->jumpif.push_back(this->p_code.size());
 			this->p_code.push_back("?????");
 			break;
 		case 2001:
-			// cout<<"taille putain : "<<this->operateurs.size()<<endl;
 			adressep_code = to_string(this->p_code.size()+2);
 			adressejumpif = this->jumpif.back();
 			this->jumpif.pop_back();
@@ -269,9 +257,6 @@ void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type
 			this->operateurs.pop_back();
 			this->p_code.push_back(operateur);
 			break;
-		// case 27:
-		// 	this->p_code.push_back("AFF");
-		// 	break;
 	}
 }
 

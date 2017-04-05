@@ -4,13 +4,9 @@ DEBUT
 	Read N ;
 	S = 0 ;
 	I = 1 ;
-	Writeln S ;
-	Writeln I ;
 	WHILE I <= N DO
 		S = S + I ;
 		I = I + 1 ;
-		Writeln S ;
-		Writeln I ;
 	ENDWHILE
-	Writeln S ;
+	Writeln S ; // Somme_N+(N-1)+++1
 FIN .

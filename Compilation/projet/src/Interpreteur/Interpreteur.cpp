@@ -1,3 +1,11 @@
+/**
+ * @file Interpreteur.hpp
+ * @author P. Sullivan, V. Sebastien
+ * @since 19/01/2017
+ * @brief Définition d'une classe Interpreteur
+ *
+**/
+
 #include "../Interpreteur/Interpreteur.hpp"
 
 #include <iostream>
