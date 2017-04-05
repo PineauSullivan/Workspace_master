@@ -153,7 +153,7 @@ int main()
 	variables->scan_col_GPL = 0;
 	variables->scan_ligne_GPL = 0;
 
-  	path = "src/code/factoriel.txt";
+  	path = "src/code/orand.txt";
   	    
   	ifstream fichierCode(path, ios::in);  // on ouvre en lecture
 

@@ -247,11 +247,10 @@ void Interpreteur::EG(){
 	// on consomme 2 variables et on écrit une fois
 
 	int variableCible, variableComp;
-	variableComp = variableComp = pile_x.back();
+	variableComp = pile_x.back();
 	pile_x.pop_back();
-	variableCible = variableComp = pile_x.back();
+	variableComp = pile_x.back();
 	pile_x.pop_back();
-
 
 	if(variableCible==variableComp)
 		pile_x.push_back(boolVraie());

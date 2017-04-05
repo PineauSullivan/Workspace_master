@@ -1,14 +1,15 @@
-Program Fac ;
-	var I , S , N ;
+Program OrAnd ;
+	var I , A , B ;
 DEBUT
-	Read N ;
-	S = 1 ;
-	I = 1 ;
-	IF S<I OR S>I OR S==I THEN
-		Writeln N;
+	I := 0 ;
+	A := 4 ;
+	B := 9 ;
+	IF I == 0 THEN
+		A = 5 ;
+		Writeln A ;
+	ELSE
+		B = 8 ;
+		Writeln B ;
 	ENDIF
-	IF S==I AND S==N THEN
-		Writeln N;
-	ENDIF
-	Writeln S ;
+	Writeln I ;
 FIN .

@@ -12,7 +12,7 @@ OPMATH := ( '+'#61 + '++'#62 + '-'#63 + '--'#64 + '*'#65 + '/'#66 + '%'#67 + '!'
 OPEGAL := ( ':=' + '=' ) ,
 Inst := ( AFFECTATION#27 + COND + WHILE + READ + WRITE ) . [ Inst ] ,
 AFFECTATION := ( 'IDNTER'#3 . OPEGAL . ( 'IDNTER'#4 + ENTIER ) . ( ';' + ( OPMATH . ( 'IDNTER'#4 + ENTIER ) . [ OPMATH#1000 . ( 'IDNTER'#4 + ENTIER ) ] . ';'#1000 ) ) ) ,
-COND := 'IF' . Booleen#2000 . 'THEN' . Inst#2002 . 'ELSE'#2001 . Inst . 'ENDIF'#2003 ,
+COND := 'IF' . Booleen#2000 . 'THEN'#2005 . Inst#2002 . 'ELSE'#2001 . Inst . 'ENDIF'#2003 ,
 WHILE := 'WHILE' . Booleen#2000 . 'DO' . Inst#2004 . 'ENDWHILE'#50 ,
 READ := 'Read' . 'IDNTER'#3 . ';'#14 ,
 WRITE := 'Writeln' . ( 'IDNTER'#4 + ENTIER#5 ) . ';'#16 , ;

@@ -115,18 +115,20 @@ void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type
 	cout<<"actionGPL : "<<actionGPL<<" - code : "<<code<<endl;
 	int posVariable = -1;
 	string operateur = "";
+	string adressep_code = "";
+	int adressejumpif = -1;
 	switch(actionGPL){
 
 		case 1:
 			this->variables.push_back(code);
 			break;
 		case 3:
-			if(code != "Writeln" && code != "FIN" && code != "COND" && code != "WHILE" && code != "ENDWHILE" && code != "Read" && code != "WRITE" && code != "NON" && code != "ET" && code != "OU"){
+			if(code != "Writeln" && code != "FIN" && code != "COND" && code != "WHILE" && code != "ENDWHILE" && code != "Read" && code != "WRITE" && code != "NON" && code != "ET" && code != "OU" && code != "IF" && code != "ELSE" && code != "ENDIF"){
 				this->p_code.push_back("LDA");
 				posVariable = rechercheInVariable(code, this->variables);
 				this->p_code.push_back(to_string(posVariable));
 			}else{
-				if(code == "WHILE"){
+				if(code == "WHILE" || code == "IF"){
 					this->jump.push_back(this->p_code.size());
 				}
 			}
@@ -147,8 +149,10 @@ void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type
 			}
 			break;
 		case 5:
-			this->p_code.push_back("LDC");
-			this->p_code.push_back(code);
+			if(code != "ENTIER"){
+				this->p_code.push_back("LDC");
+				this->p_code.push_back(code);
+			}
 			break;
 		case 14:
 			this->p_code.push_back("RD");
@@ -239,6 +243,22 @@ void GPL::GPLAction(int actionGPL, int action, std::string code, ATOMETYPES type
 			this->p_code.push_back("JIF");
 			this->jumpif.push_back(this->p_code.size());
 			this->p_code.push_back("?????");
+			break;
+		case 2001:
+			cout<<"taille putain : "<<this->operateurs.size()<<endl;
+			adressep_code = to_string(this->p_code.size()+2);
+			adressejumpif = this->jumpif.back();
+			this->jumpif.pop_back();
+			this->p_code.push_back("JMP");
+			this->jumpif.push_back(this->p_code.size());
+			this->p_code.push_back("?????");
+			this->p_code[adressejumpif]=adressep_code;
+			break;
+		case 2003:
+			adressep_code = to_string(this->p_code.size());
+			adressejumpif = this->jumpif.back();
+			this->jumpif.pop_back();
+			this->p_code[adressejumpif]=adressep_code;
 			break;
 		case 3000:
 			operateur = this->operateurs.back();
