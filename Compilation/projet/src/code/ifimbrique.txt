@@ -1,0 +1,44 @@
+Program Egal ;
+	var I , A , B ;
+DEBUT
+	I := 0 ;
+	A := 4 ;
+	B := 9 ;
+	IF I == 0 THEN
+		IF I == 1 THEN
+			A = 1 ;
+			Writeln A ;
+		ELSE
+			B = 2 ;
+			Writeln B ; // Ecrit_ça
+		ENDIF
+	ELSE
+		B = 3 ;
+		Writeln B ;
+	ENDIF
+	IF I == 0 THEN
+		IF I < 1 THEN
+			A = 1 ;
+			Writeln A ; // Oui_c'est_bien_ça
+		ELSE
+			B = 2 ;
+			Writeln B ;
+		ENDIF
+	ELSE
+		B = 3 ;
+		Writeln B ;
+	ENDIF
+	IF I == 1 THEN
+		IF I < 1 THEN
+			A = 1 ;
+			Writeln A ;
+		ELSE
+			B = 2 ;
+			Writeln B ;
+		ENDIF
+	ELSE
+		B = 3 ;
+		Writeln B ; // Ecrit_3
+	ENDIF
+	Writeln I ;
+FIN .

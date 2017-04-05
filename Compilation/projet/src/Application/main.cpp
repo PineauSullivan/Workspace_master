@@ -17,9 +17,19 @@
 #include "../Interpreteur/Interpreteur.cpp"
 
 
-int main()
+int main(int argc, char ** argv)
 {
 
+	std::string path;
+	std::string path_code;
+	if(argc == 3){
+	  	path = argv[1];
+	  	path_code = argv[2];
+	}else{
+		std::cout<< "Forme de l'appel du main : ./bin/main <chemin_fichier_grammaire> <chemin_fichier_code>" << std::endl;
+		exit(0);
+	}
+	
 	////////////////////
 	//Partie GO
 	///////////////////
@@ -39,8 +49,7 @@ int main()
 	gram.remplirDictionnaireG0(variables);
 
 
-  	std::string path = "src/grammaire/grammaireGPL.txt";
-  	    
+
   	ifstream fichier(path, ios::in);  // on ouvre en lecture
 
 	std::vector<std::string> grammaire;
@@ -86,12 +95,6 @@ int main()
 	std::cout<<"------------------"<<std::endl;
 	std::cout<<std::endl;
 	
-	if(!analyse){
-		cout << "Deboguage : "<<endl;
-		std::cout<<" ligne : "<<variables->scan_ligne;
-		std::cout<<", colonne : "<<variables->scan_col;
-	}
-
 	if(analyse){
 
 		//
@@ -117,35 +120,34 @@ int main()
 		//
 
 
-	// 	gram.afficheForet(foret,"S");
-	// 	gram.afficheForetGrammaire(variables->foretsGrammaire,0);
-	// 	std::cout<<"------------------"<<std::endl;
-	// 	std::cout<<"------------------------------------"<<std::endl;
-	// 	std::cout<<"------------------"<<std::endl;
-	// 	gram.afficheForet(foret,"N");
-	// 	gram.afficheForetGrammaire(variables->foretsGrammaire,1);
-	// 	std::cout<<"------------------"<<std::endl;
-	// 	std::cout<<"------------------------------------"<<std::endl;
-	// 	std::cout<<"------------------"<<std::endl;
-	// 	gram.afficheForet(foret,"E");
-	// 	gram.afficheForetGrammaire(variables->foretsGrammaire,2);
-	// 	std::cout<<"------------------"<<std::endl;
-	// 	std::cout<<"------------------------------------"<<std::endl;
-	// 	std::cout<<"------------------"<<std::endl;
-	// 	gram.afficheForet(foret,"T");
-	// 	gram.afficheForetGrammaire(variables->foretsGrammaire,3);
-	// 	std::cout<<"------------------"<<std::endl;
-	// 	std::cout<<"------------------------------------"<<std::endl;
-	// 	std::cout<<"------------------"<<std::endl;
-	// 	gram.afficheForet(foret,"F");
-	// 	gram.afficheForetGrammaire(variables->foretsGrammaire,4);
-	// 	std::cout<<"------------------"<<std::endl;
-	// 	std::cout<<"------------------------------------"<<std::endl;
+		// 	gram.afficheForet(foret,"S");
+		// 	gram.afficheForetGrammaire(variables->foretsGrammaire,0);
+		// 	std::cout<<"------------------"<<std::endl;
+		// 	std::cout<<"------------------------------------"<<std::endl;
+		// 	std::cout<<"------------------"<<std::endl;
+		// 	gram.afficheForet(foret,"N");
+		// 	gram.afficheForetGrammaire(variables->foretsGrammaire,1);
+		// 	std::cout<<"------------------"<<std::endl;
+		// 	std::cout<<"------------------------------------"<<std::endl;
+		// 	std::cout<<"------------------"<<std::endl;
+		// 	gram.afficheForet(foret,"E");
+		// 	gram.afficheForetGrammaire(variables->foretsGrammaire,2);
+		// 	std::cout<<"------------------"<<std::endl;
+		// 	std::cout<<"------------------------------------"<<std::endl;
+		// 	std::cout<<"------------------"<<std::endl;
+		// 	gram.afficheForet(foret,"T");
+		// 	gram.afficheForetGrammaire(variables->foretsGrammaire,3);
+		// 	std::cout<<"------------------"<<std::endl;
+		// 	std::cout<<"------------------------------------"<<std::endl;
+		// 	std::cout<<"------------------"<<std::endl;
+		// 	gram.afficheForet(foret,"F");
+		// 	gram.afficheForetGrammaire(variables->foretsGrammaire,4);
+		// 	std::cout<<"------------------"<<std::endl;
+		// 	std::cout<<"------------------------------------"<<std::endl;
 	}else{
-		std::cout<<"\033[1;31mError de l'analyse GO, veuillez vérifier :";
+		std::cout<<"\033[1;31mError de l'analyse GO, veuillez vérifier la ";
 		std::cout<<" ligne : "<<variables->scan_ligne;
-		std::cout<<", colonne : "<<variables->scan_col;
-		std::cout<<" de votre grammaire !";
+		std::cout<<" de votre grammaire GPL !";
 		std::cout<<"\033[0m"<<std::endl;
 	}
 
@@ -160,75 +162,90 @@ int main()
 	////////////////////
 	//Partie GPL
 	///////////////////
+
 	GPL gpl;
-	variables->scan_col_GPL = 0;
-	variables->scan_ligne_GPL = 0;
-
-  	path = "src/code/factoriel.txt";
-  	    
-  	ifstream fichierCode(path, ios::in);  // on ouvre en lecture
-
-	std::vector<std::string> grammaire_code;
-
-    if(fichierCode)  // si l'ouverture a fonctionné
-    {
-		    string ligne;
-		    while(getline(fichierCode, ligne))  // tant que l'on peut mettre la ligne dans "contenu"
-		    {
-				grammaire_code.insert (grammaire_code.end(),ligne);
-		    }
-            fichierCode.close();
-    }
-    else{
-	    cerr << "Impossible d'ouvrir le fichierCode !" << endl;
-    }
-
-  	variables->code=grammaire_code;
-
-
 	
+	if(analyse){
+		variables->scan_col_GPL = 0;
+		variables->scan_ligne_GPL = 0;
+	  	    
+	  	ifstream fichierCode(path_code, ios::in);  // on ouvre en lecture
 
-	std::cout<<std::endl;
-	std::cout<<"------------------"<<std::endl;
-	analyse = false;
-	string str_gpl_analyse = "\033[1;31mFALSE\033[0m";
-	if(gpl.GPLAnalyse(variables->foretsGrammaire[0], variables)){
-		str_gpl_analyse = "\033[1;32mTRUE\033[0m";
-		analyse = true;
+		std::vector<std::string> grammaire_code;
+
+	    if(fichierCode)  // si l'ouverture a fonctionné
+	    {
+			    string ligne;
+			    while(getline(fichierCode, ligne))  // tant que l'on peut mettre la ligne dans "contenu"
+			    {
+					grammaire_code.insert (grammaire_code.end(),ligne);
+			    }
+	            fichierCode.close();
+	    }
+	    else{
+		    cerr << "Impossible d'ouvrir le fichierCode !" << endl;
+	    }
+
+	  	variables->code=grammaire_code;
+
+
+		
+
+		std::cout<<std::endl;
+		std::cout<<"------------------"<<std::endl;
+		analyse = false;
+		string str_gpl_analyse = "\033[1;31mFALSE\033[0m";
+		if(gpl.GPLAnalyse(variables->foretsGrammaire[0], variables)){
+			str_gpl_analyse = "\033[1;32mTRUE\033[0m";
+			analyse = true;
+		}
+		std::cout<<"|Analyse GPL| -> " + str_gpl_analyse <<std::endl;
+		std::cout<<"------------------"<<std::endl;
+		std::cout<<std::endl;
+
+		if(analyse){
+			//
+			//Affiche variables
+			//
+			// std::vector<string> variable = gpl.getVariables();
+			// cout<<"variable :"<<endl;
+			// for(int i =0; i<variable.size(); ++i){
+			// 	cout<<variable[i]<<endl;
+			// }
+
+			
+			//
+			//Affiche PCode
+			//
+			// std::vector<string> p_code = gpl.getP_code();
+			// cout<<"p code :"<<endl;
+			// for(int i =0; i<p_code.size(); ++i){
+			// 	cout<<i<<" -> "<<p_code[i]<<endl;
+			// }
+			
+		}else{
+			std::cout<<"\033[1;31mError de l'analyse GPL, veuillez vérifier la ";
+			std::cout<<" ligne : "<<variables->scan_ligne_GPL;
+			std::cout<<" de votre Code !";
+			std::cout<<"\033[0m"<<std::endl;
+		}
+
+
 	}
-	std::cout<<"|Analyse GPL| -> " + str_gpl_analyse <<std::endl;
-	std::cout<<"------------------"<<std::endl;
-	std::cout<<std::endl;
 
-	if(!analyse){
-		cout << "Deboguage : "<<endl;
-		std::cout<<" ligne : "<<variables->scan_ligne_GPL;
-		std::cout<<", colonne : "<<variables->scan_col_GPL<<endl;;
+
+	////////////////////
+	//Partie INTERPRETEUR
+	///////////////////
+
+	if(analyse){
+		std::vector<string> variable = gpl.getVariables();
+		std::vector<string> p_code = gpl.getP_code();
+		std::cout<<"INTERPRETEUR :"<<std::endl;
+		Interpreteur *inter = new Interpreteur(p_code, variable.size());
+		inter->executer();
+		std::cout<<"FIN MAIN"<<std::endl;
 	}
-	
-	std::vector<string> variable = gpl.getVariables();
-	
-	//
-	//Affiche variables
-	//
-	// cout<<"variable :"<<endl;
-	// for(int i =0; i<variable.size(); ++i){
-	// 	cout<<variable[i]<<endl;
-	// }
 
-	std::vector<string> p_code = gpl.getP_code();
-	
-	//
-	//Affiche PCode
-	//
-	// cout<<"p code :"<<endl;
-	// for(int i =0; i<p_code.size(); ++i){
-	// 	cout<<i<<" -> "<<p_code[i]<<endl;
-	// }
-
-	std::cout<<"INTERPRETEUR :"<<std::endl;
-	Interpreteur *inter = new Interpreteur(p_code, variable.size());
-	inter->executer();
-	std::cout<<"FIN MAIN"<<std::endl;
 	return 0;
 }
