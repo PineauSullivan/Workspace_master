@@ -457,12 +457,13 @@ void Interpreteur::NEG(){
 
 void Interpreteur::INC(){
 	// on consomme un element de la pile et on ecrit a une adresse
-
 	int variable1;
 	variable1 = pile_x.back();
 	pile_x.pop_back();;
+	// cout<<variable1<<" ++ "<<pile_x[variable1]<<endl;
 
-	pile_x[variable1] = convertirEcriturePile(pile_x[variable1]+1);
+	pile_x.push_back(pile_x[variable1]+1);
+	// pile_x[variable1] = convertirEcriturePile(pile_x[variable1]+1);
 
 	curseurP_code++; // on consomme une instruction
 }
@@ -474,7 +475,8 @@ void Interpreteur::DEC(){
 	variable1 = pile_x.back();
 	pile_x.pop_back();;
 
-	pile_x[variable1] = convertirEcriturePile(pile_x[variable1]-1);
+	pile_x.push_back(pile_x[variable1]-1);
+	// pile_x[variable1] = convertirEcriturePile(pile_x[variable1]-1);
 
 	curseurP_code++; // on consomme une instruction
 }

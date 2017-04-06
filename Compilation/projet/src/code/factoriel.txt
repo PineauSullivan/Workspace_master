@@ -1,13 +1,13 @@
 Program Fac ;
-	var I , S , N ;
+	var I , Result , N ;
 DEBUT
 	Read N ; // Demande_à_l'utilisateur_de_rentrer_un_nombre
-	S = 1 ;
+	Result = 1 ;
 	I = 1 ; // Test_commentaires
 	WHILE NON I > N DO
-		S = S * I ;
-		I = I + 1 ;
-		Writeln S ; // Affichage_S
+		Result = Result * I ;
+		I ++ ;
+		Writeln Result ; // Affichage_Result
 	ENDWHILE
-	Writeln S ; // Affiche_N!
+	Writeln Result ; // Affiche_Result!
 FIN .

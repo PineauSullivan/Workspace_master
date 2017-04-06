@@ -8,5 +8,5 @@ DEBUT
 		S = S + I ;
 		I = I + 1 ;
 	ENDWHILE
-	Writeln S ; // Somme_N+(N-1)+++1
+	Writeln S ; // Somme_N+(N-1)+_+_+_+1
 FIN .
