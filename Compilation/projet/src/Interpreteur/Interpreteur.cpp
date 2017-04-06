@@ -474,6 +474,7 @@ void Interpreteur::DEC(){
 	int variable1;
 	variable1 = pile_x.back();
 	pile_x.pop_back();;
+	// cout<<variable1<<" -- "<<pile_x[variable1]<<endl;
 
 	pile_x.push_back(pile_x[variable1]-1);
 	// pile_x[variable1] = convertirEcriturePile(pile_x[variable1]-1);

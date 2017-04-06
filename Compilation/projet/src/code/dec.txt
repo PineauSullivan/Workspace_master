@@ -1,0 +1,10 @@
+Program Dec ;
+	var S , N ;
+DEBUT
+	Read S ;
+	N = 0 ;
+	WHILE S > N DO
+		S -- ;
+		Writeln S ;	
+	ENDWHILE
+FIN .

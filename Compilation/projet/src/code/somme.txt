@@ -6,7 +6,7 @@ DEBUT
 	I = 1 ;
 	WHILE I <= N DO
 		S = S + I ;
-		I = I + 1 ;
+		I ++ ;
 	ENDWHILE
 	Writeln S ; // Somme_N+(N-1)+_+_+_+1
 FIN .
