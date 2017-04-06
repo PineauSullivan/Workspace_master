@@ -1,0 +1,67 @@
+// ------ Prologue C++ ------
+%{
+	#define YYSTYPE int
+	#include <iostream>
+	int yylex(void);
+	void yyerror(char const *);
+	
+%}
+
+// ------ Grammaire ------
+%%
+input:	//
+		| input ligne
+;
+
+ligne:	'\n'
+		| exp '\n' { std::cout << " --> " << $1 << std::endl; }
+;
+
+exp:		somme
+
+produit:	produit '*' facteur	{ $$ = $1 * $3;		}
+			| facteur
+
+facteur:	'(' somme ')'		{ $$ = $2;			}
+			| terme	
+			| nombre
+			
+somme:		somme '+' produit	{ $$ = $1 + $3; 	}
+			| produit			
+
+nombre:		terme terme			{ $$ = 10*$1 + $2; 	}
+
+terme:		'0' 				{ $$ = 0; 			}
+			| '1' 				{ $$ = 1; 			}
+			| '2' 				{ $$ = 2; 			}
+			| '3' 				{ $$ = 3; 			}
+			| '4' 				{ $$ = 4; 			}
+			| '5' 				{ $$ = 5; 			}
+			| '6' 				{ $$ = 6; 			}
+			| '7' 				{ $$ = 7; 			}
+			| '8' 				{ $$ = 8; 			}
+			| '9'				{ $$ = 9; 			}
+		
+// ------ Epilogue C++ ------
+%%
+
+//Appelé par l'analyseur en cas d'erreur
+void yyerror(char const *s) {
+	std::cout << "erreur lors de l'analyse " << s << std::endl;
+}
+
+//Fait une analyse syntaxique caractère par caractère
+int yylex(void) {
+	char c;
+	std::cin >> c;
+	while( c == ' ' || c == '\t' ) {
+		std::cin >> c;
+	}
+	return c;
+}
+
+//Programme principal
+int main(void) {
+	std::cin.unsetf(std::ios_base::skipws);
+	return yyparse();
+}

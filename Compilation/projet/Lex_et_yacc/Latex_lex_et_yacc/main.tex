@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\title{Lex \& Yacc}
+\author{Sullivan PINEAU \and Sebastien VALLEE }
+\date{April 2017}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+    On a tous entendu parler un jour ou l'autre de lex et yacc, ne serait-ce que pour compiler certains logiciels ... Mais qu'est ce que c'est ?
+    
+    Lex et yacc sont un ensemble d'outils très utile si un programme C/C++ a recours à un fichier de données structurées et qu'il faut le parcourir, en vérifier sa validité, en extraire les données utiles etc... Lex et Yacc permettent de décrire la syntaxe du fichier (les mots clefs structurants) ainsi que sa grammaire (les enchaînements de mots clefs et l'exploitation des données parsées) dans un langage de haut niveau. Une fois ce travail accompli, ces deux outils génèrent une fonction C facilement intégrale dans un projet C/C++. 
+    
+\section{Lex}
+    \input{contenu/lex.tex}
+
+\section{Yacc}
+    \input{contenu/yacc.tex}
+
+\section{Conclusion}
+Pour conclure, nous pouvons constater qu'il est assez trivial de prendre rapidement en main Lex et Yacc.
+\newline
+\'A l'aide de Lex et de Yacc, il serait donc possible de créer un compilateur d’un langage relativement simple possédant des fonctionnalités basiques.
+
+\end{document}
