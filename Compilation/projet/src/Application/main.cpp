@@ -229,6 +229,16 @@ int main(int argc, char ** argv)
 			// 	cout<<i<<" -> "<<p_code[i]<<endl;
 			// }
 			
+			//
+			//Ecriture PCode
+			//
+			ofstream fichier(path_code+".pcode", ios::out | ios::trunc); 
+			std::vector<string> p_code_f = gpl.getP_code();
+			for(int i =0; i<p_code_f.size(); ++i){
+				fichier << p_code_f[i]<<endl;
+			}
+			fichier.close();
+			
 		}else{
 			std::cout<<"\033[1;31mError de l'analyse GPL, veuillez vérifier la ";
 			std::cout<<" ligne : "<<variables->scan_ligne_GPL;
